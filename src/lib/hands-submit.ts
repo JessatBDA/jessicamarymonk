@@ -3,11 +3,11 @@ import { createHash } from "node:crypto";
 import { headers } from "next/headers";
 import sharp from "sharp";
 import { z } from "zod";
+import { ageRanges } from "@/lib/hands-age";
 import { expectedProjectUrl, publicClient } from "@/lib/supabase/server";
 
 const buckets = new Map<string, { count: number; reset: number }>();
 
-export const ageRanges = ["", "under-16", "16-17", "18-over", "prefer-not"] as const;
 export const tookPartValues = ["", "yes", "no", "prefer-not"] as const;
 
 export type SubmitResult = { ok: true; message: string } | { ok: false; error: string };
@@ -52,7 +52,7 @@ function multiline(value: FormDataEntryValue | null, max: number) {
 }
 
 export function sharedFields(form: FormData) {
-  const age = clean(form.get("age_range"), 20);
+  const age = clean(form.get("age_range"), 40);
   const tookPart = clean(form.get("took_part"), 20);
   return {
     display_name: clean(form.get("display_name"), 80),

@@ -144,9 +144,8 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
         <p className="eyebrow">With thanks</p>
         <h2>A thank you</h2>
         <p>
-          211 people took part. The names below are those who agreed to be
-          shown. Thank you to every person named here, and to everyone who
-          joined in.
+          The names below are those who agreed to be shown. Thank you to every
+          person named here, and to everyone who joined in.
         </p>
         <ul className="names-list">
           {names.map((name) => (
@@ -168,8 +167,8 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
           <h3>Share your hands</h3>
           <p>
             Tell Jessica what hands mean to you, or send a drawing, a poem or
-            a piece of writing. It is not put on the website until she has
-            checked it.
+            a piece of writing. Send your feedback, artwork and questions in
+            to the artist.
           </p>
           <p className="hands-actions">
             <Link className="button" href="/engagement/share-your-hands">

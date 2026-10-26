@@ -74,4 +74,4 @@ Or delete that user’s row from `public.admin_users` in the project SQL Editor.
 
 ## Scope
 
-Contact submissions, checkout and payments stay off. Share your hands and the Hands of Worcester name list are documented in [HANDS-ENGAGEMENT.md](HANDS-ENGAGEMENT.md), including the database update that still has to be applied by hand. No changes were made to the Herd Circle or British Drumming Academy applications or databases. The existing Jessica Mary Monk Vercel project happens to live under the account’s `herd-circle` hosting team; it is a separate website and uses only its own dedicated database.
+Contact submissions, checkout and payments stay off. Share your hands and the Hands of Worcester name list are documented in [HANDS-ENGAGEMENT.md](HANDS-ENGAGEMENT.md), including the two database updates that still have to be applied by hand. No changes were made to the Herd Circle or British Drumming Academy applications or databases. The existing Jessica Mary Monk Vercel project happens to live under the account’s `herd-circle` hosting team; it is a separate website and uses only its own dedicated database.

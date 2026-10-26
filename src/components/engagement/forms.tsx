@@ -6,6 +6,7 @@ import {
   submitResponse,
   submitWork,
 } from "@/app/engagement/actions";
+import { ageRangeOptions } from "@/lib/hands-age";
 import type { SubmitResult } from "@/lib/hands-submit";
 
 function Status({ state }: { state: SubmitResult | null }) {
@@ -59,7 +60,7 @@ function ShareConsent() {
       <input type="checkbox" name="share_consent" value="yes" required />
       <span>
         I agree that this may be shared on the website or in project reporting,
-        and that it is my own work. If I am under 16, a parent or teacher has
+        and that it is my own work. If I am under 18, a parent or teacher has
         agreed.
       </span>
     </label>
@@ -67,7 +68,22 @@ function ShareConsent() {
 }
 
 const guardian =
-  "If the person is under 16, a parent or teacher gives this permission for them.";
+  "If the person is under 18, a parent or teacher gives this permission for them.";
+
+function AgeRangeField() {
+  return (
+    <label>
+      Age range
+      <select name="age_range" defaultValue="">
+        {ageRangeOptions.map((option) => (
+          <option key={option.value || "unset"} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
 
 export function ResponseForm() {
   const [state, action, pending] = useActionState(submitResponse, null);
@@ -90,16 +106,7 @@ export function ResponseForm() {
         <textarea name="piece_feel" required maxLength={2000} rows={4} />
       </label>
       <NameFields underSixteenNote={guardian} />
-      <label>
-        Age range
-        <select name="age_range" defaultValue="">
-          <option value="">Prefer not to say, or skip</option>
-          <option value="under-16">Under 16</option>
-          <option value="16-17">16 or 17</option>
-          <option value="18-over">18 or over</option>
-          <option value="prefer-not">Prefer not to say</option>
-        </select>
-      </label>
+      <AgeRangeField />
       <label className="check">
         <input type="checkbox" name="is_school_or_group" value="yes" />
         <span>This is from a school or a group</span>
@@ -112,7 +119,7 @@ export function ResponseForm() {
       <ShareConsent />
       <p className="form-note">
         Read the <Link href="/privacy">privacy information</Link> before you
-        send this. Your answers are not published straight away.
+        send this. Send your feedback, artwork and questions in to the artist.
       </p>
       <button className="button" type="submit" disabled={pending}>
         {pending ? "Sending…" : "Send my answers"}
@@ -152,16 +159,7 @@ export function WorkForm() {
         <input name="image" type="file" accept="image/jpeg,image/png,image/webp" />
       </label>
       <NameFields underSixteenNote={guardian} />
-      <label>
-        Age range
-        <select name="age_range" defaultValue="">
-          <option value="">Prefer not to say, or skip</option>
-          <option value="under-16">Under 16</option>
-          <option value="16-17">16 or 17</option>
-          <option value="18-over">18 or over</option>
-          <option value="prefer-not">Prefer not to say</option>
-        </select>
-      </label>
+      <AgeRangeField />
       <label className="check">
         <input type="checkbox" name="is_school_or_group" value="yes" />
         <span>This is from a school or a group</span>
@@ -173,8 +171,8 @@ export function WorkForm() {
       </label>
       <ShareConsent />
       <p className="form-note">
-        Read the <Link href="/privacy">privacy information</Link>. Pictures and
-        writing stay private until Jessica approves them.
+        Read the <Link href="/privacy">privacy information</Link>. Send your
+        feedback, artwork and questions in to the artist.
       </p>
       <button className="button" type="submit" disabled={pending}>
         {pending ? "Sending…" : "Send my work"}
