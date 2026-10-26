@@ -5,8 +5,6 @@ import { Brushstroke } from "@/components/visuals";
 import { ContentPhoto, Lines, RichText } from "@/components/content-render";
 import {
   aboutBackground,
-  aboutHandsHref,
-  aboutHandsLink,
   aboutIntro,
   aboutNotice,
   aboutSection,
@@ -69,15 +67,7 @@ export function AboutView({ entry }: { entry: Entry }) {
           <div className="lead">
             <RichText text={aboutIntro(f.intro)} />
           </div>
-          {background === aboutHandsLink ? (
-            <p>
-              <Link className="text-link" href={aboutHandsHref}>
-                The Hands of Worcester <span>↗</span>
-              </Link>
-            </p>
-          ) : background ? (
-            <RichText text={background} />
-          ) : null}
+          {background ? <RichText text={background} /> : null}
           {notice ? <p className="notice">{notice}</p> : null}
           <Link className="text-link" href="/contact">
             Discuss a commission ↗
@@ -85,7 +75,7 @@ export function AboutView({ entry }: { entry: Entry }) {
         </div>
       </section>
       {sections.map(([key, title]) => {
-        const text = aboutSection(f[key]);
+        const text = aboutSection(key, f[key]);
         return text ? (
           <section className="story-section" key={key}>
             <h2>{title}</h2>

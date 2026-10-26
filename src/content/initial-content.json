@@ -22,10 +22,10 @@
         "painting_caption": "Paintings",
         "illustration_caption": "Illustrations",
         "practice_label": "Meet the artist",
-        "practice_heading": "A practice that\nconnects with people.",
-        "practice_text": "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.",
+        "practice_heading": "Public artist,\npainter and illustrator.",
+        "practice_text": "Public art with The Worcester Plinth, acrylic paintings, and drawings in charcoal, chalk and pastel. The studio pictures are details of the work, shown without titles or years.",
         "invitation_label": "Commissions & collaborations",
-        "invitation_heading": "Let’s make something meaningful.",
+        "invitation_heading": "Enquiries are welcome.",
         "invitation_text": "For public art, community projects, paintings and illustration."
       }
     }
@@ -44,11 +44,11 @@
         "name": "Jessica Mary Monk",
         "subtitle": "Public Artist | Painter | Illustrator",
         "intro": "A British artist working across public art, painting and illustration, with community at the heart of her pieces.",
-        "background": "[The Hands of Worcester](/public-art/the-hands-of-worcester)",
-        "notice": "TODO: Add the artist’s biography and background here, in her own words.",
-        "practice": "TODO: Artist-approved text to be supplied.",
-        "community": "TODO: Artist-approved text to be supplied.",
-        "commissions": "TODO: Artist-approved text to be supplied.",
+        "background": "Her public work includes [The Hands of Worcester](/public-art/the-hands-of-worcester), a community-led installation made with The Worcester Plinth.",
+        "notice": "",
+        "practice": "Jessica paints in acrylic and draws in charcoal, chalk and pastel. The pictures in the studio gallery are details of the work. They are shown without titles or years.",
+        "community": "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The casts were painted, sealed in resin and mounted on the plinth. The project was supported using public funding by the National Lottery through Arts Council England, with thanks to The Elmley Foundation.",
+        "commissions": "Enquiries are welcome for public art, community projects, paintings and illustration.",
         "seo_description": "A British artist working across public art, painting and illustration, with community at the heart of her pieces."
       }
     }
@@ -64,7 +64,7 @@
       "fields": {
         "heading": "Let’s start\na conversation.",
         "intro": "For public art, exhibitions, community projects, paintings and illustration.",
-        "details": "The enquiry form is being prepared. Contact details will appear here when supplied.",
+        "details": "Jessica welcomes enquiries about public art, community projects, paintings and illustration. Messages cannot be sent from this page yet.",
         "email": "",
         "phone": ""
       }
@@ -92,7 +92,7 @@
         "community_heading": "Made with the community",
         "community": "The youngest participant was 5 months old and the oldest was 90. Thank you to every participant.",
         "making_heading": "From hand to cast",
-        "making": "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Photographs of those studies have not been added yet.",
+        "making": "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Details from the studio are on the [paintings and illustrations](/paintings-illustrations) page.",
         "exhibition": "The hands sit on The Worcester Plinth for 9 months. The plinth moves from location to location within Worcester.",
         "funding": "Supported using public funding by the National Lottery through Arts Council England. With thanks to funders and supporters, including The Elmley Foundation.",
         "seo_title": "The Hands of Worcester",

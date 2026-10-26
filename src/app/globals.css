@@ -5,7 +5,7 @@
 }
 :root {
   --ink: #252523;
-  --muted: #666660;
+  --muted: #54544e;
   --paper: #fafaf8;
   --line: #dcdcd6;
 }
@@ -117,6 +117,9 @@ figure {
   font-size: 13px;
 }
 .navigation a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   padding-block: 8px;
   border-bottom: 1px solid transparent;
 }
@@ -128,6 +131,8 @@ figure {
   display: none;
   background: none;
   border: 0;
+  min-height: 44px;
+  min-width: 44px;
   padding: 12px 0;
 }
 .eyebrow {
@@ -152,7 +157,7 @@ figure {
 }
 .home-hero h1 i {
   font-style: normal;
-  color: #a0a09a;
+  color: var(--muted);
   margin: 0 10px;
 }
 .hero-bottom {
@@ -174,7 +179,8 @@ figure {
   justify-content: space-between;
   gap: 25px;
   font-size: 13px;
-  padding: 8px 0;
+  min-height: 44px;
+  padding: 10px 0;
   border-bottom: 1px solid var(--ink);
   width: fit-content;
 }
@@ -325,7 +331,10 @@ figcaption span {
 .button {
   background: var(--ink);
   color: var(--paper);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   padding: 14px 25px;
   font-size: 13px;
   border: 1px solid var(--ink);
@@ -355,8 +364,13 @@ figcaption span {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 25px;
-  font-size: 11px;
+  gap: 8px 22px;
+  font-size: 13px;
+}
+.footer-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 .footer-links span {
   color: var(--muted);
@@ -374,9 +388,11 @@ figcaption span {
   margin-top: 40px;
 }
 .back-link {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 35px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+  margin-bottom: 24px;
   color: var(--muted);
 }
 .project-list {
@@ -444,8 +460,9 @@ figcaption span {
 .filters button {
   background: transparent;
   border: 1px solid var(--line);
-  padding: 9px 14px;
-  font-size: 12px;
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 13px;
 }
 .filters button[aria-pressed="true"] {
   background: var(--ink);
@@ -495,11 +512,14 @@ figcaption span {
   background: rgba(28, 28, 26, 0.82);
 }
 .lightbox-close {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
+  min-height: 44px;
   background: transparent;
   border: 1px solid var(--line);
-  padding: 8px 12px;
+  padding: 10px 16px;
   font-size: 13px;
 }
 .artwork-viewer {
@@ -826,7 +846,7 @@ fieldset:disabled .button {
     padding-block: 30px;
   }
   .footer-links {
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .page-intro {
     padding-top: 45px;
@@ -887,6 +907,22 @@ fieldset:disabled .button {
   html {
     scroll-behavior: auto;
   }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.not-found-links {
+  list-style: none;
+  margin: 0.5rem 0 2rem;
+  padding: 0;
+  display: grid;
+  justify-items: start;
+  gap: 2px;
 }
 .home-hero h1 span.subtitle-part {
   display: inline;
