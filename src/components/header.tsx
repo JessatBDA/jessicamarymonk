@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 const links = [
   ["/public-art", "Public art"],
+  ["/engagement/share-your-hands", "Share your hands"],
   ["/paintings-illustrations", "Paintings & illustrations"],
   ["/about", "About"],
   ["/contact", "Contact"],
