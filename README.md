@@ -8,7 +8,7 @@ Next.js App Router, TypeScript and Tailwind application in the dedicated `jessic
 - [Create your administrator account and use the CMS](docs/ADMIN-GUIDE.md)
 - [Phase 2 audit](docs/PHASE2-AUDIT.md) · [Phase 2 validation](docs/PHASE2-VALIDATION.md)
 
-Phase 2 is deployed to production with owner approval. Payments and Project Engagement remain disabled.
+Phase 2 is deployed to production with owner approval. Payments stay disabled. Hands of Worcester responses are documented in [docs/HANDS-ENGAGEMENT.md](docs/HANDS-ENGAGEMENT.md) and need the database update in that guide before they can be saved.
 
 ## Run locally
 
@@ -72,7 +72,7 @@ The scripts require a running local server and installed Chrome, or `BROWSER_PAT
 
 ## Remaining scope
 
-Original portrait/artwork/project photographs and approved biography/project facts are still needed. Contact submissions are disabled pending their own secure collection work. Project Engagement and shop/order functionality are later phases; checkout remains absent. Recovery email delivery requires appropriate Supabase email/SMTP configuration and has not been tested with a real inbox.
+Original portrait/artwork/project photographs and approved biography/project facts are still needed for the other pages. Contact submissions are disabled pending their own secure collection work. Shop and checkout remain absent. The Hands of Worcester page, its photographs, and the Share your hands forms are in this repository; apply the migration and proofread the transcribed names before relying on them in production. See [docs/HANDS-ENGAGEMENT.md](docs/HANDS-ENGAGEMENT.md). Recovery email delivery requires appropriate Supabase email/SMTP configuration and has not been tested with a real inbox.
 
 The reference files in `InitialImages/` and the user's `images/` folder are preserved. Herd Circle and British Drumming Academy applications/databases were not modified. The Vercel hosting team for this separate Jessica website is named `herd-circle`.
 

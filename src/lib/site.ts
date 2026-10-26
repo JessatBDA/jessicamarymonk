@@ -13,6 +13,7 @@ export function pageMetadata(
   title: string,
   description: string,
   path: string,
+  image?: { url: string; alt: string; width?: number; height?: number },
 ): Metadata {
   return {
     title,
@@ -23,7 +24,11 @@ export function pageMetadata(
       description,
       url: path,
       type: "website",
+      images: image ? [image] : undefined,
     },
+    twitter: image
+      ? { card: "summary_large_image", title, description, images: [image.url] }
+      : undefined,
   };
 }
 export const questions = [
