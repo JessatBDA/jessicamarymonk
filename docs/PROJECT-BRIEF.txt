@@ -1,0 +1,673 @@
+# PROJECT: Jessica Mary Monk — Artist Website, Public Art, Shop & Engagement Platform
+
+## 1. Project overview
+
+Build a complete, professional, responsive website for **Jessica Mary Monk**, a British public artist, painter and illustrator.
+
+This is a brand-new application built from scratch.
+
+I have attached three screenshots of a website concept created in Figma. These screenshots are the primary visual references. There is no existing source code to transfer.
+
+The website must serve four purposes:
+
+1. Present my professional artistic practice, with public art and community installations as the primary focus.
+2. Showcase my paintings, illustrations, commissions and other creative work.
+3. Support an online shop selling original artwork, prints and other physical or digital products.
+4. Collect and analyse public engagement feedback for individual art projects.
+
+I also require a secure private admin dashboard where I can manage all these functions without editing code.
+
+**Build this as one integrated application, sharing a single database and authentication system.**
+
+## 2. Technology and architecture
+
+Use:
+
+- Next.js with App Router.
+- TypeScript.
+- Tailwind CSS.
+- Supabase PostgreSQL for structured data.
+- Supabase Auth for administrator authentication.
+- Supabase Storage for artwork and product photographs.
+- Vercel-compatible deployment.
+- Stripe integration when ecommerce payments are enabled.
+
+Requirements:
+
+- Clean, modular, maintainable architecture.
+- Reusable components.
+- Proper separation of frontend, server-side logic and database access.
+- Secure authentication and authorisation.
+- Appropriate database migrations.
+- Environment variables for credentials.
+- No hardcoded secrets.
+- No dependencies on any of my other websites or applications.
+- No production deployment without my approval.
+
+Use a new, dedicated Supabase project.
+
+Implement the foundation for all three admin sections now, even where certain commercial features will be activated later.
+
+## 3. Visual identity and design
+
+**This is extremely important.**
+
+The attached screenshots represent the visual style I want to retain.
+
+The design should be artistic, contemporary, understated and professional.
+
+### Preserve these design elements
+
+- White and light grey backgrounds.
+- Black and charcoal typography.
+- Expressive black brushstroke lines dividing sections.
+- Spacious layouts with generous whitespace.
+- Large artwork images.
+- Clean, minimal navigation.
+- An editorial portfolio aesthetic.
+- A mixture of elegant typography and hand-drawn artistic elements.
+
+Recreate the black brushstroke dividers as reusable SVG components inspired by the screenshots.
+
+Do not introduce generic corporate dashboard styling into the public website.
+
+Avoid unnecessary gradients, excessive rounded cards, bright accent colours and distracting animations.
+
+The website should resemble a contemporary artist's exhibition catalogue.
+
+### Responsive behaviour
+
+- Fully responsive on mobile, tablet and desktop.
+- Mobile-first design.
+- Clear and accessible navigation.
+- No horizontal scrolling.
+- Artwork must retain appropriate aspect ratios.
+- Images should be optimised without compromising presentation quality.
+- All forms must work comfortably on mobile devices.
+
+## 4. Public website structure
+
+Create the following pages.
+
+### A. Homepage
+
+The homepage should immediately establish my identity as a public artist.
+
+Include:
+
+- Jessica Mary Monk as the main heading.
+- Subtitle: Public Artist | Painter | Illustrator.
+- Artist portrait.
+- Short professional introduction.
+- Featured public art project.
+- Selected paintings and illustrations.
+- Brief description of my artistic approach.
+- Invitations to explore projects and enquire about commissions.
+
+The homepage must prioritise public art and installations rather than presenting everything as a traditional painting portfolio.
+
+All major homepage text and images must be editable from the admin dashboard.
+
+### B. Public Art & Installations
+
+Create a portfolio page showcasing public art projects.
+
+Each project must support:
+
+- Project title.
+- Location.
+- Year.
+- Commissioning organisation.
+- Project description.
+- Artistic concept.
+- Materials and techniques.
+- Community participation.
+- Project outcomes.
+- Multiple images.
+- Image captions.
+- Optional video.
+- Related links.
+- Project status.
+
+Each project should have its own public URL.
+
+Projects must be created, edited, reordered, published and unpublished through the admin dashboard.
+
+### C. The Hands of Worcester — dedicated project page
+
+Create a substantial standalone page for **The Hands of Worcester**, the community art installation associated with The Worcester Plinth.
+
+This should be a flagship project within the website.
+
+Include:
+
+1. Large hero image.
+2. Project introduction.
+3. Background and artistic concept.
+4. Community involvement.
+5. Making and casting process.
+6. Behind-the-scenes image gallery.
+7. Finished installation gallery.
+8. Exhibition information.
+9. Visitor feedback questionnaire.
+10. Public engagement information.
+11. Invitation to explore other projects.
+
+Use placeholders for missing photographs and factual content.
+
+Do not invent project statistics, commissioning information or artistic statements.
+
+The page should feel immersive and visually engaging.
+
+### D. Paintings & Illustrations
+
+Create a portfolio gallery for my other work.
+
+Suggested categories:
+
+- Paintings.
+- Portraits.
+- Drawings.
+- Book illustration.
+- Theatre artwork.
+- Other creative projects.
+
+Artwork records should support:
+
+- Title.
+- Description.
+- Year.
+- Medium.
+- Dimensions.
+- Multiple images.
+- Category.
+- Availability.
+- Commission information.
+- Optional associated shop product.
+
+Allow artwork to appear in both the portfolio and shop without duplicating the underlying artwork record.
+
+### E. About
+
+Create a professional artist biography page.
+
+Include editable sections for:
+
+- Artist introduction.
+- Background.
+- Artistic practice.
+- Public art experience.
+- Community engagement.
+- Commissions and collaborations.
+- Artist photograph.
+
+### F. Contact
+
+Create an accessible contact form.
+
+Allow enquiries relating to:
+
+- Public art commissions.
+- Exhibitions.
+- Community projects.
+- Painting commissions.
+- Illustration commissions.
+- General enquiries.
+
+Store enquiries securely and make them visible in the admin dashboard.
+
+Include spam protection, validation and appropriate confirmation messages.
+
+## 5. Private admin dashboard
+
+Create a protected administration area at `/admin`.
+
+The admin dashboard should use the same underlying application but have its own practical interface.
+
+The dashboard must have three main sections:
+
+**1. Website & Profile**
+
+**2. Shop & Orders**
+
+**3. Project Engagement**
+
+Include a dashboard homepage summarising recent activity and providing navigation to each section.
+
+Use Supabase Auth for administrator login.
+
+Do not allow public registration for administrator accounts.
+
+Administrator access must be controlled through secure server-side authorisation, not editable user metadata.
+
+### ADMIN SECTION 1 — Website & Profile
+
+This section should operate as a simple content management system.
+
+I must be able to:
+
+- Edit homepage headings and descriptions.
+- Change homepage images.
+- Edit my artist biography.
+- Update contact information.
+- Upload and replace photographs.
+- Add new artworks.
+- Edit existing artworks.
+- Create public art project pages.
+- Add project galleries.
+- Reorder images.
+- Choose featured artwork.
+- Reorder portfolio items.
+- Publish and unpublish content.
+- Preview changes before publishing.
+
+Provide an easy-to-use rich-text editor where appropriate.
+
+Image uploads should accept files directly from my computer, not require image URLs.
+
+Support multiple images per artwork or project.
+
+Use Supabase Storage with suitable access controls.
+
+Ensure image uploads have sensible file size limits, validation and error handling.
+
+The admin should be straightforward for a non-technical user to operate.
+
+### ADMIN SECTION 2 — Shop & Orders
+
+Build the shop management foundation now, with the ability to activate ecommerce later.
+
+The shop will eventually sell:
+
+- Original paintings.
+- Limited-edition prints.
+- Open-edition prints.
+- Drawings.
+- Illustrated products.
+- Books.
+- Merchandise.
+- Digital products.
+
+#### Product management
+
+Allow the admin to:
+
+- Create products.
+- Edit products.
+- Upload multiple images.
+- Set prices in GBP.
+- Add descriptions.
+- Set product categories.
+- Manage stock quantities.
+- Set products as available, sold or unavailable.
+- Feature products.
+- Reorder product images.
+- Save draft products.
+- Publish or unpublish products.
+
+#### Product variants
+
+Support configurable variants such as:
+
+- Print sizes.
+- Framed or unframed.
+- Colour options.
+- Clothing sizes.
+- Other custom options.
+
+Variants may have their own prices, stock quantities and SKU identifiers.
+
+#### Original artwork
+
+Original artworks should be treated as unique items.
+
+Where stock is one, the system must prevent duplicate sales when ecommerce is activated.
+
+#### Limited editions
+
+Support:
+
+- Edition size.
+- Edition numbering.
+- Remaining availability.
+- Optional certificate of authenticity information.
+
+#### Orders
+
+Prepare an order management interface showing:
+
+- Order number.
+- Customer.
+- Products purchased.
+- Order status.
+- Payment status.
+- Fulfilment status.
+- Delivery information.
+- Tracking information.
+- Refund status.
+
+#### Payments
+
+Design for future Stripe Checkout integration.
+
+Do not activate live payments yet.
+
+When payments are implemented, they must use server-side price validation, secure webhooks, idempotent order processing and stock protection.
+
+Never treat a client-side success message as proof of payment.
+
+Do not collect or store card details directly.
+
+#### Shop visibility
+
+The public shop should be hidden or clearly marked as coming soon until I choose to launch it.
+
+The admin product management functionality should still be usable.
+
+### ADMIN SECTION 3 — Project Engagement
+
+This is a major requirement.
+
+I want to use my website to collect meaningful public feedback about installations and community art projects.
+
+The engagement system must be reusable across multiple projects, not hardcoded exclusively for The Hands of Worcester.
+
+#### Project-based questionnaires
+
+Each public art project should be able to have its own questionnaire.
+
+From the admin dashboard, I should be able to:
+
+- Create a questionnaire.
+- Link it to a project.
+- Add questions.
+- Edit questions.
+- Reorder questions.
+- Make questions required or optional.
+- Publish or close questionnaires.
+- View submitted responses.
+- Export responses.
+- See engagement statistics.
+
+#### Question types
+
+Support:
+
+- Single-choice questions.
+- Multiple-choice questions.
+- Rating scales.
+- Short text.
+- Long text.
+- Yes/no questions.
+- Optional demographic questions.
+
+Questionnaires must be configurable from the admin interface without requiring code changes.
+
+#### The Hands of Worcester questionnaire
+
+Create an initial questionnaire with the following questions:
+
+1. Have you seen The Hands of Worcester in person?
+2. Are you a Worcester resident or visiting the area?
+3. What was your first impression of the artwork?
+4. What emotions did the artwork evoke?
+5. What do you think the installation represents?
+6. Did the artwork encourage you to think differently about public art?
+7. How important do you think public art is to local communities?
+8. Would you like to see more public art installations in Worcester?
+9. Is there anything else you would like to share?
+
+Use appropriate question formats, with free-text options where helpful.
+
+Do not require names or email addresses.
+
+#### Visitor experience
+
+The questionnaire should:
+
+- Be mobile-friendly.
+- Be accessible through a public URL.
+- Work without requiring an account.
+- Use a visually attractive, simple layout.
+- Clearly indicate progress where appropriate.
+- Provide a confirmation message after successful submission.
+- Avoid unnecessary personal data collection.
+- Include a privacy notice.
+
+#### QR codes
+
+Generate a downloadable QR code for each published questionnaire.
+
+This should link directly to the questionnaire so visitors can scan it at the installation.
+
+#### Response storage
+
+Store questionnaire responses in Supabase.
+
+Include:
+
+- Project identifier.
+- Questionnaire identifier and version.
+- Question identifiers.
+- Answers.
+- Submission timestamp.
+- Consent status where applicable.
+
+Do not expose individual responses publicly by default.
+
+Apply appropriate row-level security policies.
+
+Public visitors must only be able to submit responses, not retrieve other visitors' answers.
+
+#### Engagement dashboard
+
+Provide an admin dashboard showing:
+
+- Total responses.
+- Responses by project.
+- Responses over time.
+- Charts for multiple-choice questions.
+- Rating distributions.
+- Written feedback.
+- Response filtering.
+- CSV export.
+- Optional anonymised quote selection.
+
+Ensure questionnaire responses remain understandable even when questions are subsequently edited.
+
+#### Consent and privacy
+
+Include explicit optional consent for publishing an anonymised quotation.
+
+Do not make consent a condition of submitting feedback.
+
+Provide a mechanism for managing and deleting responses where required.
+
+Use a privacy-conscious approach appropriate for a UK public-facing website.
+
+Do not collect unnecessary identifying information.
+
+## 6. Database architecture
+
+Design a clean Supabase database schema.
+
+Suggested entities include:
+
+- Admin users and roles.
+- Site settings.
+- Editable content sections.
+- Artwork.
+- Artwork images.
+- Public art projects.
+- Project images.
+- Product categories.
+- Products.
+- Product variants.
+- Inventory.
+- Orders.
+- Order items.
+- Contact enquiries.
+- Questionnaires.
+- Questionnaire versions.
+- Questions.
+- Question options.
+- Questionnaire responses.
+- Response answers.
+- Consent records.
+
+Use relational links where appropriate.
+
+Avoid duplicating artwork and product information unnecessarily.
+
+Include migrations, indexes, constraints and appropriate row-level security.
+
+All administrative database operations must be authenticated and authorised.
+
+Public read access should be limited to published content.
+
+## 7. User experience
+
+The public website and admin area should have different design priorities.
+
+### Public website
+
+Artistic, elegant, minimal and visually immersive.
+
+### Admin dashboard
+
+Clear, practical, efficient and easy to navigate.
+
+The admin dashboard does not need the decorative brushstroke styling used on the public website.
+
+Prioritise usability over visual decoration in the admin area.
+
+## 8. Search engine optimisation
+
+Implement:
+
+- Editable page titles and meta descriptions.
+- Semantic headings.
+- Descriptive image alt text.
+- Open Graph metadata.
+- Sitemap.
+- Robots configuration.
+- Canonical URLs where appropriate.
+- Structured data where appropriate.
+
+Ensure unpublished projects and private admin routes are not indexed.
+
+## 9. Security requirements
+
+Security is important because the website will store visitor feedback, contact enquiries and eventually customer orders.
+
+Implement:
+
+- Secure administrator authentication.
+- Server-side authorisation.
+- Row-level security.
+- Input validation.
+- Safe file upload handling.
+- Protection against spam and abuse.
+- Appropriate rate limiting for public forms.
+- Secure handling of environment variables.
+- No exposed Supabase service-role credentials.
+- No unauthorised access to private questionnaire responses.
+- No unauthorised modification of website content.
+- Secure handling of future ecommerce functionality.
+
+Do not rely on frontend route hiding as a security mechanism.
+
+## 10. Implementation phases
+
+Build the website in manageable phases to avoid incomplete or unstable functionality.
+
+### Phase 1 — Foundation and visual design
+
+- Initialise Next.js application.
+- Configure project structure.
+- Build reusable design components.
+- Recreate the visual style from the screenshots.
+- Build responsive navigation.
+- Create all public pages.
+- Add placeholder content where necessary.
+- Implement basic SEO.
+
+### Phase 2 — Supabase and admin CMS
+
+- Create database migrations.
+- Configure authentication.
+- Implement protected admin routes.
+- Build Website & Profile management.
+- Add artwork and project management.
+- Implement image uploads.
+- Connect editable content to public pages.
+
+### Phase 3 — Project engagement
+
+- Build reusable questionnaire management.
+- Implement public questionnaire submission.
+- Securely store responses.
+- Build engagement dashboard.
+- Add charts, filtering and CSV export.
+- Generate project QR codes.
+- Test the entire submission process.
+
+### Phase 4 — Shop foundation
+
+- Implement product and category management.
+- Implement product variants and inventory.
+- Build the public shop interface.
+- Prepare order management.
+- Keep checkout and live payments disabled.
+- Keep the public shop hidden until activated.
+
+### Phase 5 — Testing and deployment preparation
+
+- Test responsive layouts.
+- Test all admin functionality.
+- Test authentication and authorisation.
+- Test database permissions.
+- Test image uploads.
+- Test questionnaire submissions.
+- Test error handling.
+- Run TypeScript checks, linting and production build.
+- Fix identified issues.
+
+Do not deploy automatically.
+
+## 11. Development rules
+
+Follow these rules throughout implementation:
+
+1. Inspect the existing repository before changing anything.
+2. Do not overwrite unrelated files or projects.
+3. Do not invent biographical information, project facts, artwork titles or prices.
+4. Use the supplied screenshots as the visual reference.
+5. Use placeholders where original content or photographs are missing.
+6. Do not use unrelated stock photographs as representations of my artwork.
+7. Do not create fake customer orders or real-looking visitor feedback.
+8. Do not connect to production Stripe.
+9. Do not enable live payments.
+10. Do not expose sensitive visitor information.
+11. Keep the implementation maintainable and avoid unnecessary complexity.
+12. Do not claim a feature is complete unless it has been implemented and tested.
+13. Do not silently skip requirements.
+14. Document any missing credentials, assets or configuration.
+
+## 12. What I expect from Codex
+
+Start by reviewing the complete specification and the attached screenshots.
+
+Then:
+
+1. Propose the project architecture and folder structure.
+2. Identify the main database entities and relationships.
+3. Create a concise implementation plan.
+4. Begin implementing Phase 1.
+5. Complete and test each phase before progressing to the next.
+6. Report any blockers or required credentials clearly.
+7. Provide a summary of completed functionality and outstanding tasks.
+
+The final application should be a professional, visually distinctive artist website with a fully integrated administration system, reusable public engagement tools and a future-ready ecommerce platform.
+
+**Priority:** Preserve my artistic visual identity while making public art, community engagement and professional commissions the central focus of the website.

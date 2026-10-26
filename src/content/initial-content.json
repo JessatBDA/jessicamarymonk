@@ -1,0 +1,96 @@
+[
+  {
+    "kind": "page",
+    "slug": "home",
+    "title": "Homepage",
+    "sort_order": 0,
+    "body": {
+      "featured": false,
+      "images": [],
+      "fields": {
+        "eyebrow": "Art in public. Art for people.",
+        "heading": "Jessica Mary Monk",
+        "subtitle": "Public Artist | Painter | Illustrator",
+        "intro": "A British artist working across public art, painting and illustration, with community installations at the heart of this website.",
+        "feature_label": "Featured project · Public art",
+        "feature_slug": "the-hands-of-worcester",
+        "feature_heading": "The Hands\nof Worcester",
+        "feature_index": "01 / Public art & installations",
+        "studio_label": "From the studio",
+        "studio_heading": "Paintings & illustrations",
+        "painting_caption": "Paintings",
+        "illustration_caption": "Illustrations",
+        "practice_label": "Meet the artist",
+        "practice_heading": "A practice that\nconnects with people.",
+        "practice_text": "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.",
+        "invitation_label": "Commissions & collaborations",
+        "invitation_heading": "Let’s make something meaningful.",
+        "invitation_text": "For public art, community projects, paintings and illustration."
+      }
+    }
+  },
+  {
+    "kind": "page",
+    "slug": "about",
+    "title": "Artist biography",
+    "sort_order": 1,
+    "body": {
+      "featured": false,
+      "images": [],
+      "fields": {
+        "eyebrow": "The artist behind the work",
+        "heading": "About Jessica.",
+        "name": "Jessica Mary Monk",
+        "subtitle": "Public Artist | Painter | Illustrator",
+        "intro": "Jessica Mary Monk is a British public artist, painter and illustrator.",
+        "background": "Her work includes The Hands of Worcester, a community art installation associated with The Worcester Plinth.",
+        "notice": "A full artist biography, background and account of Jessica’s practice will be added here in her own words.",
+        "practice": "Artist-approved text to be supplied.",
+        "community": "Artist-approved text to be supplied.",
+        "commissions": "Artist-approved text to be supplied."
+      }
+    }
+  },
+  {
+    "kind": "page",
+    "slug": "contact",
+    "title": "Contact information",
+    "sort_order": 2,
+    "body": {
+      "featured": false,
+      "images": [],
+      "fields": {
+        "heading": "Let’s start\na conversation.",
+        "intro": "For public art, exhibitions, community projects, paintings and illustration.",
+        "details": "The enquiry form is being prepared. Contact details will appear here when supplied.",
+        "email": "",
+        "phone": ""
+      }
+    }
+  },
+  {
+    "kind": "project",
+    "slug": "the-hands-of-worcester",
+    "title": "The Hands of Worcester",
+    "sort_order": 0,
+    "body": {
+      "featured": true,
+      "images": [],
+      "fields": {
+        "heading": "The Hands\nof Worcester.",
+        "location": "The Worcester Plinth",
+        "intro": "A community art installation associated with The Worcester Plinth.",
+        "summary_heading": "The story of\nthe hands.",
+        "summary": "This page will bring together the story, community involvement and making of The Hands of Worcester. Project details and photographs are awaiting confirmation.",
+        "notice": "Project page in preparation. Exhibition dates, locations and commissioning details will be published once confirmed.",
+        "concept_heading": "The idea behind the hands",
+        "concept": "The artist’s account of the project’s inspiration and artistic concept will be added here.",
+        "community_heading": "Made with the community",
+        "community": "Details of community participation and casting sessions will be added when confirmed.",
+        "making_heading": "From hand to cast",
+        "making": "The making process, materials and techniques will be documented here with photographs from the studio.",
+        "exhibition": "Exhibition dates, venue information and accessibility details will be added here when confirmed."
+      }
+    }
+  }
+]

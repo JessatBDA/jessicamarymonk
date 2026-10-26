@@ -1,0 +1,12 @@
+project_id = "jessicamarymonkcodex"
+
+[auth]
+enable_signup = false
+site_url = "https://www.jessicamarymonk.com"
+additional_redirect_urls = ["http://localhost:3000/admin/auth/confirm", "https://jessicamarymonkcodex.vercel.app/admin/auth/confirm", "https://www.jessicamarymonk.com/admin/auth/confirm", "https://jessicamarymonk.com/admin/auth/confirm", "https://jessicamarymonkcodex-*-herd-circle.vercel.app/admin/auth/confirm"]
+minimum_password_length = 10
+
+[auth.email]
+# This enables email/password sign-in; global auth.enable_signup above still blocks registration.
+enable_signup = true
+enable_confirmations = true
