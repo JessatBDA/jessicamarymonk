@@ -9,9 +9,13 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const entry = await requirePublished("artwork", slug);
+  const image =
+    entry.body.images.find((item) => item.role === "hero") ||
+    entry.body.images[0];
+  const label = image?.alt || "Studio work";
   return pageMetadata(
-    entry.body.fields.seo_title || entry.title,
-    entry.body.fields.seo_description || entry.title,
+    entry.body.fields.seo_title || label,
+    entry.body.fields.seo_description || label,
     `/paintings-illustrations/${slug}`,
   );
 }

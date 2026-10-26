@@ -8,6 +8,7 @@ import {
   type Entry,
   type ContentImage,
 } from "@/lib/content-model";
+import { studioImages } from "@/lib/studio-images";
 import { saveEntry, unpublishEntry } from "@/app/admin/content-actions";
 import { RichEditor } from "./rich-editor";
 export function ContentEditor({
@@ -248,13 +249,22 @@ export function ContentEditor({
           <h2>Content details</h2>
           <div className="admin-field-grid">
             <label>
-              Title
+              {entry.kind === "artwork"
+                ? "Private reference"
+                : "Title"}
               <input
                 value={entry.title}
                 maxLength={200}
-                required
+                required={entry.kind !== "artwork"}
                 onChange={(event) => update({ title: event.target.value })}
               />
+              {entry.kind === "artwork" ? (
+                <small>
+                  Not shown on the website. Leave blank to keep the URL name.
+                  Year, medium and dimensions are optional and stay hidden
+                  while empty.
+                </small>
+              ) : null}
             </label>
             <label>
               URL name
@@ -321,7 +331,9 @@ export function ContentEditor({
                   value={entry.body.fields[item.key] || ""}
                   onChange={(event) => field(item.key, event.target.value)}
                 >
-                  <option value="">Choose a category</option>
+                  <option value="">
+                    {item.key === "category" ? "Choose a category" : "Not set"}
+                  </option>
                   {item.options.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
@@ -366,10 +378,14 @@ export function ContentEditor({
               <div className="admin-image" key={image.id}>
                 <div className="admin-thumbnail">
                   <Image
-                    src={`/media/${image.id}`}
+                    src={
+                      image.file && studioImages[image.file]
+                        ? studioImages[image.file]
+                        : `/media/${image.id}`
+                    }
                     alt={image.alt || "Uploaded image"}
                     fill
-                    unoptimized
+                    unoptimized={!image.file || !studioImages[image.file]}
                     sizes="160px"
                   />
                 </div>

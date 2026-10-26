@@ -462,8 +462,57 @@ figcaption span {
   align-items: start;
   padding-block: 15px 80px;
 }
-.portfolio-grid figure {
+.portfolio-grid figure,
+.portfolio-grid .studio-shot {
   min-width: 0;
+}
+.studio-shot {
+  display: block;
+  color: inherit;
+  cursor: zoom-in;
+}
+.studio-shot:hover {
+  opacity: 0.92;
+}
+.artwork-grid-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #eaeae5;
+}
+.studio-group {
+  margin-top: 48px;
+}
+.lightbox {
+  position: relative;
+  width: min(1100px, 94vw);
+  max-height: 94vh;
+  padding: 16px 16px 20px;
+  border: 0;
+  background: var(--paper);
+}
+.lightbox::backdrop {
+  background: rgba(28, 28, 26, 0.82);
+}
+.lightbox-close {
+  display: block;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  font-size: 13px;
+}
+.artwork-viewer {
+  width: auto;
+  max-width: 100%;
+  max-height: calc(94vh - 64px);
+  height: auto;
+  margin: 12px auto 0;
+  display: block;
+  object-fit: contain;
+}
+.artwork-detail .artwork-grid-image {
+  margin-bottom: 28px;
 }
 .portfolio-grid .image-placeholder {
   min-height: 0;
@@ -478,6 +527,19 @@ figcaption span {
 .lead {
   font-size: 18px;
   color: var(--muted);
+}
+.about-roles {
+  margin: -0.35rem 0 1rem;
+  color: var(--muted);
+  font-size: 14px;
+}
+.about-portrait {
+  width: 100%;
+  max-width: 480px;
+  justify-self: start;
+}
+.about-portrait .photo-frame img {
+  object-fit: cover;
 }
 .form-layout {
   display: grid;
@@ -806,8 +868,10 @@ fieldset:disabled .button {
     grid-template-columns: 1fr;
     gap: 35px;
   }
-  .about-grid > .image-placeholder {
-    max-width: 400px;
+  .about-grid > .image-placeholder,
+  .about-portrait {
+    max-width: min(100%, 420px);
+    justify-self: center;
   }
   .admin-sections {
     grid-template-columns: 1fr;

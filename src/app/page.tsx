@@ -1,4 +1,5 @@
 ﻿import { HomeView } from "@/components/pages/home";
+import { metaDescription } from "@/lib/artist-copy";
 import { requirePublished, publishedEntries } from "@/lib/content";
 import { pageMetadata } from "@/lib/site";
 export const dynamic = "force-dynamic";
@@ -8,7 +9,7 @@ export async function generateMetadata() {
   } = await requirePublished("page", "home");
   return pageMetadata(
     f.seo_title || "Jessica Mary Monk",
-    f.seo_description || "Public artist, painter and illustrator.",
+    metaDescription(f.seo_description),
     "/",
   );
 }

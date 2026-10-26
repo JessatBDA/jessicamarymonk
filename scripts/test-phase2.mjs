@@ -496,7 +496,7 @@ try {
   );
   check(
     (await (await fetch(`${base}/paintings-illustrations`)).text()).includes(
-      "CMS verification artwork fixture",
+      `/paintings-illustrations/${artwork.slug}`,
     ),
     "Published artwork appears in the portfolio gallery",
   );

@@ -1,60 +1,44 @@
 import Link from "next/link";
-import { Brushstroke } from "@/components/visuals";
-import { ContentPhoto, RichText } from "@/components/content-render";
+import { ArtworkImage, RichText } from "@/components/content-render";
 import type { Entry } from "@/lib/content-model";
+
 export function ArtworkView({ entry }: { entry: Entry }) {
-  const f = entry.body.fields;
+  const images = entry.body.images;
+  const primary =
+    images.find((image) => image.role === "hero") ||
+    images.find((image) => image.role !== "behind") ||
+    images[0];
+  const rest = images.filter((image) => image !== primary);
+  const description = entry.body.fields.description?.trim();
+  const commission = entry.body.fields.commission?.trim();
   return (
-    <div className="wrap">
+    <div className="wrap artwork-detail">
       <section className="page-intro">
         <Link href="/paintings-illustrations" className="back-link">
           ← Paintings & illustrations
         </Link>
-        <p className="eyebrow">{f.category}</p>
-        <h1>{entry.title}</h1>
-        <Brushstroke />
       </section>
-      <ContentPhoto
-        image={
-          entry.body.images.find((image) => image.role === "hero") ||
-          entry.body.images[0]
-        }
-        label={entry.title}
-      />
-      <section className="story-section">
-        <div>
-          {[
-            ["year", "Year"],
-            ["medium", "Medium"],
-            ["dimensions", "Dimensions"],
-            ["availability", "Availability"],
-          ].map(
-            ([key, label]) =>
-              f[key] && (
-                <p key={key}>
-                  <strong>{label}:</strong> {f[key]}
-                </p>
-              ),
-          )}
-        </div>
-        <RichText text={f.description} />
-      </section>
-      <div className="two-columns">
-        {entry.body.images
-          .filter((image) => image.role !== "hero")
-          .slice(
-            entry.body.images.some((image) => image.role === "hero") ? 0 : 1,
-          )
-          .map((image) => (
-            <ContentPhoto key={image.id} image={image} label={entry.title} />
-          ))}
-      </div>
-      {f.commission && (
+      {primary ? (
+        <ArtworkImage
+          image={primary}
+          sizes="(max-width: 760px) 92vw, 1100px"
+          priority
+        />
+      ) : null}
+      {rest.map((image) => (
+        <ArtworkImage
+          key={image.id}
+          image={image}
+          sizes="(max-width: 760px) 92vw, 540px"
+        />
+      ))}
+      {description ? <RichText text={description} /> : null}
+      {commission ? (
         <section className="story-section">
           <h2>Commissions</h2>
-          <RichText text={f.commission} />
+          <RichText text={commission} />
         </section>
-      )}
+      ) : null}
       <section className="invitation">
         <Link className="text-link" href="/contact">
           Enquire about this work ↗

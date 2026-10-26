@@ -1,8 +1,43 @@
 import "server-only";
 import { cache } from "react";
 import { notFound } from "next/navigation";
+import initialContent from "@/content/initial-content.json";
 import { publicClient } from "./supabase/server";
-import type { Entry, EntryKind } from "./content-model";
+import type { ContentBody, Entry, EntryKind } from "./content-model";
+
+type SeedEntry = {
+  kind: EntryKind;
+  slug: string;
+  title: string;
+  sort_order: number;
+  body: ContentBody;
+};
+
+function seedEntryId(kind: string, slug: string) {
+  let hash = 0;
+  for (const char of `${kind}:${slug}`) {
+    hash = (hash * 33 + char.charCodeAt(0)) >>> 0;
+  }
+  return `00000000-0000-4000-8000-${hash.toString(16).padStart(12, "0").slice(-12)}`;
+}
+
+/** Bundled seed rows. Used when that kind has not been published yet. */
+export function seededEntries(kind: EntryKind): Entry[] {
+  return (initialContent as unknown as SeedEntry[])
+    .filter((entry) => entry.kind === kind)
+    .map((entry) => ({
+      id: seedEntryId(entry.kind, entry.slug),
+      kind: entry.kind,
+      slug: entry.slug,
+      title: entry.title,
+      body: entry.body,
+      sort_order: entry.sort_order,
+      revision: 0,
+      updated_at: "1970-01-01T00:00:00.000Z",
+    }))
+    .sort((a, b) => a.sort_order - b.sort_order);
+}
+
 export const publishedEntries = cache(
   async (kind: EntryKind): Promise<Entry[]> => {
     const { data, error } = await publicClient()
@@ -12,7 +47,11 @@ export const publishedEntries = cache(
       .order("sort_order")
       .order("published_at", { ascending: false });
     if (error) throw new Error("Published content is temporarily unavailable.");
-    return data as Entry[];
+    const rows = data as Entry[];
+    // Production has no artwork rows yet. Show the seed until the first
+    // artwork is published; after that the database list is the source.
+    if (kind === "artwork" && rows.length === 0) return seededEntries(kind);
+    return rows;
   },
 );
 export const publishedEntry = cache(
