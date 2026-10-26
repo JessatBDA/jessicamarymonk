@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Privacy information",
-  "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
+  "211 people took part in The Hands of Worcester. This notice explains how names and other visitor information are handled. Only people who agreed to be shown are named.",
   "/privacy",
 );
 
@@ -49,11 +49,12 @@ export default function Page() {
       </p>
       <h2>Add your name</h2>
       <p>
-        The name form stores the name you enter, an optional town, school or
-        group, and whether you took part in a workshop. The same unticked
-        permission box applies. Sending the form means it may be stored so it
-        can be reviewed. The name is shown on the participant list only when
-        permission was given and Jessica approves it.
+        211 people took part. The thank-you list is not a list of all 211
+        people. It shows the names of people who agreed to be shown. The name
+        form stores the name you enter, an optional town, school or group, and
+        whether you took part in a workshop. The same unticked permission box
+        applies. Sending the form means it may be stored so it can be reviewed.
+        A name is shown only when permission was given and Jessica approves it.
       </p>
       <h2>Why this information is kept</h2>
       <p>

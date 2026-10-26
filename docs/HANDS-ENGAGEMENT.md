@@ -11,7 +11,7 @@ Use only the Jessica Mary Monk project `jessicamarymonk` (`wymhdylnnobdzvyrhibq`
 1. Open `supabase/migrations/20261026160000_hands_engagement.sql`.
 2. Run it in the Supabase SQL editor for that project, or with the Supabase CLI already linked to that project: `supabase db push`.
 3. Do not run it against any other database.
-4. Reload `/admin/engagement` after signing in. Until this step, the public forms show a short message that saving is not switched on yet. The participant list still shows the names transcribed from the exhibition panel.
+4. Reload `/admin/engagement` after signing in. Until this step, the public forms show a short message that saving is not switched on yet. The thank-you list still shows the names transcribed from the exhibition panel: people who agreed to be shown, not everyone who took part.
 
 The migration creates:
 
@@ -42,7 +42,9 @@ Approving a name updates the public list within about a minute, without a new de
 
 ## Proofread the participant names
 
-The names in `src/content/hands-participants.json` were read from the exhibition panel. The file keeps the panel’s order, left column then right column. The website shows them A–Z. There are not 211 separate lines: the panel lists some people together on one line, and some lines are groups. Do not add names to make the file reach 211. The page still says 211 participants, which is the supplied figure.
+211 people took part. That figure is everyone who joined the project. The names on the website are only those who agreed to be shown, so the list is not all 211 people and its length is not the participant total.
+
+The names in `src/content/hands-participants.json` were read from the exhibition panel. The file keeps the panel’s order, left column then right column. The website shows them A–Z. There are not 211 separate lines: the panel lists some people together on one line, and some lines are groups. Do not add names to make the file reach 211.
 
 Please proofread the file before treating every spelling as final. Lines that were hard to read, and were left as read rather than “corrected”, include:
 

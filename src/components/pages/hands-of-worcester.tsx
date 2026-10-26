@@ -142,11 +142,11 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
       </section>
       <section className="names-section" id="participants">
         <p className="eyebrow">With thanks</p>
-        <h2>A thank you to all the participants</h2>
+        <h2>A thank you</h2>
         <p>
-          Thank you to all 211 participants. The names below are the people
-          listed on the exhibition panel, together with names added later when
-          someone has given permission and Jessica has approved it.
+          211 people took part. The names below are those who agreed to be
+          shown. Thank you to every person named here, and to everyone who
+          joined in.
         </p>
         <ul className="names-list">
           {names.map((name) => (

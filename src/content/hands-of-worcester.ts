@@ -5,7 +5,7 @@ import { handsHero } from "./hands-photos";
 export const handsSlug = "the-hands-of-worcester";
 
 export const handsStats = [
-  { value: "211", label: "participants" },
+  { value: "211", label: "people took part" },
   { value: "5 months", label: "youngest participant" },
   { value: "90 years", label: "oldest participant" },
   { value: "74%", label: "right hands" },
@@ -27,7 +27,7 @@ export const handsFields: Record<string, string> = {
   location: "The Worcester Plinth, Worcester",
   status: "On show for 9 months",
   intro:
-    "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth.",
+    "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth. 211 people took part.",
   summary_heading: "The story of\nthe hands.",
   summary:
     "Workshops across Worcester earlier this year collected plaster casts of people’s hands. The casts were painted, sealed in resin and mounted, and sit atop The Worcester Plinth, a plinth that moves from location to location within Worcester, for 9 months.",
@@ -46,8 +46,14 @@ export const handsFields: Record<string, string> = {
   funding: fundingText,
   seo_title: "The Hands of Worcester",
   seo_description:
-    "Community-led public art by Jessica Mary Monk with The Worcester Plinth: plaster casts of 211 participants’ hands, on show for 9 months.",
+    "211 people took part. Community-led public art by Jessica Mary Monk with The Worcester Plinth, on show for 9 months. The names shown are those who agreed to be shown.",
 };
+
+/** Earlier published sentences. A custom edit that differs from these is kept. */
+const retiredCopy = new Set([
+  "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth.",
+  "Community-led public art by Jessica Mary Monk with The Worcester Plinth: plaster casts of 211 participants’ hands, on show for 9 months.",
+]);
 
 const placeholderMarkers = [
   "awaiting confirmation",
@@ -86,7 +92,8 @@ export function withHandsPresentation(entry: Entry): Entry {
   if (entry.slug !== handsSlug) return entry;
   const fields = { ...handsFields };
   for (const [key, value] of Object.entries(entry.body.fields)) {
-    if (value && !isPlaceholder(value)) fields[key] = value;
+    if (value && !isPlaceholder(value) && !retiredCopy.has(value.trim()))
+      fields[key] = value;
   }
   const images = entry.body.images.length
     ? entry.body.images
