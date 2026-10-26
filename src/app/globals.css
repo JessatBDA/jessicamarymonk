@@ -358,6 +358,11 @@ figcaption span {
   gap: 25px;
   font-size: 11px;
 }
+.footer-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
 .footer-links span {
   color: var(--muted);
 }
@@ -549,6 +554,13 @@ figcaption span {
 }
 .form-layout h2 {
   font-size: 32px;
+}
+.contact-form {
+  max-width: none;
+  padding-bottom: 0;
+}
+.enquiry-message {
+  white-space: pre-wrap;
 }
 fieldset {
   border: 0;

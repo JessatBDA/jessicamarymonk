@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { publicContactEmail } from "@/lib/contact-public";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
@@ -14,15 +15,16 @@ export default function Page() {
       <h1>Privacy information.</h1>
       <p>
         This notice covers the public pages of this website, including Share
-        your hands and Add your name for The Hands of Worcester. The contact
-        form is not open, and the site does not take orders or payments.
+        your hands, Add your name, and the contact form. The site does not
+        take orders or payments.
       </p>
       <h2>Who is responsible</h2>
       <p>
         Jessica Mary Monk is the person responsible for the information
-        collected for The Hands of Worcester. Use the contact details published
-        on the <Link href="/contact">contact page</Link>. A postal address and
-        a dedicated privacy email have not been added to this page yet.
+        collected on this website. Email{" "}
+        <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>, or
+        use the <Link href="/contact">contact page</Link>. A postal address
+        has not been added to this page yet.
       </p>
       <h2>Share your hands</h2>
       <p>
@@ -56,6 +58,15 @@ export default function Page() {
         applies. Sending the form means it may be stored so it can be reviewed.
         A name is shown only when permission was given and Jessica approves it.
       </p>
+      <h2>Contact form</h2>
+      <p>
+        If you send an enquiry, the site stores your name, email address, an
+        optional topic, your message, and the time you agreed that Jessica may
+        use those details to reply. A one-way hash of the connection is stored
+        only to limit repeated sending. The message is not published. You can
+        ask for it to be deleted by emailing{" "}
+        <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>.
+      </p>
       <h2>Why this information is kept</h2>
       <p>
         The information is used to run The Hands of Worcester, to thank
@@ -85,7 +96,9 @@ export default function Page() {
         <Link href="/engagement/the-hands-of-worcester">
           the visitor questionnaire preview
         </Link>{" "}
-        does not save anything. The contact form does not save messages.
+        does not save anything. Messages sent through the contact form are
+        saved privately so Jessica can reply. They are not shown on the
+        website.
       </p>
       <h2>Cookies</h2>
       <p>

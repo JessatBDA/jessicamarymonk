@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { publicContactEmail } from "@/lib/contact-public";
 import { Header } from "./header";
 export function PublicFrame({ children }: { children: React.ReactNode }) {
   const path = usePathname();
@@ -20,6 +21,7 @@ export function PublicFrame({ children }: { children: React.ReactNode }) {
           <p>Public art. Shared experiences. Creative connections.</p>
         </div>
         <div className="footer-links">
+          <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>
           <Link href="/contact">Get in touch ↗</Link>
           <Link href="/privacy">Privacy</Link>
           <span>© {new Date().getFullYear()} Jessica Mary Monk</span>

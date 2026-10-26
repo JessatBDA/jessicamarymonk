@@ -36,6 +36,7 @@ export default async function Layout({
             <Link href="/admin/account">Your account</Link>
             <span>Project engagement</span>
             <Link href="/admin/engagement">Hands submissions</Link>
+            <Link href="/admin/enquiries">Contact enquiries</Link>
           </nav>
           <div className="admin-help">
             <p>
