@@ -1,17 +1,10 @@
 import Link from "next/link";
-import portrait from "../../../images/jess-portrait.jpg";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Privacy information",
   "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
   "/privacy",
-  {
-    url: portrait.src,
-    alt: "Jessica Mary Monk smiling, holding her dog on a beach at sunset",
-    width: portrait.width,
-    height: portrait.height,
-  },
 );
 
 export default function Page() {

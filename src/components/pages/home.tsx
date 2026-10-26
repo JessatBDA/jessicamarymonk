@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import portrait from "../../../images/jess-portrait.jpg";
 import { Brushstroke } from "@/components/visuals";
 import {
   ArtworkImage,
@@ -8,13 +6,7 @@ import {
   Lines,
   RichText,
 } from "@/components/content-render";
-import {
-  homeIntro,
-  homeInvitationHeading,
-  homePracticeHeading,
-  homePracticeText,
-  knownCopy,
-} from "@/lib/artist-copy";
+import { homeIntro } from "@/lib/artist-copy";
 import type { Entry } from "@/lib/content-model";
 export function HomeView({
   entry,
@@ -54,7 +46,7 @@ export function HomeView({
           <span>
             {(f.subtitle || "").split("|").map((part, i) => (
               <span className="subtitle-part" key={i}>
-                {i > 0 && <i aria-hidden="true">|</i>}
+                {i > 0 && <i>|</i>}
                 {part.trim()}
               </span>
             ))}
@@ -100,8 +92,6 @@ export function HomeView({
               }
               label={project.title}
               number="01"
-              priority
-              sizes="(max-width: 760px) 92vw, 560px"
             />
           </Link>
         </section>
@@ -155,45 +145,17 @@ export function HomeView({
       </section>
       <section className="practice">
         <div className="wrap practice-inner">
-          {photo("portrait") ? (
-            <ContentPhoto
-              image={photo("portrait")}
-              label="Jessica Mary Monk"
-              shape="portrait"
-              sizes="(max-width: 760px) 70vw, 340px"
-            />
-          ) : (
-            <figure className="content-photo">
-              <div className="photo-frame portrait">
-                <Image
-                  src={portrait}
-                  alt="Jessica Mary Monk smiling, holding her dog on a beach at sunset"
-                  fill
-                  sizes="(max-width: 760px) 70vw, 340px"
-                />
-              </div>
-            </figure>
-          )}
+          <ContentPhoto
+            image={photo("portrait")}
+            label="Artist portrait"
+            shape="portrait"
+          />
           <div>
             <p className="eyebrow">{f.practice_label}</p>
             <h2>
-              <Lines
-                text={knownCopy(
-                  f.practice_heading,
-                  ["A practice that\nconnects with people."],
-                  homePracticeHeading,
-                )}
-              />
+              <Lines text={f.practice_heading || ""} />
             </h2>
-            <RichText
-              text={knownCopy(
-                f.practice_text,
-                [
-                  "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.",
-                ],
-                homePracticeText,
-              )}
-            />
+            <RichText text={f.practice_text} />
             <Link href="/about" className="text-link">
               About Jessica ↗
             </Link>
@@ -202,13 +164,7 @@ export function HomeView({
       </section>
       <section className="wrap invitation">
         <p className="eyebrow">{f.invitation_label}</p>
-        <h2>
-          {knownCopy(
-            f.invitation_heading,
-            ["Let’s make something meaningful."],
-            homeInvitationHeading,
-          )}
-        </h2>
+        <h2>{f.invitation_heading}</h2>
         <p>{f.invitation_text}</p>
         <Link className="button" href="/contact">
           Start a conversation ↗

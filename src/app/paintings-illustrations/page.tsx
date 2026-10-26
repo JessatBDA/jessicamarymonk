@@ -2,20 +2,12 @@
 import { Gallery } from "@/components/gallery";
 import { Brushstroke } from "@/components/visuals";
 import { publishedEntries } from "@/lib/content";
-import { studioImages } from "@/lib/studio-images";
 import { pageMetadata } from "@/lib/site";
-const studioCard = studioImages["art-02.jpg"];
 export const dynamic = "force-dynamic";
 export const metadata = pageMetadata(
-  "Paintings & illustrations",
-  "Details from acrylic paintings and from charcoal, chalk and pastel drawings by Jessica Mary Monk. Titles and years are not shown.",
+  "Paintings & Illustrations",
+  "Details from acrylic paintings and from charcoal, chalk and pastel drawings by Jessica Mary Monk.",
   "/paintings-illustrations",
-  {
-    url: studioCard.src,
-    alt: "Detail of an acrylic painting: two hands holding yellow wooden drumsticks against a dark blue background.",
-    width: studioCard.width,
-    height: studioCard.height,
-  },
 );
 export default async function Page() {
   return (

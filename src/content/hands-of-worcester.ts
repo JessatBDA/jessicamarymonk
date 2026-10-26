@@ -40,7 +40,7 @@ export const handsFields: Record<string, string> = {
     "The youngest participant was 5 months old and the oldest was 90. Thank you to every participant.",
   making_heading: "From hand to cast",
   making:
-    "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Details from the studio are on the [paintings and illustrations](/paintings-illustrations) page.",
+    "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Photographs of those studies have not been added yet.",
   exhibition:
     "The hands sit on The Worcester Plinth for 9 months. The plinth moves from location to location within Worcester.",
   funding: fundingText,
@@ -56,7 +56,6 @@ const retiredCopy = new Set([
   "211 people took part. The youngest participant was 5 months old and the oldest was 90. Thank you to every participant.",
   "Community-led public art by Jessica Mary Monk with The Worcester Plinth: plaster casts of 211 participants’ hands, on show for 9 months.",
   "211 people took part. Community-led public art by Jessica Mary Monk with The Worcester Plinth, on show for 9 months. The names shown are those who agreed to be shown.",
-  "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Photographs of those studies have not been added yet.",
 ]);
 
 const placeholderMarkers = [

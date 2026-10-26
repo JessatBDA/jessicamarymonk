@@ -12,6 +12,7 @@ export function ProjectView({ entry }: { entry: Entry }) {
   const finished = entry.body.images.filter((image) =>
     ["finished", "gallery"].includes(image.role),
   );
+  const flagship = entry.slug === "the-hands-of-worcester";
   return (
     <div className="wrap">
       <section className="page-intro">
@@ -20,7 +21,11 @@ export function ProjectView({ entry }: { entry: Entry }) {
         </Link>
         <p className="eyebrow">
           {f.location}
-          {f.status ? ` · ${f.status}` : ""}
+          {flagship
+            ? " · Community installation"
+            : f.status
+              ? ` · ${f.status}`
+              : ""}
         </p>
         <h1>
           <Lines text={f.heading || entry.title} />
@@ -75,36 +80,50 @@ export function ProjectView({ entry }: { entry: Entry }) {
             </section>
           ),
       )}
-      {behind.length > 0 && (
+      {(behind.length > 0 || flagship) && (
         <>
           <div className="section-heading">
             <h2>Behind the scenes</h2>
             <span className="muted">A record of the making</span>
           </div>
           <div className="two-columns">
-            {behind.map((image) => (
-              <ContentPhoto
-                key={image.id}
-                image={image}
-                label="Behind the scenes"
-                shape="square"
-              />
-            ))}
+            {behind.length ? (
+              behind.map((image) => (
+                <ContentPhoto
+                  key={image.id}
+                  image={image}
+                  label="Behind the scenes"
+                  shape="square"
+                />
+              ))
+            ) : (
+              <>
+                <ContentPhoto
+                  label="Community casting session"
+                  shape="square"
+                />
+                <ContentPhoto label="Casts in the studio" shape="square" />
+              </>
+            )}
           </div>
         </>
       )}
-      {finished.length > 0 && (
+      {(finished.length > 0 || flagship) && (
         <section className="selected">
           <h2>The finished installation</h2>
-          <div className="two-columns">
-            {finished.map((image) => (
-              <ContentPhoto
-                key={image.id}
-                image={image}
-                label="Installation gallery photograph"
-              />
-            ))}
-          </div>
+          {finished.length ? (
+            <div className="two-columns">
+              {finished.map((image) => (
+                <ContentPhoto
+                  key={image.id}
+                  image={image}
+                  label="Installation gallery photograph"
+                />
+              ))}
+            </div>
+          ) : (
+            <ContentPhoto label="Installation gallery photograph" />
+          )}
         </section>
       )}
       {f.outcomes && (
@@ -144,6 +163,21 @@ export function ProjectView({ entry }: { entry: Entry }) {
                   </li>
                 ))}
             </ul>
+          )}
+          {flagship && (
+            <>
+              <h3>Your perspective matters</h3>
+              <p>
+                The visitor questionnaire is being prepared. Once open, you can
+                share your thoughts without giving your name or email address.
+              </p>
+              <Link
+                className="text-link"
+                href="/engagement/the-hands-of-worcester"
+              >
+                View the questionnaire preview ↗
+              </Link>
+            </>
           )}
         </div>
       </section>

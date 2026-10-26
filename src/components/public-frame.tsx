@@ -2,14 +2,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Header } from "./header";
-const footerLinks = [
-  ["/public-art", "Public art"],
-  ["/engagement/share-your-hands", "Share your hands"],
-  ["/paintings-illustrations", "Paintings & illustrations"],
-  ["/about", "About"],
-  ["/contact", "Contact"],
-  ["/privacy", "Privacy"],
-] as const;
 export function PublicFrame({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   if (path.startsWith("/admin")) return <>{children}</>;
@@ -25,16 +17,13 @@ export function PublicFrame({ children }: { children: React.ReactNode }) {
           <Link className="footer-name" href="/">
             Jessica Mary Monk
           </Link>
-          <p>Public artist, painter and illustrator.</p>
+          <p>Public art. Shared experiences. Creative connections.</p>
         </div>
-        <nav className="footer-links" aria-label="Footer">
-          {footerLinks.map(([href, label]) => (
-            <Link key={href} href={href}>
-              {label}
-            </Link>
-          ))}
+        <div className="footer-links">
+          <Link href="/contact">Get in touch ↗</Link>
+          <Link href="/privacy">Privacy</Link>
           <span>© {new Date().getFullYear()} Jessica Mary Monk</span>
-        </nav>
+        </div>
       </footer>
     </>
   );

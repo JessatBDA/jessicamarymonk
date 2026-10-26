@@ -77,7 +77,8 @@ export function Gallery({ artworks = [] }: { artworks?: Entry[] }) {
       </div>
       {!artworks.length ? (
         <p className="notice">
-          Studio pictures will be shown here when they are published.
+          Portfolio in preparation. Original artwork photographs and details
+          will be added here.
         </p>
       ) : null}
       <div className="portfolio-grid" aria-live="polite">
@@ -160,7 +161,7 @@ export function Gallery({ artworks = [] }: { artworks?: Entry[] }) {
       <dialog
         ref={dialogRef}
         className="lightbox"
-        aria-label={open?.alt || "Expanded studio image"}
+        aria-label="Expanded studio image"
         onClose={() => setOpen(null)}
         onClick={(event) => {
           if (event.target === dialogRef.current) dialogRef.current?.close();
