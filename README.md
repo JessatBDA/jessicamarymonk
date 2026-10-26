@@ -72,7 +72,7 @@ The scripts require a running local server and installed Chrome, or `BROWSER_PAT
 
 ## Remaining scope
 
-Original portrait/artwork/project photographs and approved biography/project facts are still needed for the other pages. Contact submissions are disabled pending their own secure collection work. Shop and checkout remain absent. The Hands of Worcester page, its photographs, and the Share your hands forms are in this repository; apply the migration and proofread the transcribed names before relying on them in production. 211 people took part. The names on the page are those who agreed to be shown, not a list of all 211 people. See [docs/HANDS-ENGAGEMENT.md](docs/HANDS-ENGAGEMENT.md). Recovery email delivery requires appropriate Supabase email/SMTP configuration and has not been tested with a real inbox.
+Original portrait/artwork/project photographs and approved biography/project facts are still needed for the other pages. Contact submissions are disabled pending their own secure collection work. Shop and checkout remain absent. The Hands of Worcester page, its photographs, and the Share your hands forms are in this repository; apply both Hands migrations and proofread the transcribed names before relying on them in production. The names on the page are those who agreed to be shown. See [docs/HANDS-ENGAGEMENT.md](docs/HANDS-ENGAGEMENT.md). Recovery email delivery requires appropriate Supabase email/SMTP configuration and has not been tested with a real inbox.
 
 The reference files in `InitialImages/` and the user's `images/` folder are preserved. Herd Circle and British Drumming Academy applications/databases were not modified. The Vercel hosting team for this separate Jessica website is named `herd-circle`.
 

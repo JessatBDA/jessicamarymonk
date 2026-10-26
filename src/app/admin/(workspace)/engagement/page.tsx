@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
+import { ageRangeLabel, isUnder18 } from "@/lib/hands-age";
 import {
   bulkApproveNames,
   setNameDisplay,
@@ -18,6 +19,7 @@ type Row = {
   summary: string;
   detail: string;
   image: boolean;
+  ageRange: string | null;
 };
 
 const responseColumns =
@@ -66,8 +68,10 @@ export default async function Page({
         <div className="admin-panel">
           <p>
             The database update has not been applied yet, so there is nothing
-            to review. Apply{" "}
+            to review.             Apply{" "}
             <code>supabase/migrations/20261026160000_hands_engagement.sql</code>{" "}
+            and then{" "}
+            <code>supabase/migrations/20261026190000_hands_age_ranges.sql</code>{" "}
             to the Jessica Mary Monk project, then reload this page. The steps
             are in <code>docs/HANDS-ENGAGEMENT.md</code>.
           </p>
@@ -90,6 +94,7 @@ export default async function Page({
       summary: "Questionnaire",
       detail: [row.hands_mean, row.hands_use, row.piece_feel].map(clip).filter(Boolean).join(" · "),
       image: false,
+      ageRange: row.age_range,
     })),
     ...(works.data || []).map((row) => ({
       id: row.id,
@@ -103,6 +108,7 @@ export default async function Page({
       summary: row.title,
       detail: clip(row.writing || row.credit),
       image: Boolean(row.image_path),
+      ageRange: row.age_range,
     })),
     ...(names.data || []).map((row) => ({
       id: row.id,
@@ -116,6 +122,7 @@ export default async function Page({
       summary: "Name request",
       detail: [row.place, row.took_part ? `Workshop: ${row.took_part}` : ""].filter(Boolean).join(" · "),
       image: false,
+      ageRange: null,
     })),
   ].sort((a, b) => b.created_at.localeCompare(a.created_at));
 
@@ -124,10 +131,12 @@ export default async function Page({
       <p className="admin-kicker">Project engagement</p>
       <h1>Hands of Worcester submissions</h1>
       <p>
-        211 people took part. Approve a picture or piece of writing to show it
-        on Share your hands. A name is shown on the public thank-you list only
-        when the permission box was ticked and you approve the name. That list
-        is not a count of all 211 people. Nothing here is published on its own.
+        Approve a picture or piece of writing to show it on Share your hands.
+        A name is shown on the public thank-you list only when the permission
+        box was ticked and you approve the name. That list is people who agreed
+        to be shown, not everyone who took part. Nothing here is published on
+        its own. If new age ranges are rejected when someone sends a form,
+        apply <code>supabase/migrations/20261026190000_hands_age_ranges.sql</code>.
       </p>
       {saved && <p className="admin-badge">Saved.</p>}
       {notice && <p role="alert">{notice}</p>}
@@ -158,6 +167,15 @@ export default async function Page({
               <time dateTime={row.created_at}>{when(row.created_at)}</time>
             </header>
             {row.detail && <p>{row.detail}</p>}
+            {row.ageRange !== null && (
+              <p>Age range: {ageRangeLabel(row.ageRange)}</p>
+            )}
+            {row.ageRange !== null && isUnder18(row.ageRange) && (
+              <p>
+                This person is under 18. Approve the name only if a parent or
+                teacher gave permission.
+              </p>
+            )}
             <p>
               Name: {row.display_name.trim() || "Not given"}
               {" · "}

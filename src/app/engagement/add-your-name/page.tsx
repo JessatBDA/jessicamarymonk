@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Add your name",
-  "211 people took part. Ask for your name to be added to the thank-you list. It is shown only if you agree, after Jessica checks it.",
+  "Ask for your name to be added to the thank-you list. It is shown only if you agree, after Jessica checks it.",
   "/engagement/add-your-name",
   {
     url: handsHero.src,
@@ -28,10 +28,8 @@ export default function Page() {
         <p className="eyebrow">The Hands of Worcester</p>
         <h1>Add your name to the list.</h1>
         <p>
-          211 people took part. The names on the project page are those who
-          agreed to be shown, not everyone who took part. If you would like
-          your name included, you can send it here. It is added only if you
-          tick the permission box and Jessica approves it.
+          If you would like your name included, you can send it here. It is
+          added only if you tick the permission box and Jessica approves it.
         </p>
       </section>
       <NameForm />

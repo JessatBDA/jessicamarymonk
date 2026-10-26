@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Privacy information",
-  "211 people took part in The Hands of Worcester. This notice explains how names and other visitor information are handled. Only people who agreed to be shown are named.",
+  "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
   "/privacy",
 );
 
@@ -36,9 +36,9 @@ export default function Page() {
       <p>
         A required box asks you to confirm that the response may be shared on
         this website or in project reporting, that it is your own work, and,
-        if you are under 16, that a parent or teacher has agreed. A separate
+        if you are under 18, that a parent or teacher has agreed. A separate
         box, which is not ticked for you, asks for permission to show your
-        name. If you are under 16, a parent or teacher gives that permission
+        name. If you are under 18, a parent or teacher gives that permission
         for you. The time you gave permission is stored with the response.
       </p>
       <p>
@@ -49,9 +49,8 @@ export default function Page() {
       </p>
       <h2>Add your name</h2>
       <p>
-        211 people took part. The thank-you list is not a list of all 211
-        people. It shows the names of people who agreed to be shown. The name
-        form stores the name you enter, an optional town, school or group, and
+        The thank-you list shows the names of people who agreed to be shown. The
+        name form stores the name you enter, an optional town, school or group, and
         whether you took part in a workshop. The same unticked permission box
         applies. Sending the form means it may be stored so it can be reviewed.
         A name is shown only when permission was given and Jessica approves it.

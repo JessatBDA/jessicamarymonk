@@ -7,7 +7,7 @@ const path = "/engagement/share-your-hands";
 export const metadata = {
   ...pageMetadata(
     "Share your hands — printable sheet",
-    "211 people took part. A short printable sheet with a QR code for The Hands of Worcester.",
+    "A short printable sheet with a QR code for The Hands of Worcester.",
     "/engagement/share-your-hands/leaflet",
   ),
   robots: { index: false, follow: false },
@@ -31,9 +31,8 @@ export default async function Page() {
         <p className="eyebrow">The Hands of Worcester</p>
         <h1>Share your hands.</h1>
         <p>
-          211 people took part. Jessica Mary Monk would like to know what hands
-          mean to you. Answer a few questions, or send a drawing, a poem or
-          some writing.
+          Jessica Mary Monk would like to know what hands mean to you. Answer a
+          few questions, or send a drawing, a poem or some writing.
         </p>
         <p>
           Scan the code, or open{" "}
@@ -46,7 +45,7 @@ export default async function Page() {
           src={qr}
           alt="QR code for the Share your hands page"
         />
-        <p>Nothing is put on the website until Jessica has checked it.</p>
+        <p>Send your feedback, artwork and questions in to the artist.</p>
         <p>The Hands of Worcester · The Worcester Plinth</p>
       </div>
     </article>
