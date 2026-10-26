@@ -124,10 +124,10 @@ export default async function Page({
       <p className="admin-kicker">Project engagement</p>
       <h1>Hands of Worcester submissions</h1>
       <p>
-        Approve a picture or piece of writing to show it on Share your hands.
-        A name is shown on the participant list only when the permission box
-        was ticked and you approve the name. Nothing here is published on its
-        own.
+        211 people took part. Approve a picture or piece of writing to show it
+        on Share your hands. A name is shown on the public thank-you list only
+        when the permission box was ticked and you approve the name. That list
+        is not a count of all 211 people. Nothing here is published on its own.
       </p>
       {saved && <p className="admin-badge">Saved.</p>}
       {notice && <p role="alert">{notice}</p>}

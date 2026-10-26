@@ -13,6 +13,11 @@ export const imageSchema = z.object({
     "painting",
     "illustration",
   ]),
+  file: z
+    .string()
+    .max(80)
+    .regex(/^[a-z0-9.-]*$/)
+    .optional(),
 });
 export const bodySchema = z.object({
   fields: z.record(z.string().max(80), z.string().max(50000)),
@@ -58,12 +63,14 @@ export type Field = {
 };
 export const categories = [
   "Paintings",
+  "Illustrations",
   "Portraits",
   "Drawings",
   "Book illustration",
   "Theatre artwork",
   "Other creative projects",
 ];
+export const seriesOptions = ["Hands", "Portraits", "Study"];
 const seoFields: Field[] = [
   { key: "seo_title", label: "Search engine title" },
   { key: "seo_description", label: "Search engine description" },
@@ -102,11 +109,12 @@ export function fieldsFor(kind: EntryKind, slug: string): Field[] {
   if (kind === "artwork")
     return [
       { key: "category", label: "Category", options: categories },
+      { key: "series", label: "Series (optional)", options: seriesOptions },
       ...[
         ["description", "Description", true],
-        ["year", "Year"],
-        ["medium", "Medium"],
-        ["dimensions", "Dimensions"],
+        ["year", "Year (optional)"],
+        ["medium", "Medium (optional)"],
+        ["dimensions", "Dimensions (optional)"],
         ["availability", "Availability"],
         ["commission", "Commission information", true],
       ].map<Field>(([key, label, rich]) => ({
@@ -121,7 +129,7 @@ export function fieldsFor(kind: EntryKind, slug: string): Field[] {
       ["eyebrow", "Opening line"],
       ["heading", "Main heading"],
       ["subtitle", "Artist subtitle"],
-      ["intro", "Introduction"],
+      ["intro", "Hero introduction"],
       ["feature_label", "Featured project label"],
       ["feature_slug", "Featured project URL name"],
       [
@@ -131,8 +139,8 @@ export function fieldsFor(kind: EntryKind, slug: string): Field[] {
       ["feature_index", "Featured project footer label"],
       ["studio_label", "Studio section label"],
       ["studio_heading", "Studio section heading"],
-      ["painting_caption", "Painting caption"],
-      ["illustration_caption", "Illustration caption"],
+      ["painting_caption", "Painting caption (not shown)"],
+      ["illustration_caption", "Illustration caption (not shown)"],
       ["practice_label", "Artist section label"],
       ["practice_heading", "Artist section heading"],
       ["practice_text", "Artist introduction", true],
@@ -152,12 +160,12 @@ export function fieldsFor(kind: EntryKind, slug: string): Field[] {
       ["heading", "Page heading"],
       ["name", "Artist name"],
       ["subtitle", "Subtitle"],
-      ["intro", "Introduction", true],
+      ["intro", "Lead paragraph", true],
       ["background", "Background", true],
-      ["notice", "Optional preparation note"],
-      ["practice", "Artistic practice", true],
-      ["community", "Public art and community engagement", true],
-      ["commissions", "Commissions and collaborations", true],
+      ["notice", "Optional preparation note (TODO)"],
+      ["practice", "Artistic practice (TODO)", true],
+      ["community", "Public art and community engagement (TODO)", true],
+      ["commissions", "Commissions and collaborations (TODO)", true],
     ]
       .map<Field>(([key, label, rich]) => ({
         key: String(key),

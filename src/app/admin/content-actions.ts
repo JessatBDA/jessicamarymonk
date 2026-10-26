@@ -13,13 +13,15 @@ export async function createEntry(form: FormData) {
   const { client } = await requireAdmin();
   const kind = z.enum(["project", "artwork"]).parse(form.get("kind"));
   const id = crypto.randomUUID();
+  const slug =
+    kind === "artwork" ? `work-${id.slice(0, 8)}` : `untitled-${id.slice(0, 8)}`;
   const { error } = await client
     .from("cms_entries")
     .insert({
       id,
       kind,
-      slug: `untitled-${id.slice(0, 8)}`,
-      title: kind === "project" ? "Untitled project" : "Untitled artwork",
+      slug,
+      title: kind === "project" ? "Untitled project" : slug,
       body: { fields: {}, images: [], featured: false },
     });
   if (error) throw new Error("Unable to create the draft.");
@@ -27,7 +29,19 @@ export async function createEntry(form: FormData) {
 }
 export async function saveEntry(input: unknown) {
   const { client } = await requireAdmin();
-  const parsed = saveSchema.safeParse(input);
+  let payload = input;
+  if (input && typeof input === "object") {
+    const draft: Record<string, unknown> = {
+      ...(input as Record<string, unknown>),
+    };
+    if (draft.kind === "artwork") {
+      const title = typeof draft.title === "string" ? draft.title.trim() : "";
+      const slug = typeof draft.slug === "string" ? draft.slug.trim() : "";
+      if (!title && slug) draft.title = slug;
+    }
+    payload = draft;
+  }
+  const parsed = saveSchema.safeParse(payload);
   if (!parsed.success)
     return {
       ok: false,

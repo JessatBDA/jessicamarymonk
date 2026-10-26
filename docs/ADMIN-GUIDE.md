@@ -41,7 +41,7 @@ Public signup is disabled. Role metadata cannot grant access. Membership can onl
 
 - **Pages & biography:** edit homepage headings and introductions, biography, contact information, SEO fields and images.
 - **Public art projects:** add projects, fill in optional project details, change URL names and display order, upload images and publish/unpublish.
-- **Artwork & galleries:** create artwork, select categories, edit medium/year/dimensions/availability and commission information, manage images and feature work on the homepage.
+- **Artwork & galleries:** create artwork, select categories and an optional series, and edit availability and commission information. The private reference, year, medium and dimensions are optional. The public gallery shows the images and their alternative text only: titles, years, medium, dimensions and captions stay hidden, including when those fields are empty. Manage images and feature work on the homepage.
 - Use the formatting toolbar for bold, italic, headings and lists; **Formatted preview** shows the result. Raw HTML is not rendered.
 - **Save draft** keeps changes private while preserving the current public version.
 - **Preview saved draft** opens an authenticated preview of the last saved version. Save first; unsaved edits are not included.

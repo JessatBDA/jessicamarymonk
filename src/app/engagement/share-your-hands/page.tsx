@@ -9,7 +9,7 @@ export const revalidate = 60;
 
 export const metadata = pageMetadata(
   "Share your hands",
-  "Tell Jessica Mary Monk what hands mean to you, or send a drawing, a poem or some writing about The Hands of Worcester.",
+  "211 people took part. Tell Jessica Mary Monk what hands mean to you, or send a drawing, a poem or some writing. Names on the project page are those who agreed to be shown.",
   "/engagement/share-your-hands",
   {
     url: handsHero.src,
@@ -30,9 +30,10 @@ export default async function Page() {
         <p className="eyebrow">The Hands of Worcester</p>
         <h1>Share your hands.</h1>
         <p>
-          What do hands mean to you? You can answer a few questions, or send a
-          picture, a poem or some writing. Nothing is put on this website until
-          Jessica has checked it.
+          211 people took part. What do hands mean to you? You can answer a few
+          questions, or send a picture, a poem or some writing. Nothing is put
+          on this website until Jessica has checked it. The names on the
+          project page are those who agreed to be shown.
         </p>
         <p>
           <Link className="text-link" href="/engagement/share-your-hands/leaflet">

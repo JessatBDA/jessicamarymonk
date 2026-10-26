@@ -11,7 +11,8 @@
         "eyebrow": "Art in public. Art for people.",
         "heading": "Jessica Mary Monk",
         "subtitle": "Public Artist | Painter | Illustrator",
-        "intro": "A British artist working across public art, painting and illustration, with community installations at the heart of this website.",
+        "intro": "A British artist working across public art, painting and illustration, with community at the heart of her pieces.",
+        "seo_description": "A British artist working across public art, painting and illustration, with community at the heart of her pieces.",
         "feature_label": "Featured project · Public art",
         "feature_slug": "the-hands-of-worcester",
         "feature_heading": "The Hands\nof Worcester",
@@ -42,12 +43,13 @@
         "heading": "About Jessica.",
         "name": "Jessica Mary Monk",
         "subtitle": "Public Artist | Painter | Illustrator",
-        "intro": "Jessica Mary Monk is a British public artist, painter and illustrator.",
-        "background": "Her work includes The Hands of Worcester, a community art installation associated with The Worcester Plinth.",
-        "notice": "A full artist biography, background and account of Jessica’s practice will be added here in her own words.",
-        "practice": "Artist-approved text to be supplied.",
-        "community": "Artist-approved text to be supplied.",
-        "commissions": "Artist-approved text to be supplied."
+        "intro": "A British artist working across public art, painting and illustration, with community at the heart of her pieces.",
+        "background": "[The Hands of Worcester](/public-art/the-hands-of-worcester)",
+        "notice": "TODO: Add the artist’s biography and background here, in her own words.",
+        "practice": "TODO: Artist-approved text to be supplied.",
+        "community": "TODO: Artist-approved text to be supplied.",
+        "commissions": "TODO: Artist-approved text to be supplied.",
+        "seo_description": "A British artist working across public art, painting and illustration, with community at the heart of her pieces."
       }
     }
   },
@@ -80,7 +82,7 @@
         "heading": "The Hands\nof Worcester.",
         "location": "The Worcester Plinth, Worcester",
         "status": "On show for 9 months",
-        "intro": "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth.",
+        "intro": "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth. 211 people took part.",
         "summary_heading": "The story of\nthe hands.",
         "summary": "Workshops across Worcester earlier this year collected plaster casts of people’s hands. The casts were painted, sealed in resin and mounted, and sit atop The Worcester Plinth, a plinth that moves from location to location within Worcester, for 9 months.",
         "notice": "",
@@ -94,7 +96,343 @@
         "exhibition": "The hands sit on The Worcester Plinth for 9 months. The plinth moves from location to location within Worcester.",
         "funding": "Supported using public funding by the National Lottery through Arts Council England. With thanks to funders and supporters, including The Elmley Foundation.",
         "seo_title": "The Hands of Worcester",
-        "seo_description": "Community-led public art by Jessica Mary Monk with The Worcester Plinth: plaster casts of 211 participants’ hands, on show for 9 months."
+        "seo_description": "211 people took part. Community-led public art by Jessica Mary Monk with The Worcester Plinth, on show for 9 months. The names shown are those who agreed to be shown."
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-01",
+    "title": "art-01",
+    "sort_order": 0,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "f093d645-1832-4fa0-ab03-638730061349",
+          "alt": "Detail of a charcoal drawing: close-up of a black dog with its mouth open and a long tongue.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-01.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Portraits",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-02",
+    "title": "art-02",
+    "sort_order": 1,
+    "body": {
+      "featured": true,
+      "images": [
+        {
+          "id": "2088f794-8af2-428b-a36b-ea1868338fbb",
+          "alt": "Detail of an acrylic painting: two hands holding yellow wooden drumsticks against a dark blue background.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-02.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Paintings",
+        "series": "Hands",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-03",
+    "title": "art-03",
+    "sort_order": 2,
+    "body": {
+      "featured": true,
+      "images": [
+        {
+          "id": "968680ec-ee0a-400a-8a3d-4bdffddecb0c",
+          "alt": "Detail of a charcoal and chalk portrait of a long-haired bearded man nuzzling a black dog, signed lower right.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-03.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Portraits",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-04",
+    "title": "art-04",
+    "sort_order": 3,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "019dfe67-4ace-4723-83ec-2a4649dfc50e",
+          "alt": "Detail of a charcoal drawing: hands holding drumsticks.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-04.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Hands",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-05",
+    "title": "art-05",
+    "sort_order": 4,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "575cc385-35e0-47aa-aa9d-5b10d96c99c8",
+          "alt": "Detail of a charcoal drawing: a hand gripping a pale sphere.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-05.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Hands",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-06",
+    "title": "art-06",
+    "sort_order": 5,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "08c15e0b-187f-44fa-9a3d-2cb1a172db3a",
+          "alt": "Detail of a charcoal drawing: two hands cradling a pale sphere.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-06.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Hands",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-07",
+    "title": "art-07",
+    "sort_order": 6,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "7fd60aca-e16f-4cf6-bebf-6b60de054e58",
+          "alt": "Detail of a charcoal and chalk drawing: close-up of an eye.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-07.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Portraits",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-08",
+    "title": "art-08",
+    "sort_order": 7,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "a850976d-b32c-4afe-8680-c401807368a5",
+          "alt": "Detail of a pastel and charcoal drawing of a poppy on a dark background.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-08.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Study",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-09",
+    "title": "art-09",
+    "sort_order": 8,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "3309d89d-862f-4cf6-901d-50d71733c025",
+          "alt": "Behind the scenes: a small acrylic landscape painting on an outdoor easel beside a river, with paint palettes in the grass.",
+          "caption": "",
+          "role": "behind",
+          "file": "art-09.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Paintings",
+        "series": "",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-10",
+    "title": "art-10",
+    "sort_order": 9,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "8e1b1741-46fa-450f-8727-099127b98e85",
+          "alt": "Jessica Mary Monk smiling beside her acrylic painting of a figure at a decorated well with flowers and ribbons.",
+          "caption": "",
+          "role": "behind",
+          "file": "art-10.jpg"
+        }
+      ],
+      "fields": {
+        "category": "",
+        "series": "",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-11",
+    "title": "art-11",
+    "sort_order": 10,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "17857c37-6f6d-4731-96a7-0e8e46d82703",
+          "alt": "Detail of a charcoal drawing of two clasped hands with long nails.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-11.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Hands",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "art-12",
+    "title": "art-12",
+    "sort_order": 11,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "a81dc777-337c-4407-9214-117925f02a5d",
+          "alt": "Detail of a charcoal and white chalk drawing of a spaniel resting its chin, on black paper.",
+          "caption": "",
+          "role": "hero",
+          "file": "art-12.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Illustrations",
+        "series": "Portraits",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": ""
       }
     }
   }

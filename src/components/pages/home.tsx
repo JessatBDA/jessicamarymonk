@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { Brushstroke } from "@/components/visuals";
-import { ContentPhoto, Lines, RichText } from "@/components/content-render";
+import {
+  ArtworkImage,
+  ContentPhoto,
+  Lines,
+  RichText,
+} from "@/components/content-render";
+import { homeIntro } from "@/lib/artist-copy";
 import type { Entry } from "@/lib/content-model";
 export function HomeView({
   entry,
@@ -23,9 +29,13 @@ export function HomeView({
     illustration = artworks.find(
       (artwork) =>
         artwork.body.featured &&
-        ["Book illustration", "Theatre artwork"].includes(
-          artwork.body.fields.category,
-        ),
+        [
+          "Illustrations",
+          "Drawings",
+          "Portraits",
+          "Book illustration",
+          "Theatre artwork",
+        ].includes(artwork.body.fields.category),
     );
   return (
     <>
@@ -43,7 +53,7 @@ export function HomeView({
           </span>
         </h1>
         <div className="hero-bottom">
-          <p>{f.intro}</p>
+          <p>{homeIntro(f.intro)}</p>
           <Link className="text-link" href="/public-art">
             Explore public art <span>↗</span>
           </Link>
@@ -100,31 +110,37 @@ export function HomeView({
           </Link>
         </div>
         <div className="art-grid">
-          <figure>
-            <ContentPhoto
-              image={photo("painting") || painting?.body.images[0]}
-              label="Selected painting"
-            />
-            <figcaption>
-              {painting?.title || f.painting_caption}
-              <span>
-                {painting?.body.fields.medium || "Artwork to be selected"}
-              </span>
-            </figcaption>
-          </figure>
-          <figure>
-            <ContentPhoto
-              image={photo("illustration") || illustration?.body.images[0]}
-              label="Selected illustration"
-              shape="portrait"
-            />
-            <figcaption>
-              {illustration?.title || f.illustration_caption}
-              <span>
-                {illustration?.body.fields.medium || "Artwork to be selected"}
-              </span>
-            </figcaption>
-          </figure>
+          {[
+            {
+              image: photo("painting") || painting?.body.images[0],
+              href: painting
+                ? `/paintings-illustrations/${painting.slug}`
+                : "/paintings-illustrations",
+              label: "Selected painting",
+              shape: "landscape" as const,
+            },
+            {
+              image: photo("illustration") || illustration?.body.images[0],
+              href: illustration
+                ? `/paintings-illustrations/${illustration.slug}`
+                : "/paintings-illustrations",
+              label: "Selected illustration",
+              shape: "portrait" as const,
+            },
+          ].map((item) => (
+            <figure key={item.label}>
+              {item.image ? (
+                <Link href={item.href}>
+                  <ArtworkImage
+                    image={item.image}
+                    sizes="(max-width: 760px) 46vw, 30vw"
+                  />
+                </Link>
+              ) : (
+                <ContentPhoto label={item.label} shape={item.shape} />
+              )}
+            </figure>
+          ))}
         </div>
       </section>
       <section className="practice">
