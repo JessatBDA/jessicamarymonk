@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { HandsOfWorcester } from "@/components/pages/hands-of-worcester";
 import { Brushstroke } from "@/components/visuals";
 import { ContentPhoto, Lines, RichText } from "@/components/content-render";
+import { withHandsPresentation } from "@/content/hands-of-worcester";
 import type { Entry } from "@/lib/content-model";
 export function ProjectView({ entry }: { entry: Entry }) {
+  if (entry.slug === "the-hands-of-worcester")
+    return <HandsOfWorcester entry={withHandsPresentation(entry)} />;
   const f = entry.body.fields;
   const behind = entry.body.images.filter((image) => image.role === "behind");
   const finished = entry.body.images.filter((image) =>

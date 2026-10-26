@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
 import { logout } from "../auth-actions";
+
+export const dynamic = "force-dynamic";
+
 export default async function Layout({
   children,
 }: {
@@ -31,17 +34,14 @@ export default async function Layout({
             <Link href="/admin/content?kind=project">Public art projects</Link>
             <Link href="/admin/content?kind=artwork">Artwork & galleries</Link>
             <Link href="/admin/account">Your account</Link>
+            <span>Project engagement</span>
+            <Link href="/admin/engagement">Hands submissions</Link>
           </nav>
           <div className="admin-help">
             <p>
               Shop & Orders
               <br />
               Planned · payments disabled
-            </p>
-            <p>
-              Project Engagement
-              <br />
-              Next phase · not enabled
             </p>
             <p className="admin-email">{user.email}</p>
           </div>

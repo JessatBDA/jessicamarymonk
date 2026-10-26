@@ -5,7 +5,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin", "/engagement", "/shop"],
+      disallow: [
+        "/admin",
+        "/shop",
+        "/engagement/the-hands-of-worcester",
+        "/engagement/share-your-hands/leaflet",
+      ],
     },
     sitemap: new URL("/sitemap.xml", siteUrl).href,
   };

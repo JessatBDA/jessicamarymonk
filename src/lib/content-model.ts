@@ -32,7 +32,12 @@ export const saveSchema = z.object({
   publish: z.boolean(),
 });
 export type ContentBody = z.infer<typeof bodySchema>;
-export type ContentImage = z.infer<typeof imageSchema>;
+export type ContentImage = z.infer<typeof imageSchema> & {
+  /** Public path for a photograph shipped in the repository. CMS uploads omit this. */
+  src?: string;
+  width?: number;
+  height?: number;
+};
 export type EntryKind = "page" | "project" | "artwork";
 export type Entry = {
   id: string;
@@ -83,6 +88,8 @@ export function fieldsFor(kind: EntryKind, slug: string): Field[] {
       ["making", "Making, materials and techniques", true],
       ["outcomes", "Project outcomes", true],
       ["exhibition", "Exhibition and visitor information", true],
+      ["artist_statement", "Artist’s words", true],
+      ["funding", "Funding acknowledgement", true],
       ["video", "Video link (https://)"],
       ["links", "Related links (one https:// URL per line)"],
     ]

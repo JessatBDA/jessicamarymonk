@@ -40,14 +40,22 @@ export function ContentPhoto({
 }) {
   if (!image)
     return <ImagePlaceholder label={label} shape={shape} number={number} />;
+  const src = image.src || `/media/${image.id}`;
   return (
     <figure className="content-photo">
-      <div className={`photo-frame ${shape}`}>
+      <div
+        className={`photo-frame ${shape}`}
+        style={
+          image.width && image.height
+            ? { aspectRatio: `${image.width} / ${image.height}` }
+            : undefined
+        }
+      >
         <Image
-          src={`/media/${image.id}`}
+          src={src}
           alt={image.alt}
           fill
-          unoptimized
+          unoptimized={!image.src}
           sizes="(max-width: 760px) 100vw, 60vw"
         />
       </div>
