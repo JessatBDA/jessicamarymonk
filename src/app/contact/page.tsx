@@ -1,4 +1,5 @@
-﻿import { ContactView } from "@/components/pages/contact";
+﻿import portrait from "../../../images/jess-portrait.jpg";
+import { ContactView } from "@/components/pages/contact";
 import { requirePublished } from "@/lib/content";
 import { pageMetadata } from "@/lib/site";
 export const dynamic = "force-dynamic";
@@ -9,8 +10,14 @@ export async function generateMetadata() {
   return pageMetadata(
     f.seo_title || "Contact",
     f.seo_description ||
-      "Enquiries about public art, painting and illustration.",
+      "Enquiries about public art, community projects, paintings and illustration.",
     "/contact",
+    {
+      url: portrait.src,
+      alt: "Jessica Mary Monk smiling, holding her dog on a beach at sunset",
+      width: portrait.width,
+      height: portrait.height,
+    },
   );
 }
 export default async function Page() {
