@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import portrait from "../../../images/jess-portrait.jpg";
 import { Brushstroke } from "@/components/visuals";
 import {
   ArtworkImage,
@@ -6,8 +8,36 @@ import {
   Lines,
   RichText,
 } from "@/components/content-render";
-import { homeIntro } from "@/lib/artist-copy";
-import type { Entry } from "@/lib/content-model";
+import {
+  homeIntro,
+  homePracticeHeading,
+  homePracticeText,
+} from "@/lib/artist-copy";
+import type { ContentImage, Entry } from "@/lib/content-model";
+
+function Portrait({ image }: { image?: ContentImage }) {
+  if (image) {
+    return (
+      <ContentPhoto
+        image={image}
+        label="Jessica Mary Monk — artist portrait"
+        shape="portrait"
+      />
+    );
+  }
+  return (
+    <figure className="content-photo">
+      <div className="photo-frame portrait">
+        <Image
+          src={portrait}
+          alt="Jessica Mary Monk smiling, holding her dog on a beach at sunset"
+          fill
+          sizes="(max-width: 760px) min(92vw, 420px), 340px"
+        />
+      </div>
+    </figure>
+  );
+}
 export function HomeView({
   entry,
   project,
@@ -20,23 +50,22 @@ export function HomeView({
   const f = entry.body.fields;
   const photo = (role: string) =>
     entry.body.images.find((image) => image.role === role);
-  const selected = (category: string) =>
-    artworks.find(
-      (artwork) =>
-        artwork.body.featured && artwork.body.fields.category === category,
-    );
-  const painting = selected("Paintings"),
-    illustration = artworks.find(
-      (artwork) =>
-        artwork.body.featured &&
-        [
-          "Illustrations",
-          "Drawings",
-          "Portraits",
-          "Book illustration",
-          "Theatre artwork",
-        ].includes(artwork.body.fields.category),
-    );
+  const seascape = artworks.find((artwork) => artwork.slug === "seascape");
+  const seascapeImage =
+    photo("seascape") || seascape?.body.images[0] || photo("painting");
+  const illustration = artworks.find(
+    (artwork) =>
+      artwork.body.featured &&
+      [
+        "Illustrations",
+        "Drawings",
+        "Portraits",
+        "Book illustration",
+        "Theatre artwork",
+      ].includes(artwork.body.fields.category),
+  );
+  const illustrationImage =
+    photo("illustration") || illustration?.body.images[0];
   return (
     <>
       <section className="home-hero wrap">
@@ -110,52 +139,51 @@ export function HomeView({
           </Link>
         </div>
         <div className="art-grid">
-          {[
-            {
-              image: photo("painting") || painting?.body.images[0],
-              href: painting
-                ? `/paintings-illustrations/${painting.slug}`
-                : "/paintings-illustrations",
-              label: "Selected painting",
-              shape: "landscape" as const,
-            },
-            {
-              image: photo("illustration") || illustration?.body.images[0],
-              href: illustration
-                ? `/paintings-illustrations/${illustration.slug}`
-                : "/paintings-illustrations",
-              label: "Selected illustration",
-              shape: "portrait" as const,
-            },
-          ].map((item) => (
-            <figure key={item.label}>
-              {item.image ? (
-                <Link href={item.href}>
-                  <ArtworkImage
-                    image={item.image}
-                    sizes="(max-width: 760px) 46vw, 30vw"
-                  />
-                </Link>
-              ) : (
-                <ContentPhoto label={item.label} shape={item.shape} />
-              )}
+          {seascapeImage ? (
+            <figure>
+              <Link
+                href={
+                  seascape
+                    ? `/paintings-illustrations/${seascape.slug}`
+                    : "/paintings-illustrations"
+                }
+              >
+                <ArtworkImage
+                  image={seascapeImage}
+                  sizes="(max-width: 760px) 92vw, 60vw"
+                />
+              </Link>
             </figure>
-          ))}
+          ) : null}
+          <figure>
+            {illustrationImage ? (
+              <Link
+                href={
+                  illustration
+                    ? `/paintings-illustrations/${illustration.slug}`
+                    : "/paintings-illustrations"
+                }
+              >
+                <ArtworkImage
+                  image={illustrationImage}
+                  sizes="(max-width: 760px) 46vw, 30vw"
+                />
+              </Link>
+            ) : (
+              <ContentPhoto label="Selected illustration" shape="portrait" />
+            )}
+          </figure>
         </div>
       </section>
       <section className="practice">
         <div className="wrap practice-inner">
-          <ContentPhoto
-            image={photo("portrait")}
-            label="Artist portrait"
-            shape="portrait"
-          />
+          <Portrait image={photo("portrait")} />
           <div>
             <p className="eyebrow">{f.practice_label}</p>
             <h2>
-              <Lines text={f.practice_heading || ""} />
+              <Lines text={homePracticeHeading(f.practice_heading)} />
             </h2>
-            <RichText text={f.practice_text} />
+            <RichText text={homePracticeText(f.practice_text)} />
             <Link href="/about" className="text-link">
               About Jessica ↗
             </Link>

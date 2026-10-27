@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/site";
 export const dynamic = "force-dynamic";
 export const metadata = pageMetadata(
   "Paintings & Illustrations",
-  "Details from acrylic paintings and from charcoal, chalk and pastel drawings by Jessica Mary Monk.",
+  "Paintings and drawings by Jessica Mary Monk. Some photographs are details of acrylic paintings and of charcoal, chalk and pastel drawings.",
   "/paintings-illustrations",
 );
 export default async function Page() {
@@ -19,9 +19,9 @@ export default async function Page() {
           illustrations.
         </h1>
         <p>
-          Details from acrylic paintings and from charcoal, chalk and pastel
-          drawings. Each photograph shows a detail of the piece, not the whole
-          work.
+          Paintings and drawings from the studio. Some photographs are details
+          of acrylic paintings and of charcoal, chalk and pastel drawings,
+          rather than the whole piece.
         </p>
         <Link className="text-link" href="/public-art/the-hands-of-worcester">
           The Hands of Worcester <span>↗</span>

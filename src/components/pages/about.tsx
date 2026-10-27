@@ -85,7 +85,7 @@ export function AboutView({ entry }: { entry: Entry }) {
         </div>
       </section>
       {sections.map(([key, title]) => {
-        const text = aboutSection(f[key]);
+        const text = aboutSection(key, f[key]);
         return text ? (
           <section className="story-section" key={key}>
             <h2>{title}</h2>

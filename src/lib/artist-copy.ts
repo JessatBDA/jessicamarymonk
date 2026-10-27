@@ -27,6 +27,37 @@ export const aboutNoticeTodo =
 
 export const aboutSectionTodo = "TODO: Artist-approved text to be supplied.";
 
+export const aboutIntroCopy =
+  "Jessica Mary Monk is a project manager and web designer by trade, and an artist at heart. Her love of art began as a child, painting birds with her mum, and she went on to study art at school. In her twenties she returned to it in earnest, exploring realism, portraiture and above all hands, the subject that inspired [The Hands of Worcester](/public-art/the-hands-of-worcester).";
+
+export const aboutBackgroundCopy =
+  "Hands and community continue to shape her work. Having recently moved to Wales, Jessica is turning to seascapes, which she has begun exploring in acrylic and oil on canvas, and she is curious to see how her interest in community will find its way into them.";
+
+export const aboutPracticeCopy =
+  "Jessica paints in acrylic and oil on canvas, and draws in charcoal, chalk and pastel. Her work explores realism, portraiture and hands, and she has begun painting seascapes.";
+
+export const aboutCommunityCopy =
+  "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The project was supported using public funding by the National Lottery through Arts Council England. With special thanks to The Elmley Foundation.";
+
+export const aboutCommissionsCopy =
+  "Enquiries are welcome for public art, community projects, paintings and illustration.";
+
+const aboutSections = {
+  practice: aboutPracticeCopy,
+  community: aboutCommunityCopy,
+  commissions: aboutCommissionsCopy,
+} as const;
+
+export const homePracticeHeadingCopy = "An artist at heart.";
+
+export const homePracticeTextCopy =
+  "Jessica Mary Monk is a project manager and web designer by trade. Her love of art began painting birds with her mum, and in her twenties she returned to realism, portraiture and hands. Hands and community still shape the work. A move to Wales has started a new interest in seascapes, in acrylic and oil on canvas.";
+
+const retiredPracticeHeading = "A practice that\nconnects with people.";
+
+const retiredPracticeText =
+  "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.";
+
 const retiredDescriptions = [
   "Public artist, painter and illustrator.",
   "About Jessica Mary Monk, British public artist, painter and illustrator.",
@@ -44,27 +75,64 @@ export function homeIntro(value: string | undefined) {
   return value ?? artistTagline;
 }
 
+export function homePracticeHeading(value: string | undefined) {
+  const text = trimmed(value);
+  if (!text || text === retiredPracticeHeading) return homePracticeHeadingCopy;
+  return value ?? homePracticeHeadingCopy;
+}
+
+export function homePracticeText(value: string | undefined) {
+  const text = trimmed(value);
+  if (!text || text === retiredPracticeText) return homePracticeTextCopy;
+  return value ?? homePracticeTextCopy;
+}
+
 export function aboutIntro(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredAboutIntro) return artistTagline;
-  return value ?? artistTagline;
+  if (!text || text === retiredAboutIntro || text === artistTagline)
+    return aboutIntroCopy;
+  return value ?? aboutIntroCopy;
 }
 
 export function aboutBackground(value: string | undefined) {
   const text = trimmed(value);
-  if (text === retiredAboutBackground) return aboutHandsLink;
+  if (
+    !text ||
+    text === retiredAboutBackground ||
+    text === aboutHandsLink ||
+    text === aboutNoticeTodo ||
+    text === aboutSectionTodo ||
+    text === retiredSupplied
+  )
+    return aboutBackgroundCopy;
   return text;
 }
 
 export function aboutNotice(value: string | undefined) {
   const text = trimmed(value);
-  if (text === retiredAboutNotice) return aboutNoticeTodo;
+  if (
+    !text ||
+    text === retiredAboutNotice ||
+    text === aboutNoticeTodo ||
+    text === aboutSectionTodo ||
+    text === retiredSupplied
+  )
+    return "";
   return text;
 }
 
-export function aboutSection(value: string | undefined) {
+export function aboutSection(
+  key: keyof typeof aboutSections,
+  value: string | undefined,
+) {
   const text = trimmed(value);
-  if (text === retiredSupplied) return aboutSectionTodo;
+  if (
+    !text ||
+    text === retiredSupplied ||
+    text === aboutSectionTodo ||
+    text === aboutNoticeTodo
+  )
+    return aboutSections[key];
   return text;
 }
 

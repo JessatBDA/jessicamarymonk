@@ -7,6 +7,7 @@ import {
   artistStatement,
   fundingText,
   handsStats,
+  over200Sentence,
   panelQuote,
 } from "@/content/hands-of-worcester";
 import {
@@ -34,6 +35,7 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
           <Lines text={f.heading || entry.title} />
         </h1>
         <p>{f.intro}</p>
+        {f.intro?.includes(over200Sentence) ? null : <p>{over200Sentence}</p>}
       </section>
       <figure className="hands-hero">
         <Image
@@ -70,7 +72,7 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
         <div>
           <h2>{f.concept_heading}</h2>
           <blockquote className="pull-quote">
-            <p>{panelQuote}</p>
+            <p>{f.concept || panelQuote}</p>
             <footer>Exhibition panel</footer>
           </blockquote>
         </div>
@@ -80,7 +82,7 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
         <div>
           <h2>In Jessica’s words</h2>
           <blockquote className="pull-quote">
-            <p>{artistStatement}</p>
+            <p>{f.artist_statement || artistStatement}</p>
             <footer>Jessica Mary Monk</footer>
           </blockquote>
         </div>
@@ -142,7 +144,7 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
       </section>
       <section className="names-section" id="participants">
         <p className="eyebrow">With thanks</p>
-        <h2>A thank you</h2>
+        <h2>A thank you to all the participants</h2>
         <p>
           The names below are those who agreed to be shown. Thank you to every
           person named here, and to everyone who joined in.

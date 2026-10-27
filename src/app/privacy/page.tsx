@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/site";
 
+/** Leave blank while there is no postal address. Rendered only when set. */
+const postalAddress = "";
+
 export const metadata = pageMetadata(
   "Privacy information",
   "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
@@ -20,9 +23,9 @@ export default function Page() {
       <h2>Who is responsible</h2>
       <p>
         Jessica Mary Monk is the person responsible for the information
-        collected for The Hands of Worcester. Use the contact details published
-        on the <Link href="/contact">contact page</Link>. A postal address and
-        a dedicated privacy email have not been added to this page yet.
+        collected for The Hands of Worcester.
+        {postalAddress ? ` Postal address: ${postalAddress}.` : ""} To get in
+        touch, use the <Link href="/contact">contact page</Link>.
       </p>
       <h2>Share your hands</h2>
       <p>
