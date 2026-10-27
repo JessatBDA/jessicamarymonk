@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Brushstroke } from "@/components/visuals";
 import { Lines, RichText } from "@/components/content-render";
+import { contactDetails } from "@/lib/artist-copy";
 import type { Entry } from "@/lib/content-model";
 export function ContactView({ entry }: { entry: Entry }) {
   const f = entry.body.fields;
@@ -14,68 +15,47 @@ export function ContactView({ entry }: { entry: Entry }) {
         <p>{f.intro}</p>
         <Brushstroke />
       </section>
-      <div className="form-layout">
-        <aside>
-          <h2>Get in touch</h2>
-          <RichText text={f.details} />
-          {f.email && (
+      <section className="story-section">
+        <h2>Get in touch</h2>
+        <div>
+          <RichText text={contactDetails(f.details)} />
+          {f.email ? (
             <p>
-              <a href={`mailto:${f.email}`}>{f.email}</a>
+              <a className="text-link" href={`mailto:${f.email}`}>
+                {f.email}
+              </a>
             </p>
+          ) : (
+            <p>A contact email has not been added to this page yet.</p>
           )}
-          {f.phone && (
+          {f.phone ? (
             <p>
-              <a href={`tel:${f.phone.replace(/[^+\d]/g, "")}`}>{f.phone}</a>
+              <a className="text-link" href={`tel:${f.phone.replace(/[^+\d]/g, "")}`}>
+                {f.phone}
+              </a>
             </p>
-          )}
-          <p className="notice" id="contact-status">
-            Preview only. Sending is unavailable until secure enquiry storage
-            and spam protection are configured. Information entered here is not
-            sent or saved.
+          ) : null}
+          <p>
+            <Link className="text-link" href="/public-art/the-hands-of-worcester">
+              The Hands of Worcester <span>↗</span>
+            </Link>
           </p>
-        </aside>
-        <form aria-describedby="contact-status">
-          <fieldset disabled>
-            <legend className="sr-only">Enquiry form preview</legend>
-            <label>
-              Your name
-              <input name="name" autoComplete="name" required maxLength={120} />
-            </label>
-            <label>
-              Email address
-              <input
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                maxLength={254}
-              />
-            </label>
-            <label>
-              What would you like to discuss?
-              <select name="topic">
-                <option>Public art commission</option>
-                <option>Exhibition</option>
-                <option>Community project</option>
-                <option>Painting commission</option>
-                <option>Illustration commission</option>
-                <option>General enquiry</option>
-              </select>
-            </label>
-            <label>
-              Your message
-              <textarea name="message" rows={6} required maxLength={5000} />
-            </label>
-            <button className="button" type="submit">
-              Enquiries opening soon
-            </button>
-          </fieldset>
+          <p>
+            <Link className="text-link" href="/engagement/share-your-hands">
+              Share your hands <span>↗</span>
+            </Link>
+          </p>
+          <p>
+            <Link className="text-link" href="/paintings-illustrations">
+              Paintings & illustrations <span>↗</span>
+            </Link>
+          </p>
           <p className="form-note">
-            Please avoid including sensitive personal information. See the{" "}
-            <Link href="/privacy">privacy information</Link>.
+            Please avoid including sensitive personal information if you write
+            later. See the <Link href="/privacy">privacy information</Link>.
           </p>
-        </form>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

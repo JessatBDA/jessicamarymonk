@@ -24,11 +24,14 @@ export function pageMetadata(
       description,
       url: path,
       type: "website",
-      images: image ? [image] : undefined,
+      ...(image ? { images: [image] } : {}),
     },
-    twitter: image
-      ? { card: "summary_large_image", title, description, images: [image.url] }
-      : undefined,
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Jessica Mary Monk`,
+      description,
+      ...(image ? { images: [image.url] } : {}),
+    },
   };
 }
 export const questions = [

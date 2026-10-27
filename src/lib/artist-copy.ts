@@ -16,16 +16,45 @@ const retiredAboutNotice =
 
 const retiredSupplied = "Artist-approved text to be supplied.";
 
-/** Link only. The project page already exists under Public art. */
-export const aboutHandsLink =
+/** Earlier seed stored only this link. */
+const aboutHandsLink =
   "[The Hands of Worcester](/public-art/the-hands-of-worcester)";
 
-export const aboutHandsHref = "/public-art/the-hands-of-worcester";
-
-export const aboutNoticeTodo =
+const aboutNoticeTodo =
   "TODO: Add the artist’s biography and background here, in her own words.";
 
-export const aboutSectionTodo = "TODO: Artist-approved text to be supplied.";
+const aboutSectionTodo = "TODO: Artist-approved text to be supplied.";
+
+export const aboutBackgroundCopy =
+  "Her public work includes [The Hands of Worcester](/public-art/the-hands-of-worcester), a community-led installation made with The Worcester Plinth.";
+
+export const aboutPracticeCopy =
+  "Jessica paints in acrylic and draws in charcoal, chalk and pastel. The pictures in the studio gallery are details of the work. They are shown without titles or years.";
+
+export const aboutCommunityCopy =
+  "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The casts were painted, sealed in resin and mounted on the plinth. The project was supported using public funding by the National Lottery through Arts Council England, with thanks to The Elmley Foundation.";
+
+export const aboutCommissionsCopy =
+  "Enquiries are welcome for public art, community projects, paintings and illustration.";
+
+const aboutSections = {
+  practice: aboutPracticeCopy,
+  community: aboutCommunityCopy,
+  commissions: aboutCommissionsCopy,
+} as const;
+
+export const contactDetailsCopy =
+  "Jessica welcomes enquiries about public art, community projects, paintings and illustration. Messages cannot be sent from this page yet.";
+
+const retiredContactDetails =
+  "The enquiry form is being prepared. Contact details will appear here when supplied.";
+
+export const homePracticeHeading = "Public artist,\npainter and illustrator.";
+
+export const homePracticeText =
+  "Public art with The Worcester Plinth, acrylic paintings, and drawings in charcoal, chalk and pastel. The studio pictures are details of the work, shown without titles or years.";
+
+export const homeInvitationHeading = "Enquiries are welcome.";
 
 const retiredDescriptions = [
   "Public artist, painter and illustrator.",
@@ -52,20 +81,42 @@ export function aboutIntro(value: string | undefined) {
 
 export function aboutBackground(value: string | undefined) {
   const text = trimmed(value);
-  if (text === retiredAboutBackground) return aboutHandsLink;
+  if (!text || text === retiredAboutBackground || text === aboutHandsLink)
+    return aboutBackgroundCopy;
   return text;
 }
 
 export function aboutNotice(value: string | undefined) {
   const text = trimmed(value);
-  if (text === retiredAboutNotice) return aboutNoticeTodo;
+  if (!text || text === retiredAboutNotice || text === aboutNoticeTodo)
+    return "";
   return text;
 }
 
-export function aboutSection(value: string | undefined) {
+export function aboutSection(
+  key: keyof typeof aboutSections,
+  value: string | undefined,
+) {
   const text = trimmed(value);
-  if (text === retiredSupplied) return aboutSectionTodo;
+  if (!text || text === retiredSupplied || text === aboutSectionTodo)
+    return aboutSections[key];
   return text;
+}
+
+export function contactDetails(value: string | undefined) {
+  const text = trimmed(value);
+  if (!text || text === retiredContactDetails) return contactDetailsCopy;
+  return text;
+}
+
+export function knownCopy(
+  value: string | undefined,
+  retired: string[],
+  next: string,
+) {
+  const text = trimmed(value);
+  if (!text || retired.includes(text)) return next;
+  return value ?? next;
 }
 
 export function metaDescription(value: string | undefined) {
