@@ -42,7 +42,7 @@ export const handsFields: Record<string, string> = {
     "The youngest participant was 5 months old and the oldest was 90. Thank you to every participant.",
   making_heading: "From hand to cast",
   making:
-    "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Some of those studies are on the paintings and illustrations page.",
+    "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Details from the studio are on the [paintings and illustrations](/paintings-illustrations) page.",
   exhibition:
     "The hands sit on The Worcester Plinth for 9 months. The plinth moves from location to location within Worcester.",
   funding: fundingText,
@@ -61,6 +61,7 @@ const retiredCopy = new Set([
   "The Hands of Worcester is a community led project, I wanted to get out into the community and take a historical cast of the communities hands at that time. Now it is displayed before you, I hope you can see the unique and magical quality as I did when I made each and every cast. A thank you to the project team as a whole and especially to my husband, Guy, who helped and supported the whole process.",
   "Supported using public funding by the National Lottery through Arts Council England. With thanks to funders and supporters, including The Elmley Foundation.",
   "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Photographs of those studies have not been added yet.",
+  "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Some of those studies are on the paintings and illustrations page.",
 ]);
 
 const placeholderMarkers = [

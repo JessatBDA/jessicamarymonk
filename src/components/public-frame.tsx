@@ -1,7 +1,16 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { publicContactEmail } from "@/lib/contact-public";
 import { Header } from "./header";
+const footerLinks = [
+  ["/public-art", "Public art"],
+  ["/engagement/share-your-hands", "Share your hands"],
+  ["/paintings-illustrations", "Paintings & illustrations"],
+  ["/about", "About"],
+  ["/contact", "Contact"],
+  ["/privacy", "Privacy"],
+] as const;
 export function PublicFrame({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   if (path.startsWith("/admin")) return <>{children}</>;
@@ -17,13 +26,17 @@ export function PublicFrame({ children }: { children: React.ReactNode }) {
           <Link className="footer-name" href="/">
             Jessica Mary Monk
           </Link>
-          <p>Public art. Shared experiences. Creative connections.</p>
+          <p>Public artist, painter and illustrator.</p>
         </div>
-        <div className="footer-links">
-          <Link href="/contact">Get in touch ↗</Link>
-          <Link href="/privacy">Privacy</Link>
+        <nav className="footer-links" aria-label="Footer">
+          <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>
+          {footerLinks.map(([href, label]) => (
+            <Link key={href} href={href}>
+              {label}
+            </Link>
+          ))}
           <span>© {new Date().getFullYear()} Jessica Mary Monk</span>
-        </div>
+        </nav>
       </footer>
     </>
   );

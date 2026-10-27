@@ -44,7 +44,7 @@ npm.cmd run build
 
 Only `jessicamarymonk` (`wymhdylnnobdzvyrhibq`) in the Jessica Mary Monk organisation (`tdylezilvdsdqayciqst`) is used. The local CLI is authenticated and linked. Application configuration rejects a different Supabase URL.
 
-Copy `.env.example` to ignored `.env.local` if configuring another checkout. Supply the project URL and publishable key. Never use a service-role key in browser variables. The application itself does not require any service-role key. Vercel preview/production environment configuration contains only the project URL and publishable key.
+Copy `.env.example` to ignored `.env.local` if configuring another checkout. Supply the project URL and publishable key. Never use a service-role key in browser variables. The application itself does not require any service-role key. Vercel preview/production environment configuration contains the project URL, the publishable key, and, for contact notifications, the server-only `RESEND_API_KEY` and optional `CONTACT_FROM_EMAIL`. See [docs/CONTACT.md](docs/CONTACT.md).
 
 ## Database setup and account provisioning
 
@@ -72,7 +72,7 @@ The scripts require a running local server and installed Chrome, or `BROWSER_PAT
 
 ## Remaining scope
 
-Original portrait/artwork/project photographs and approved biography/project facts are still needed for the other pages. Contact submissions are disabled pending their own secure collection work. Shop and checkout remain absent. The Hands of Worcester page, its photographs, and the Share your hands forms are in this repository; apply both Hands migrations and proofread the transcribed names before relying on them in production. The names on the page are those who agreed to be shown. See [docs/HANDS-ENGAGEMENT.md](docs/HANDS-ENGAGEMENT.md). Recovery email delivery requires appropriate Supabase email/SMTP configuration and has not been tested with a real inbox.
+Original portrait/artwork/project photographs and approved biography/project facts are still needed for the other pages. The contact form saves enquiries. The database update is `supabase/migrations/20261026200000_contact_enquiries.sql`, and it has already been applied to the Jessica Mary Monk database. Set `RESEND_API_KEY` to email info@jessicamarymonk.com; without that key the enquiry is still saved. Shop and checkout remain absent. The Hands of Worcester page, its photographs, the studio details, the portrait, and the Share your hands forms are in this repository; apply both Hands migrations and proofread the transcribed names before relying on them in production. The names on the page are those who agreed to be shown. See [docs/HANDS-ENGAGEMENT.md](docs/HANDS-ENGAGEMENT.md). Recovery email delivery requires appropriate Supabase email/SMTP configuration and has not been tested with a real inbox.
 
 The reference files in `InitialImages/` and the user's `images/` folder are preserved. Herd Circle and British Drumming Academy applications/databases were not modified. The Vercel hosting team for this separate Jessica website is named `herd-circle`.
 

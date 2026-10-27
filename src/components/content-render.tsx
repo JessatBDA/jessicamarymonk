@@ -86,11 +86,15 @@ export function ContentPhoto({
   label,
   shape = "landscape",
   number,
+  priority = false,
+  sizes = "(max-width: 760px) 92vw, 60vw",
 }: {
   image?: ContentImage;
   label: string;
   shape?: "portrait" | "landscape" | "square";
   number?: string;
+  priority?: boolean;
+  sizes?: string;
 }) {
   if (!image)
     return <ImagePlaceholder label={label} shape={shape} number={number} />;
@@ -109,8 +113,9 @@ export function ContentPhoto({
           src={src}
           alt={image.alt}
           fill
+          priority={priority}
           unoptimized={!image.src}
-          sizes="(max-width: 760px) 100vw, 60vw"
+          sizes={sizes}
         />
       </div>
       {image.caption && <figcaption>{image.caption}</figcaption>}

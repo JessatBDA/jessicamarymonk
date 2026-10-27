@@ -1,4 +1,5 @@
 import Link from "next/link";
+import portrait from "../../../images/jess-portrait.jpg";
 import { pageMetadata } from "@/lib/site";
 
 /** Leave blank while there is no postal address. Rendered only when set. */
@@ -8,6 +9,12 @@ export const metadata = pageMetadata(
   "Privacy information",
   "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
   "/privacy",
+  {
+    url: portrait.src,
+    alt: "Jessica Mary Monk smiling, holding her dog on a beach at sunset",
+    width: portrait.width,
+    height: portrait.height,
+  },
 );
 
 export default function Page() {
@@ -17,15 +24,19 @@ export default function Page() {
       <h1>Privacy information.</h1>
       <p>
         This notice covers the public pages of this website, including Share
-        your hands and Add your name for The Hands of Worcester. The contact
-        form is not open, and the site does not take orders or payments.
+        your hands and Add your name for The Hands of Worcester. Enquiries can
+        be sent through the contact form or to info@jessicamarymonk.com. The
+        site does not take orders or payments.
       </p>
       <h2>Who is responsible</h2>
       <p>
         Jessica Mary Monk is the person responsible for the information
         collected for The Hands of Worcester.
-        {postalAddress ? ` Postal address: ${postalAddress}.` : ""} To get in
-        touch, use the <Link href="/contact">contact page</Link>.
+        {postalAddress
+          ? ` Postal address: ${postalAddress}.`
+          : " A postal address has not been added yet."}{" "}
+        To get in touch, use the <Link href="/contact">contact page</Link> or
+        email info@jessicamarymonk.com.
       </p>
       <h2>Share your hands</h2>
       <p>
@@ -87,7 +98,9 @@ export default function Page() {
         <Link href="/engagement/the-hands-of-worcester">
           the visitor questionnaire preview
         </Link>{" "}
-        does not save anything. The contact form does not save messages.
+        does not save anything. Messages sent through the contact form are
+        saved privately so Jessica can reply. They are not shown on the
+        website.
       </p>
       <h2>Cookies</h2>
       <p>

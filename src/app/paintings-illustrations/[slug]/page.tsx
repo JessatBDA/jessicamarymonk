@@ -13,8 +13,14 @@ export async function generateMetadata({
   const image =
     entry.body.images.find((item) => item.role === "hero") ||
     entry.body.images[0];
-  const label = image?.alt || "Studio work";
   const local = image?.file ? studioImages[image.file] : undefined;
+  const description =
+    image?.alt ||
+    "A detail from an acrylic painting or a drawing by Jessica Mary Monk.";
+  const title =
+    entry.body.fields.seo_title ||
+    (image?.caption ?? "").trim() ||
+    "Studio detail";
   const share = image
     ? {
         url: local?.src || `/media/${image.id}`,
@@ -24,8 +30,8 @@ export async function generateMetadata({
       }
     : undefined;
   return pageMetadata(
-    entry.body.fields.seo_title || label,
-    entry.body.fields.seo_description || label,
+    title,
+    entry.body.fields.seo_description || description,
     `/paintings-illustrations/${slug}`,
     share,
   );

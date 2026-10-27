@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import portrait from "../../../images/jess-portrait.jpg";
 import { Brushstroke } from "@/components/visuals";
 import {
@@ -10,34 +10,12 @@ import {
 } from "@/components/content-render";
 import {
   homeIntro,
+  homeInvitationHeading,
   homePracticeHeading,
   homePracticeText,
+  knownCopy,
 } from "@/lib/artist-copy";
-import type { ContentImage, Entry } from "@/lib/content-model";
-
-function Portrait({ image }: { image?: ContentImage }) {
-  if (image) {
-    return (
-      <ContentPhoto
-        image={image}
-        label="Jessica Mary Monk — artist portrait"
-        shape="portrait"
-      />
-    );
-  }
-  return (
-    <figure className="content-photo">
-      <div className="photo-frame portrait">
-        <Image
-          src={portrait}
-          alt="Jessica Mary Monk smiling, holding her dog on a beach at sunset"
-          fill
-          sizes="(max-width: 760px) min(92vw, 420px), 340px"
-        />
-      </div>
-    </figure>
-  );
-}
+import type { Entry } from "@/lib/content-model";
 export function HomeView({
   entry,
   project,
@@ -75,7 +53,7 @@ export function HomeView({
           <span>
             {(f.subtitle || "").split("|").map((part, i) => (
               <span className="subtitle-part" key={i}>
-                {i > 0 && <i>|</i>}
+                {i > 0 && <i aria-hidden="true">|</i>}
                 {part.trim()}
               </span>
             ))}
@@ -121,6 +99,8 @@ export function HomeView({
               }
               label={project.title}
               number="01"
+              priority
+              sizes="(max-width: 760px) 92vw, 560px"
             />
           </Link>
         </section>
@@ -177,7 +157,25 @@ export function HomeView({
       </section>
       <section className="practice">
         <div className="wrap practice-inner">
-          <Portrait image={photo("portrait")} />
+          {photo("portrait") ? (
+            <ContentPhoto
+              image={photo("portrait")}
+              label="Jessica Mary Monk"
+              shape="portrait"
+              sizes="(max-width: 760px) 70vw, 340px"
+            />
+          ) : (
+            <figure className="content-photo">
+              <div className="photo-frame portrait">
+                <Image
+                  src={portrait}
+                  alt="Jessica Mary Monk smiling, holding her dog on a beach at sunset"
+                  fill
+                  sizes="(max-width: 760px) 70vw, 340px"
+                />
+              </div>
+            </figure>
+          )}
           <div>
             <p className="eyebrow">{f.practice_label}</p>
             <h2>
@@ -192,7 +190,13 @@ export function HomeView({
       </section>
       <section className="wrap invitation">
         <p className="eyebrow">{f.invitation_label}</p>
-        <h2>{f.invitation_heading}</h2>
+        <h2>
+          {knownCopy(
+            f.invitation_heading,
+            ["Let’s make something meaningful."],
+            homeInvitationHeading,
+          )}
+        </h2>
         <p>{f.invitation_text}</p>
         <Link className="button" href="/contact">
           Start a conversation ↗

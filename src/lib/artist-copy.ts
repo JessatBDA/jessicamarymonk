@@ -11,21 +11,22 @@ const retiredAboutIntro =
 const retiredAboutBackground =
   "Her work includes The Hands of Worcester, a community art installation associated with The Worcester Plinth.";
 
+const polishAboutBackground =
+  "Her public work includes [The Hands of Worcester](/public-art/the-hands-of-worcester), a community-led installation made with The Worcester Plinth.";
+
 const retiredAboutNotice =
   "A full artist biography, background and account of Jessica’s practice will be added here in her own words.";
 
 const retiredSupplied = "Artist-approved text to be supplied.";
 
-/** Link only. The project page already exists under Public art. */
-export const aboutHandsLink =
+/** Earlier seed stored only this link. */
+const aboutHandsLink =
   "[The Hands of Worcester](/public-art/the-hands-of-worcester)";
 
-export const aboutHandsHref = "/public-art/the-hands-of-worcester";
-
-export const aboutNoticeTodo =
+const aboutNoticeTodo =
   "TODO: Add the artist’s biography and background here, in her own words.";
 
-export const aboutSectionTodo = "TODO: Artist-approved text to be supplied.";
+const aboutSectionTodo = "TODO: Artist-approved text to be supplied.";
 
 export const aboutIntroCopy =
   "Jessica Mary Monk is a project manager and web designer by trade, and an artist at heart. Her love of art began as a child, painting birds with her mum, and she went on to study art at school. In her twenties she returned to it in earnest, exploring realism, portraiture and above all hands, the subject that inspired [The Hands of Worcester](/public-art/the-hands-of-worcester).";
@@ -48,15 +49,36 @@ const aboutSections = {
   commissions: aboutCommissionsCopy,
 } as const;
 
+const polishPractice =
+  "Jessica paints in acrylic and draws in charcoal, chalk and pastel. The pictures in the studio gallery are details of the work. They are shown without titles or years.";
+
+const polishCommunity =
+  "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The casts were painted, sealed in resin and mounted on the plinth. The project was supported using public funding by the National Lottery through Arts Council England, with thanks to The Elmley Foundation.";
+
+export const contactDetailsCopy =
+  "Write about public art, community projects, paintings and illustration. You can use the form, or send an email.";
+
+const retiredContactDetails = [
+  "The enquiry form is being prepared. Contact details will appear here when supplied.",
+  "Jessica welcomes enquiries about public art, community projects, paintings and illustration. Messages cannot be sent from this page yet.",
+];
+
 export const homePracticeHeadingCopy = "An artist at heart.";
 
 export const homePracticeTextCopy =
   "Jessica Mary Monk is a project manager and web designer by trade. Her love of art began painting birds with her mum, and in her twenties she returned to realism, portraiture and hands. Hands and community still shape the work. A move to Wales has started a new interest in seascapes, in acrylic and oil on canvas.";
 
-const retiredPracticeHeading = "A practice that\nconnects with people.";
+const retiredPracticeHeadings = [
+  "A practice that\nconnects with people.",
+  "Public artist,\npainter and illustrator.",
+];
 
-const retiredPracticeText =
-  "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.";
+const retiredPracticeTexts = [
+  "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.",
+  "Public art with The Worcester Plinth, acrylic paintings, and drawings in charcoal, chalk and pastel. The studio pictures are details of the work, shown without titles or years.",
+];
+
+export const homeInvitationHeading = "Enquiries are welcome.";
 
 const retiredDescriptions = [
   "Public artist, painter and illustrator.",
@@ -77,13 +99,13 @@ export function homeIntro(value: string | undefined) {
 
 export function homePracticeHeading(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredPracticeHeading) return homePracticeHeadingCopy;
+  if (!text || retiredPracticeHeadings.includes(text)) return homePracticeHeadingCopy;
   return value ?? homePracticeHeadingCopy;
 }
 
 export function homePracticeText(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredPracticeText) return homePracticeTextCopy;
+  if (!text || retiredPracticeTexts.includes(text)) return homePracticeTextCopy;
   return value ?? homePracticeTextCopy;
 }
 
@@ -99,6 +121,7 @@ export function aboutBackground(value: string | undefined) {
   if (
     !text ||
     text === retiredAboutBackground ||
+    text === polishAboutBackground ||
     text === aboutHandsLink ||
     text === aboutNoticeTodo ||
     text === aboutSectionTodo ||
@@ -126,14 +149,31 @@ export function aboutSection(
   value: string | undefined,
 ) {
   const text = trimmed(value);
-  if (
+  const retired =
     !text ||
     text === retiredSupplied ||
     text === aboutSectionTodo ||
-    text === aboutNoticeTodo
-  )
-    return aboutSections[key];
+    text === aboutNoticeTodo ||
+    (key === "practice" && text === polishPractice) ||
+    (key === "community" && text === polishCommunity);
+  if (retired) return aboutSections[key];
   return text;
+}
+
+export function contactDetails(value: string | undefined) {
+  const text = trimmed(value);
+  if (!text || retiredContactDetails.includes(text)) return contactDetailsCopy;
+  return text;
+}
+
+export function knownCopy(
+  value: string | undefined,
+  retired: string[],
+  next: string,
+) {
+  const text = trimmed(value);
+  if (!text || retired.includes(text)) return next;
+  return value ?? next;
 }
 
 export function metaDescription(value: string | undefined) {

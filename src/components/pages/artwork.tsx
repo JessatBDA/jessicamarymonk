@@ -27,6 +27,7 @@ export function ArtworkView({ entry }: { entry: Entry }) {
             <h1>A detail from the studio.</h1>
             <p>
               This photograph shows a detail of the piece, not the whole work.
+              Titles and years are not shown.
             </p>
           </>
         ) : null}
