@@ -114,6 +114,9 @@ export function Gallery({ artworks = [] }: { artworks?: Entry[] }) {
                     image={image}
                     sizes="(max-width: 760px) 46vw, (max-width: 1100px) 30vw, 360px"
                   />
+                  {image.caption ? (
+                    <span className="studio-caption">{image.caption}</span>
+                  ) : null}
                 </a>
               ) : null;
             })}
@@ -151,6 +154,9 @@ export function Gallery({ artworks = [] }: { artworks?: Entry[] }) {
                     image={image}
                     sizes="(max-width: 760px) 46vw, (max-width: 1100px) 30vw, 360px"
                   />
+                  {image.caption ? (
+                    <span className="studio-caption">{image.caption}</span>
+                  ) : null}
                 </a>
               ) : null;
             })}
@@ -174,12 +180,17 @@ export function Gallery({ artworks = [] }: { artworks?: Entry[] }) {
           Close
         </button>
         {open ? (
-          <ArtworkImage
-            image={open}
-            presentation="viewer"
-            priority
-            sizes="(max-width: 760px) 92vw, 80vw"
-          />
+          <>
+            <ArtworkImage
+              image={open}
+              presentation="viewer"
+              priority
+              sizes="(max-width: 760px) 92vw, 80vw"
+            />
+            {open.caption ? (
+              <p className="studio-caption">{open.caption}</p>
+            ) : null}
+          </>
         ) : null}
       </dialog>
     </>

@@ -17,18 +17,23 @@ export async function generateMetadata({
   const description =
     image?.alt ||
     "A detail from an acrylic painting or a drawing by Jessica Mary Monk.";
+  const title =
+    entry.body.fields.seo_title ||
+    (image?.caption ?? "").trim() ||
+    "Studio detail";
+  const share = image
+    ? {
+        url: local?.src || `/media/${image.id}`,
+        alt: image.alt,
+        width: local?.width || image.width,
+        height: local?.height || image.height,
+      }
+    : undefined;
   return pageMetadata(
-    entry.body.fields.seo_title || "Studio detail",
+    title,
     entry.body.fields.seo_description || description,
     `/paintings-illustrations/${slug}`,
-    local
-      ? {
-          url: local.src,
-          alt: description,
-          width: local.width,
-          height: local.height,
-        }
-      : undefined,
+    share,
   );
 }
 export default async function Page({

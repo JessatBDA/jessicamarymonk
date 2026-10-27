@@ -28,23 +28,22 @@ export function HomeView({
   const f = entry.body.fields;
   const photo = (role: string) =>
     entry.body.images.find((image) => image.role === role);
-  const selected = (category: string) =>
-    artworks.find(
-      (artwork) =>
-        artwork.body.featured && artwork.body.fields.category === category,
-    );
-  const painting = selected("Paintings"),
-    illustration = artworks.find(
-      (artwork) =>
-        artwork.body.featured &&
-        [
-          "Illustrations",
-          "Drawings",
-          "Portraits",
-          "Book illustration",
-          "Theatre artwork",
-        ].includes(artwork.body.fields.category),
-    );
+  const seascape = artworks.find((artwork) => artwork.slug === "seascape");
+  const seascapeImage =
+    photo("seascape") || seascape?.body.images[0] || photo("painting");
+  const illustration = artworks.find(
+    (artwork) =>
+      artwork.body.featured &&
+      [
+        "Illustrations",
+        "Drawings",
+        "Portraits",
+        "Book illustration",
+        "Theatre artwork",
+      ].includes(artwork.body.fields.category),
+  );
+  const illustrationImage =
+    photo("illustration") || illustration?.body.images[0];
   return (
     <>
       <section className="home-hero wrap">
@@ -120,37 +119,40 @@ export function HomeView({
           </Link>
         </div>
         <div className="art-grid">
-          {[
-            {
-              image: photo("painting") || painting?.body.images[0],
-              href: painting
-                ? `/paintings-illustrations/${painting.slug}`
-                : "/paintings-illustrations",
-              label: "Selected painting",
-              shape: "landscape" as const,
-            },
-            {
-              image: photo("illustration") || illustration?.body.images[0],
-              href: illustration
-                ? `/paintings-illustrations/${illustration.slug}`
-                : "/paintings-illustrations",
-              label: "Selected illustration",
-              shape: "portrait" as const,
-            },
-          ].map((item) => (
-            <figure key={item.label}>
-              {item.image ? (
-                <Link href={item.href}>
-                  <ArtworkImage
-                    image={item.image}
-                    sizes="(max-width: 760px) 46vw, 30vw"
-                  />
-                </Link>
-              ) : (
-                <ContentPhoto label={item.label} shape={item.shape} />
-              )}
+          {seascapeImage ? (
+            <figure>
+              <Link
+                href={
+                  seascape
+                    ? `/paintings-illustrations/${seascape.slug}`
+                    : "/paintings-illustrations"
+                }
+              >
+                <ArtworkImage
+                  image={seascapeImage}
+                  sizes="(max-width: 760px) 92vw, 60vw"
+                />
+              </Link>
             </figure>
-          ))}
+          ) : null}
+          <figure>
+            {illustrationImage ? (
+              <Link
+                href={
+                  illustration
+                    ? `/paintings-illustrations/${illustration.slug}`
+                    : "/paintings-illustrations"
+                }
+              >
+                <ArtworkImage
+                  image={illustrationImage}
+                  sizes="(max-width: 760px) 46vw, 30vw"
+                />
+              </Link>
+            ) : (
+              <ContentPhoto label="Selected illustration" shape="portrait" />
+            )}
+          </figure>
         </div>
       </section>
       <section className="practice">
@@ -177,23 +179,9 @@ export function HomeView({
           <div>
             <p className="eyebrow">{f.practice_label}</p>
             <h2>
-              <Lines
-                text={knownCopy(
-                  f.practice_heading,
-                  ["A practice that\nconnects with people."],
-                  homePracticeHeading,
-                )}
-              />
+              <Lines text={homePracticeHeading(f.practice_heading)} />
             </h2>
-            <RichText
-              text={knownCopy(
-                f.practice_text,
-                [
-                  "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.",
-                ],
-                homePracticeText,
-              )}
-            />
+            <RichText text={homePracticeText(f.practice_text)} />
             <Link href="/about" className="text-link">
               About Jessica ↗
             </Link>

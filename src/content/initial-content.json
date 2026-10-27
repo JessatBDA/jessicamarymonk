@@ -22,8 +22,8 @@
         "painting_caption": "Paintings",
         "illustration_caption": "Illustrations",
         "practice_label": "Meet the artist",
-        "practice_heading": "Public artist,\npainter and illustrator.",
-        "practice_text": "Public art with The Worcester Plinth, acrylic paintings, and drawings in charcoal, chalk and pastel. The studio pictures are details of the work, shown without titles or years.",
+        "practice_heading": "An artist at heart.",
+        "practice_text": "Jessica Mary Monk is a project manager and web designer by trade. Her love of art began painting birds with her mum, and in her twenties she returned to realism, portraiture and hands. Hands and community still shape the work. A move to Wales has started a new interest in seascapes, in acrylic and oil on canvas.",
         "invitation_label": "Commissions & collaborations",
         "invitation_heading": "Enquiries are welcome.",
         "invitation_text": "For public art, community projects, paintings and illustration."
@@ -43,11 +43,11 @@
         "heading": "About Jessica.",
         "name": "Jessica Mary Monk",
         "subtitle": "Public Artist | Painter | Illustrator",
-        "intro": "A British artist working across public art, painting and illustration, with community at the heart of her pieces.",
-        "background": "Her public work includes [The Hands of Worcester](/public-art/the-hands-of-worcester), a community-led installation made with The Worcester Plinth.",
+        "intro": "Jessica Mary Monk is a project manager and web designer by trade, and an artist at heart. Her love of art began as a child, painting birds with her mum, and she went on to study art at school. In her twenties she returned to it in earnest, exploring realism, portraiture and above all hands, the subject that inspired [The Hands of Worcester](/public-art/the-hands-of-worcester).",
+        "background": "Hands and community continue to shape her work. Having recently moved to Wales, Jessica is turning to seascapes, which she has begun exploring in acrylic and oil on canvas, and she is curious to see how her interest in community will find its way into them.",
         "notice": "",
-        "practice": "Jessica paints in acrylic and draws in charcoal, chalk and pastel. The pictures in the studio gallery are details of the work. They are shown without titles or years.",
-        "community": "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The casts were painted, sealed in resin and mounted on the plinth. The project was supported using public funding by the National Lottery through Arts Council England, with thanks to The Elmley Foundation.",
+        "practice": "Jessica paints in acrylic and oil on canvas, and draws in charcoal, chalk and pastel. Her work explores realism, portraiture and hands, and she has begun painting seascapes.",
+        "community": "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The project was supported using public funding by the National Lottery through Arts Council England. With special thanks to The Elmley Foundation.",
         "commissions": "Enquiries are welcome for public art, community projects, paintings and illustration.",
         "seo_description": "A British artist working across public art, painting and illustration, with community at the heart of her pieces."
       }
@@ -82,19 +82,19 @@
         "heading": "The Hands\nof Worcester.",
         "location": "The Worcester Plinth, Worcester",
         "status": "On show for 9 months",
-        "intro": "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth. Over 200 people have taken part, and more are getting involved all the time.",
+        "intro": "A community-led public art installation by Jessica Mary Monk, made in conjunction with The Worcester Plinth.",
         "summary_heading": "The story of\nthe hands.",
         "summary": "Workshops across Worcester earlier this year collected plaster casts of people’s hands. The casts were painted, sealed in resin and mounted, and sit atop The Worcester Plinth, a plinth that moves from location to location within Worcester, for 9 months.",
         "notice": "",
         "concept_heading": "From the exhibition panel",
         "concept": "The human hand is unique to every individual on this earth. From unique fingerprints used to identify us, to hands who hold each other, the human experience is informed by touch. Hands create, they comfort, they tell a story. As a human race we have always had a fascination with hands, from cave paintings dating 40,000 years ago of hand prints, to hands in art; hands gesture and contain our stories, our histories and our emotions. As children are held by their mothers; as we are held by each other.",
-        "artist_statement": "The Hands of Worcester is a community led project, I wanted to get out into the community and take a historical cast of the communities hands at that time. Now it is displayed before you, I hope you can see the unique and magical quality as I did when I made each and every cast. A thank you to the project team as a whole and especially to my husband, Guy, who helped and supported the whole process.",
+        "artist_statement": "The Hands of Worcester is a community-led project. I wanted to get out into the community and take a historical cast of the community’s hands at that time. Now it is displayed before you, and I hope you can see the unique and magical quality that I saw when I made each and every cast. A thank you to the project team as a whole and especially to my husband, Guy, who helped and supported the whole process.",
         "community_heading": "Made with the community",
         "community": "The youngest participant was 5 months old and the oldest was 90. Thank you to every participant.",
         "making_heading": "From hand to cast",
         "making": "Plaster casts were taken in workshops across Worcester, then painted, sealed in resin and mounted on the plinth. Jessica also made charcoal and acrylic studies of hands alongside the installation. Details from the studio are on the [paintings and illustrations](/paintings-illustrations) page.",
         "exhibition": "The hands sit on The Worcester Plinth for 9 months. The plinth moves from location to location within Worcester.",
-        "funding": "Supported using public funding by the National Lottery through Arts Council England. With thanks to funders and supporters, including The Elmley Foundation.",
+        "funding": "Supported using public funding by the National Lottery through Arts Council England. With special thanks to The Elmley Foundation.",
         "seo_title": "The Hands of Worcester",
         "seo_description": "Community-led public art by Jessica Mary Monk with The Worcester Plinth, on show for 9 months."
       }
@@ -225,7 +225,9 @@
           "alt": "Detail of a charcoal drawing: a hand gripping a pale sphere.",
           "caption": "",
           "role": "hero",
-          "file": "art-05.jpg"
+          "file": "art-05.jpg",
+          "width": 1800,
+          "height": 1350
         }
       ],
       "fields": {
@@ -253,7 +255,9 @@
           "alt": "Detail of a charcoal drawing: two hands cradling a pale sphere.",
           "caption": "",
           "role": "hero",
-          "file": "art-06.jpg"
+          "file": "art-06.jpg",
+          "width": 1800,
+          "height": 1350
         }
       ],
       "fields": {
@@ -411,15 +415,15 @@
   {
     "kind": "artwork",
     "slug": "art-12",
-    "title": "art-12",
+    "title": "Pudding",
     "sort_order": 11,
     "body": {
       "featured": false,
       "images": [
         {
           "id": "a81dc777-337c-4407-9214-117925f02a5d",
-          "alt": "Detail of a charcoal and white chalk drawing of a spaniel resting its chin, on black paper.",
-          "caption": "",
+          "alt": "A white chalk and charcoal drawing of a spaniel resting its chin, on black paper.",
+          "caption": "Pudding",
           "role": "hero",
           "file": "art-12.jpg"
         }
@@ -432,7 +436,39 @@
         "medium": "",
         "dimensions": "",
         "availability": "",
-        "commission": ""
+        "commission": "",
+        "seo_title": "Pudding",
+        "seo_description": "A white chalk and charcoal drawing of a spaniel resting its chin, on black paper."
+      }
+    }
+  },
+  {
+    "kind": "artwork",
+    "slug": "seascape",
+    "title": "Seascape",
+    "sort_order": 12,
+    "body": {
+      "featured": false,
+      "images": [
+        {
+          "id": "c4e8a1b2-6d30-4f7a-9b15-2e7a0c9d4f61",
+          "alt": "A seascape with a stormy golden sky, breaking waves and dark rocks on a beach.",
+          "caption": "Seascape",
+          "role": "hero",
+          "file": "seascape.jpg"
+        }
+      ],
+      "fields": {
+        "category": "Paintings",
+        "series": "",
+        "description": "",
+        "year": "",
+        "medium": "",
+        "dimensions": "",
+        "availability": "",
+        "commission": "",
+        "seo_title": "Seascape",
+        "seo_description": "A seascape with a stormy golden sky, breaking waves and dark rocks on a beach."
       }
     }
   }

@@ -11,17 +11,26 @@ export function ArtworkView({ entry }: { entry: Entry }) {
   const rest = images.filter((image) => image !== primary);
   const description = entry.body.fields.description?.trim();
   const commission = entry.body.fields.commission?.trim();
+  const caption = (primary?.caption ?? "").trim();
+  const detail =
+    !caption &&
+    (primary?.alt ?? "").trim().toLowerCase().startsWith("detail");
   return (
     <div className="wrap artwork-detail">
       <section className="page-intro">
         <Link href="/paintings-illustrations" className="back-link">
           ← Paintings & illustrations
         </Link>
-        <h1>A detail from the studio.</h1>
-        <p>
-          This photograph shows a detail of the piece, not the whole work.
-          Titles and years are not shown.
-        </p>
+        {caption ? <h1>{caption}</h1> : null}
+        {detail ? (
+          <>
+            <h1>A detail from the studio.</h1>
+            <p>
+              This photograph shows a detail of the piece, not the whole work.
+              Titles and years are not shown.
+            </p>
+          </>
+        ) : null}
       </section>
       {primary ? (
         <ArtworkImage

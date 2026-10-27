@@ -11,6 +11,9 @@ const retiredAboutIntro =
 const retiredAboutBackground =
   "Her work includes The Hands of Worcester, a community art installation associated with The Worcester Plinth.";
 
+const polishAboutBackground =
+  "Her public work includes [The Hands of Worcester](/public-art/the-hands-of-worcester), a community-led installation made with The Worcester Plinth.";
+
 const retiredAboutNotice =
   "A full artist biography, background and account of Jessica’s practice will be added here in her own words.";
 
@@ -25,14 +28,17 @@ const aboutNoticeTodo =
 
 const aboutSectionTodo = "TODO: Artist-approved text to be supplied.";
 
+export const aboutIntroCopy =
+  "Jessica Mary Monk is a project manager and web designer by trade, and an artist at heart. Her love of art began as a child, painting birds with her mum, and she went on to study art at school. In her twenties she returned to it in earnest, exploring realism, portraiture and above all hands, the subject that inspired [The Hands of Worcester](/public-art/the-hands-of-worcester).";
+
 export const aboutBackgroundCopy =
-  "Her public work includes [The Hands of Worcester](/public-art/the-hands-of-worcester), a community-led installation made with The Worcester Plinth.";
+  "Hands and community continue to shape her work. Having recently moved to Wales, Jessica is turning to seascapes, which she has begun exploring in acrylic and oil on canvas, and she is curious to see how her interest in community will find its way into them.";
 
 export const aboutPracticeCopy =
-  "Jessica paints in acrylic and draws in charcoal, chalk and pastel. The pictures in the studio gallery are details of the work. They are shown without titles or years.";
+  "Jessica paints in acrylic and oil on canvas, and draws in charcoal, chalk and pastel. Her work explores realism, portraiture and hands, and she has begun painting seascapes.";
 
 export const aboutCommunityCopy =
-  "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The casts were painted, sealed in resin and mounted on the plinth. The project was supported using public funding by the National Lottery through Arts Council England, with thanks to The Elmley Foundation.";
+  "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The project was supported using public funding by the National Lottery through Arts Council England. With special thanks to The Elmley Foundation.";
 
 export const aboutCommissionsCopy =
   "Enquiries are welcome for public art, community projects, paintings and illustration.";
@@ -43,6 +49,12 @@ const aboutSections = {
   commissions: aboutCommissionsCopy,
 } as const;
 
+const polishPractice =
+  "Jessica paints in acrylic and draws in charcoal, chalk and pastel. The pictures in the studio gallery are details of the work. They are shown without titles or years.";
+
+const polishCommunity =
+  "The Hands of Worcester was made with people in Worcester and with The Worcester Plinth. Workshops collected plaster casts of hands. The casts were painted, sealed in resin and mounted on the plinth. The project was supported using public funding by the National Lottery through Arts Council England, with thanks to The Elmley Foundation.";
+
 export const contactDetailsCopy =
   "Write about public art, community projects, paintings and illustration. You can use the form, or send an email.";
 
@@ -51,10 +63,20 @@ const retiredContactDetails = [
   "Jessica welcomes enquiries about public art, community projects, paintings and illustration. Messages cannot be sent from this page yet.",
 ];
 
-export const homePracticeHeading = "Public artist,\npainter and illustrator.";
+export const homePracticeHeadingCopy = "An artist at heart.";
 
-export const homePracticeText =
-  "Public art with The Worcester Plinth, acrylic paintings, and drawings in charcoal, chalk and pastel. The studio pictures are details of the work, shown without titles or years.";
+export const homePracticeTextCopy =
+  "Jessica Mary Monk is a project manager and web designer by trade. Her love of art began painting birds with her mum, and in her twenties she returned to realism, portraiture and hands. Hands and community still shape the work. A move to Wales has started a new interest in seascapes, in acrylic and oil on canvas.";
+
+const retiredPracticeHeadings = [
+  "A practice that\nconnects with people.",
+  "Public artist,\npainter and illustrator.",
+];
+
+const retiredPracticeTexts = [
+  "Public art, paintings and illustrations by Jessica Mary Monk. Explore the work, discover each project, or get in touch about a creative collaboration.",
+  "Public art with The Worcester Plinth, acrylic paintings, and drawings in charcoal, chalk and pastel. The studio pictures are details of the work, shown without titles or years.",
+];
 
 export const homeInvitationHeading = "Enquiries are welcome.";
 
@@ -75,22 +97,49 @@ export function homeIntro(value: string | undefined) {
   return value ?? artistTagline;
 }
 
+export function homePracticeHeading(value: string | undefined) {
+  const text = trimmed(value);
+  if (!text || retiredPracticeHeadings.includes(text)) return homePracticeHeadingCopy;
+  return value ?? homePracticeHeadingCopy;
+}
+
+export function homePracticeText(value: string | undefined) {
+  const text = trimmed(value);
+  if (!text || retiredPracticeTexts.includes(text)) return homePracticeTextCopy;
+  return value ?? homePracticeTextCopy;
+}
+
 export function aboutIntro(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredAboutIntro) return artistTagline;
-  return value ?? artistTagline;
+  if (!text || text === retiredAboutIntro || text === artistTagline)
+    return aboutIntroCopy;
+  return value ?? aboutIntroCopy;
 }
 
 export function aboutBackground(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredAboutBackground || text === aboutHandsLink)
+  if (
+    !text ||
+    text === retiredAboutBackground ||
+    text === polishAboutBackground ||
+    text === aboutHandsLink ||
+    text === aboutNoticeTodo ||
+    text === aboutSectionTodo ||
+    text === retiredSupplied
+  )
     return aboutBackgroundCopy;
   return text;
 }
 
 export function aboutNotice(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredAboutNotice || text === aboutNoticeTodo)
+  if (
+    !text ||
+    text === retiredAboutNotice ||
+    text === aboutNoticeTodo ||
+    text === aboutSectionTodo ||
+    text === retiredSupplied
+  )
     return "";
   return text;
 }
@@ -100,8 +149,14 @@ export function aboutSection(
   value: string | undefined,
 ) {
   const text = trimmed(value);
-  if (!text || text === retiredSupplied || text === aboutSectionTodo)
-    return aboutSections[key];
+  const retired =
+    !text ||
+    text === retiredSupplied ||
+    text === aboutSectionTodo ||
+    text === aboutNoticeTodo ||
+    (key === "practice" && text === polishPractice) ||
+    (key === "community" && text === polishCommunity);
+  if (retired) return aboutSections[key];
   return text;
 }
 

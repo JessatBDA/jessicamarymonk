@@ -496,6 +496,14 @@ figcaption span {
 .studio-shot:hover {
   opacity: 0.92;
 }
+.studio-caption {
+  display: block;
+  padding-top: 12px;
+  font-size: 14px;
+}
+.practice-inner .photo-frame img {
+  object-fit: cover;
+}
 .artwork-grid-image {
   width: 100%;
   height: auto;

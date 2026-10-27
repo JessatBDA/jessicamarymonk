@@ -422,7 +422,7 @@ export function ContentEditor({
                       }
                     >
                       {(entry.kind === "page" && entry.slug === "home"
-                        ? ["hero", "portrait", "painting", "illustration"]
+                        ? ["hero", "portrait", "painting", "illustration", "seascape"]
                         : entry.kind === "page"
                           ? ["portrait", "gallery"]
                           : entry.kind === "project"
