@@ -1,11 +1,17 @@
 import Link from "next/link";
-import { publicContactEmail } from "@/lib/contact-public";
+import portrait from "../../../images/jess-portrait.jpg";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Privacy information",
-  "211 people took part in The Hands of Worcester. This notice explains how names and other visitor information are handled. Only people who agreed to be shown are named.",
+  "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
   "/privacy",
+  {
+    url: portrait.src,
+    alt: "Jessica Mary Monk smiling, holding her dog on a beach at sunset",
+    width: portrait.width,
+    height: portrait.height,
+  },
 );
 
 export default function Page() {
@@ -15,16 +21,16 @@ export default function Page() {
       <h1>Privacy information.</h1>
       <p>
         This notice covers the public pages of this website, including Share
-        your hands, Add your name, and the contact form. The site does not
-        take orders or payments.
+        your hands and Add your name for The Hands of Worcester. Enquiries can
+        be sent through the contact form or to info@jessicamarymonk.com. The
+        site does not take orders or payments.
       </p>
       <h2>Who is responsible</h2>
       <p>
         Jessica Mary Monk is the person responsible for the information
-        collected on this website. Email{" "}
-        <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>, or
-        use the <Link href="/contact">contact page</Link>. A postal address
-        has not been added to this page yet.
+        collected for The Hands of Worcester. Use the contact details published
+        on the <Link href="/contact">contact page</Link>. A postal address and
+        a dedicated privacy email have not been added to this page yet.
       </p>
       <h2>Share your hands</h2>
       <p>
@@ -38,9 +44,9 @@ export default function Page() {
       <p>
         A required box asks you to confirm that the response may be shared on
         this website or in project reporting, that it is your own work, and,
-        if you are under 16, that a parent or teacher has agreed. A separate
+        if you are under 18, that a parent or teacher has agreed. A separate
         box, which is not ticked for you, asks for permission to show your
-        name. If you are under 16, a parent or teacher gives that permission
+        name. If you are under 18, a parent or teacher gives that permission
         for you. The time you gave permission is stored with the response.
       </p>
       <p>
@@ -51,21 +57,11 @@ export default function Page() {
       </p>
       <h2>Add your name</h2>
       <p>
-        211 people took part. The thank-you list is not a list of all 211
-        people. It shows the names of people who agreed to be shown. The name
-        form stores the name you enter, an optional town, school or group, and
+        The thank-you list shows the names of people who agreed to be shown. The
+        name form stores the name you enter, an optional town, school or group, and
         whether you took part in a workshop. The same unticked permission box
         applies. Sending the form means it may be stored so it can be reviewed.
         A name is shown only when permission was given and Jessica approves it.
-      </p>
-      <h2>Contact form</h2>
-      <p>
-        If you send an enquiry, the site stores your name, email address, an
-        optional topic, your message, and the time you agreed that Jessica may
-        use those details to reply. A one-way hash of the connection is stored
-        only to limit repeated sending. The message is not published. You can
-        ask for it to be deleted by emailing{" "}
-        <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>.
       </p>
       <h2>Why this information is kept</h2>
       <p>

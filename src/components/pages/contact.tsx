@@ -1,20 +1,13 @@
+import Link from "next/link";
 import { EnquiryForm } from "@/components/contact/enquiry-form";
 import { Brushstroke } from "@/components/visuals";
 import { Lines, RichText } from "@/components/content-render";
+import { contactDetails } from "@/lib/artist-copy";
 import { publicContactEmail } from "@/lib/contact-public";
 import type { Entry } from "@/lib/content-model";
 
-const retiredDetails =
-  "The enquiry form is being prepared. Contact details will appear here when supplied.";
-
-const readyDetails =
-  "Write about public art, community projects, paintings and illustration. You can use the form, or send an email.";
-
 export function ContactView({ entry }: { entry: Entry }) {
   const f = entry.body.fields;
-  const details = !f.details?.trim() || f.details.trim() === retiredDetails
-    ? readyDetails
-    : f.details;
   return (
     <div className="wrap">
       <section className="page-intro">
@@ -28,7 +21,7 @@ export function ContactView({ entry }: { entry: Entry }) {
       <div className="form-layout">
         <aside>
           <h2>Get in touch</h2>
-          <RichText text={details} />
+          <RichText text={contactDetails(f.details)} />
           <p>
             <a className="text-link" href={`mailto:${publicContactEmail}`}>
               {publicContactEmail}
@@ -36,9 +29,36 @@ export function ContactView({ entry }: { entry: Entry }) {
           </p>
           {f.phone ? (
             <p>
-              <a href={`tel:${f.phone.replace(/[^+\d]/g, "")}`}>{f.phone}</a>
+              <a
+                className="text-link"
+                href={`tel:${f.phone.replace(/[^+\d]/g, "")}`}
+              >
+                {f.phone}
+              </a>
             </p>
           ) : null}
+          <p>
+            <Link
+              className="text-link"
+              href="/public-art/the-hands-of-worcester"
+            >
+              The Hands of Worcester <span>↗</span>
+            </Link>
+          </p>
+          <p>
+            <Link className="text-link" href="/engagement/share-your-hands">
+              Share your hands <span>↗</span>
+            </Link>
+          </p>
+          <p>
+            <Link className="text-link" href="/paintings-illustrations">
+              Paintings & illustrations <span>↗</span>
+            </Link>
+          </p>
+          <p className="form-note">
+            Please avoid including sensitive personal information. See the{" "}
+            <Link href="/privacy">privacy information</Link>.
+          </p>
         </aside>
         <EnquiryForm />
       </div>

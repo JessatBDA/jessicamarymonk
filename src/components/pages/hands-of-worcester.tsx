@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HandsGallery } from "@/components/hands-gallery";
-import { Lines } from "@/components/content-render";
+import { Lines, RichText } from "@/components/content-render";
 import { Brushstroke } from "@/components/visuals";
 import {
   artistStatement,
@@ -104,7 +104,7 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
         <p className="eyebrow">04 / {f.making_heading}</p>
         <div>
           <h2>{f.making_heading}</h2>
-          <p>{f.making}</p>
+          <RichText text={f.making} />
         </div>
       </section>
       <section className="selected" aria-labelledby="hands-gallery-heading">
@@ -144,9 +144,8 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
         <p className="eyebrow">With thanks</p>
         <h2>A thank you</h2>
         <p>
-          211 people took part. The names below are those who agreed to be
-          shown. Thank you to every person named here, and to everyone who
-          joined in.
+          The names below are those who agreed to be shown. Thank you to every
+          person named here, and to everyone who joined in.
         </p>
         <ul className="names-list">
           {names.map((name) => (
@@ -168,8 +167,8 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
           <h3>Share your hands</h3>
           <p>
             Tell Jessica what hands mean to you, or send a drawing, a poem or
-            a piece of writing. It is not put on the website until she has
-            checked it.
+            a piece of writing. Send your feedback, artwork and questions in
+            to the artist.
           </p>
           <p className="hands-actions">
             <Link className="button" href="/engagement/share-your-hands">
@@ -177,14 +176,6 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
             </Link>
             <Link className="text-link" href="/contact">
               Get in touch ↗
-            </Link>
-          </p>
-          <p>
-            <Link
-              className="text-link"
-              href="/engagement/the-hands-of-worcester"
-            >
-              Visitor questionnaire preview ↗
             </Link>
           </p>
         </div>

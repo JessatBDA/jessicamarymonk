@@ -1,12 +1,10 @@
 # Contact form
 
-The public contact page saves an enquiry and, when email is configured, notifies Jessica. Apply the database update yourself before relying on it. Do not run it against any project other than Jessica Mary Monk (`wymhdylnnobdzvyrhibq`).
+The public contact page saves an enquiry and, when email is configured, notifies Jessica. The database update has already been applied to the Jessica Mary Monk project (`wymhdylnnobdzvyrhibq`). Do not run it again, and do not run it against any other project.
 
-## Apply the database update
+## The database update
 
-1. Open `supabase/migrations/20261026200000_contact_enquiries.sql`.
-2. Run it in the Supabase SQL editor for that project, or with the Supabase CLI already linked to that project.
-3. Reload `/admin/enquiries` after signing in.
+Already applied to the Jessica Mary Monk database. The file is `supabase/migrations/20261026200000_contact_enquiries.sql`. Leave that file unchanged.
 
 The migration creates `public.contact_enquiries`. Visitors can insert a pending row only. They cannot read the table. An administrator can read, update and delete. A trigger forces new rows to stay pending, records the consent time, and limits repeats: 6 an hour for the same visitor hash, and 40 in 10 minutes across everyone. The website also stops one address after 5 submissions in 10 minutes. The form asks people to wait a few seconds before sending, and ignores a hidden field that scripts sometimes fill in.
 

@@ -162,10 +162,10 @@ export function fieldsFor(kind: EntryKind, slug: string): Field[] {
       ["subtitle", "Subtitle"],
       ["intro", "Lead paragraph", true],
       ["background", "Background", true],
-      ["notice", "Optional preparation note (TODO)"],
-      ["practice", "Artistic practice (TODO)", true],
-      ["community", "Public art and community engagement (TODO)", true],
-      ["commissions", "Commissions and collaborations (TODO)", true],
+      ["notice", "Optional note"],
+      ["practice", "Artistic practice", true],
+      ["community", "Public art and community engagement", true],
+      ["commissions", "Commissions and collaborations", true],
     ]
       .map<Field>(([key, label, rich]) => ({
         key: String(key),

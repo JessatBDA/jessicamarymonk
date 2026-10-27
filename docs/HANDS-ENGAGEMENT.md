@@ -1,6 +1,6 @@
 # The Hands of Worcester — engagement
 
-This is the manual follow-up for the Share your hands forms, the participant list, and the photographs on the project page. The migration in this repository has **not** been applied. Do not run `scripts/seed-cms.mjs` against production. It only inserts missing entries and will not replace the Hands of Worcester text that is already published.
+This is the manual follow-up for the Share your hands forms, the participant list, and the photographs on the project page. The two migrations in this repository have **not** been applied. Do not run `scripts/seed-cms.mjs` against production. It only inserts missing entries and will not replace the Hands of Worcester text that is already published.
 
 No new environment variables are required. The existing `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are enough. The app does not use a service-role key. The URL must stay `https://wymhdylnnobdzvyrhibq.supabase.co`.
 
@@ -10,8 +10,9 @@ Use only the Jessica Mary Monk project `jessicamarymonk` (`wymhdylnnobdzvyrhibq`
 
 1. Open `supabase/migrations/20261026160000_hands_engagement.sql`.
 2. Run it in the Supabase SQL editor for that project, or with the Supabase CLI already linked to that project: `supabase db push`.
-3. Do not run it against any other database.
-4. Reload `/admin/engagement` after signing in. Until this step, the public forms show a short message that saving is not switched on yet. The thank-you list still shows the names transcribed from the exhibition panel: people who agreed to be shown, not everyone who took part.
+3. Then open `supabase/migrations/20261026190000_hands_age_ranges.sql` and run that in the same project. It widens the age-range check on `hands_responses` and `hands_works`. New form values such as `under-18` and `90-plus` are rejected until this second file has been applied. Existing rows stay valid: the new check still allows `''`, `prefer-not`, `under-16`, `16-17` and `18-over`.
+4. Do not run either file against any other database.
+5. Reload `/admin/engagement` after signing in. Until the first file is applied, the public forms show a short message that saving is not switched on yet. The thank-you list still shows the names transcribed from the exhibition panel: people who agreed to be shown, not everyone who took part.
 
 The migration creates:
 
@@ -40,11 +41,17 @@ Sign in and open **Hands submissions**.
 
 Approving a name updates the public list within about a minute, without a new deploy. If Supabase is unavailable, the page keeps showing the transcribed panel list.
 
+## Age ranges
+
+The questionnaire and the picture or writing form ask for an age range. The choices, in order, are Prefer not to say (stored as an empty value), Under 18 (`under-18`), 18 to 24 (`18-24`), 25 to 34 (`25-34`), 35 to 44 (`35-44`), 45 to 54 (`45-54`), 55 to 64 (`55-64`), 65 to 74 (`65-74`), 75 to 84 (`75-84`), 85 to 89 (`85-89`), and 90 or over (`90-plus`). The name form does not ask for an age.
+
+A person under 18 still needs a parent, guardian or teacher to agree before their name is shown. The admin review screen labels the stored age, including older values (`under-16`, `16-17`, `18-over`, `prefer-not`), and warns when the age is under 18. Approving a name is still a decision for Jessica: the database does not block a name because of the age band.
+
 ## Proofread the participant names
 
-211 people took part. That figure is everyone who joined the project. The names on the website are only those who agreed to be shown, so the list is not all 211 people and its length is not the participant total.
+The public project page says, once, that over 200 people have taken part and that more are getting involved. The names on the website are only those who agreed to be shown, so the length of the list is not the participant total.
 
-The names in `src/content/hands-participants.json` were read from the exhibition panel. The file keeps the panel’s order, left column then right column. The website shows them A–Z. There are not 211 separate lines: the panel lists some people together on one line, and some lines are groups. Do not add names to make the file reach 211.
+The names in `src/content/hands-participants.json` were read from the exhibition panel. The file keeps the panel’s order, left column then right column. The website shows them A–Z. The panel lists some people together on one line, and some lines are groups. Do not add names to pad the file into a headcount.
 
 Please proofread the file before treating every spelling as final. Lines that were hard to read, and were left as read rather than “corrected”, include:
 
