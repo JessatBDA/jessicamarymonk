@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { publicContactEmail } from "@/lib/contact-public";
 import { Header } from "./header";
 const footerLinks = [
   ["/public-art", "Public art"],
@@ -28,6 +29,7 @@ export function PublicFrame({ children }: { children: React.ReactNode }) {
           <p>Public artist, painter and illustrator.</p>
         </div>
         <nav className="footer-links" aria-label="Footer">
+          <a href={`mailto:${publicContactEmail}`}>{publicContactEmail}</a>
           {footerLinks.map(([href, label]) => (
             <Link key={href} href={href}>
               {label}

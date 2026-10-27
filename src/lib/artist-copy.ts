@@ -44,10 +44,12 @@ const aboutSections = {
 } as const;
 
 export const contactDetailsCopy =
-  "Jessica welcomes enquiries about public art, community projects, paintings and illustration. Messages cannot be sent from this page yet.";
+  "Write about public art, community projects, paintings and illustration. You can use the form, or send an email.";
 
-const retiredContactDetails =
-  "The enquiry form is being prepared. Contact details will appear here when supplied.";
+const retiredContactDetails = [
+  "The enquiry form is being prepared. Contact details will appear here when supplied.",
+  "Jessica welcomes enquiries about public art, community projects, paintings and illustration. Messages cannot be sent from this page yet.",
+];
 
 export const homePracticeHeading = "Public artist,\npainter and illustrator.";
 
@@ -105,7 +107,7 @@ export function aboutSection(
 
 export function contactDetails(value: string | undefined) {
   const text = trimmed(value);
-  if (!text || text === retiredContactDetails) return contactDetailsCopy;
+  if (!text || retiredContactDetails.includes(text)) return contactDetailsCopy;
   return text;
 }
 

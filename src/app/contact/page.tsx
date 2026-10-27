@@ -10,7 +10,7 @@ export async function generateMetadata() {
   return pageMetadata(
     f.seo_title || "Contact",
     f.seo_description ||
-      "Enquiries about public art, community projects, paintings and illustration.",
+      "Write to Jessica Mary Monk at info@jessicamarymonk.com about public art, paintings and illustration.",
     "/contact",
     {
       url: portrait.src,

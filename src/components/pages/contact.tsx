@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { EnquiryForm } from "@/components/contact/enquiry-form";
 import { Brushstroke } from "@/components/visuals";
 import { Lines, RichText } from "@/components/content-render";
 import { contactDetails } from "@/lib/artist-copy";
+import { publicContactEmail } from "@/lib/contact-public";
 import type { Entry } from "@/lib/content-model";
+
 export function ContactView({ entry }: { entry: Entry }) {
   const f = entry.body.fields;
   return (
@@ -15,28 +18,30 @@ export function ContactView({ entry }: { entry: Entry }) {
         <p>{f.intro}</p>
         <Brushstroke />
       </section>
-      <section className="story-section">
-        <h2>Get in touch</h2>
-        <div>
+      <div className="form-layout">
+        <aside>
+          <h2>Get in touch</h2>
           <RichText text={contactDetails(f.details)} />
-          {f.email ? (
-            <p>
-              <a className="text-link" href={`mailto:${f.email}`}>
-                {f.email}
-              </a>
-            </p>
-          ) : (
-            <p>A contact email has not been added to this page yet.</p>
-          )}
+          <p>
+            <a className="text-link" href={`mailto:${publicContactEmail}`}>
+              {publicContactEmail}
+            </a>
+          </p>
           {f.phone ? (
             <p>
-              <a className="text-link" href={`tel:${f.phone.replace(/[^+\d]/g, "")}`}>
+              <a
+                className="text-link"
+                href={`tel:${f.phone.replace(/[^+\d]/g, "")}`}
+              >
                 {f.phone}
               </a>
             </p>
           ) : null}
           <p>
-            <Link className="text-link" href="/public-art/the-hands-of-worcester">
+            <Link
+              className="text-link"
+              href="/public-art/the-hands-of-worcester"
+            >
               The Hands of Worcester <span>↗</span>
             </Link>
           </p>
@@ -51,11 +56,12 @@ export function ContactView({ entry }: { entry: Entry }) {
             </Link>
           </p>
           <p className="form-note">
-            Please avoid including sensitive personal information if you write
-            later. See the <Link href="/privacy">privacy information</Link>.
+            Please avoid including sensitive personal information. See the{" "}
+            <Link href="/privacy">privacy information</Link>.
           </p>
-        </div>
-      </section>
+        </aside>
+        <EnquiryForm />
+      </div>
     </div>
   );
 }

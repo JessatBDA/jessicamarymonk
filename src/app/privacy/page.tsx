@@ -21,8 +21,9 @@ export default function Page() {
       <h1>Privacy information.</h1>
       <p>
         This notice covers the public pages of this website, including Share
-        your hands and Add your name for The Hands of Worcester. The contact
-        form is not open, and the site does not take orders or payments.
+        your hands and Add your name for The Hands of Worcester. Enquiries can
+        be sent through the contact form or to info@jessicamarymonk.com. The
+        site does not take orders or payments.
       </p>
       <h2>Who is responsible</h2>
       <p>
@@ -91,7 +92,9 @@ export default function Page() {
         <Link href="/engagement/the-hands-of-worcester">
           the visitor questionnaire preview
         </Link>{" "}
-        does not save anything. The contact form does not save messages.
+        does not save anything. Messages sent through the contact form are
+        saved privately so Jessica can reply. They are not shown on the
+        website.
       </p>
       <h2>Cookies</h2>
       <p>
