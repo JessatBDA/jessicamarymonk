@@ -40,8 +40,11 @@ export function ArtworkImage({
   presentation?: "grid" | "viewer";
 }) {
   const local = image.file ? studioImages[image.file] : undefined;
+  const width = local?.width || image.width;
+  const height = local?.height || image.height;
   const className =
     presentation === "viewer" ? "artwork-viewer" : "artwork-grid-image";
+  const aspectRatio = width && height ? `${width} / ${height}` : undefined;
   const style =
     presentation === "viewer"
       ? {
@@ -49,8 +52,9 @@ export function ArtworkImage({
           height: "auto" as const,
           maxWidth: "100%",
           maxHeight: "86vh",
+          aspectRatio,
         }
-      : { width: "100%", height: "auto" as const };
+      : { width: "100%", height: "auto" as const, aspectRatio };
   if (local) {
     return (
       <Image
@@ -67,8 +71,8 @@ export function ArtworkImage({
     <Image
       src={`/media/${image.id}`}
       alt={image.alt}
-      width={1600}
-      height={1200}
+      width={width && height ? width : 1600}
+      height={width && height ? height : 1200}
       unoptimized
       sizes={sizes}
       priority={priority}

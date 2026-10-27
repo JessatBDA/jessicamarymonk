@@ -225,7 +225,9 @@
           "alt": "Detail of a charcoal drawing: a hand gripping a pale sphere.",
           "caption": "",
           "role": "hero",
-          "file": "art-05.jpg"
+          "file": "art-05.jpg",
+          "width": 1800,
+          "height": 1350
         }
       ],
       "fields": {
@@ -253,7 +255,9 @@
           "alt": "Detail of a charcoal drawing: two hands cradling a pale sphere.",
           "caption": "",
           "role": "hero",
-          "file": "art-06.jpg"
+          "file": "art-06.jpg",
+          "width": 1800,
+          "height": 1350
         }
       ],
       "fields": {

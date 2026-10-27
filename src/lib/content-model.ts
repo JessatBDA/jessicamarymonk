@@ -19,6 +19,8 @@ export const imageSchema = z.object({
     .max(80)
     .regex(/^[a-z0-9.-]*$/)
     .optional(),
+  width: z.number().int().positive().max(20000).optional(),
+  height: z.number().int().positive().max(20000).optional(),
 });
 export const bodySchema = z.object({
   fields: z.record(z.string().max(80), z.string().max(50000)),
@@ -41,8 +43,6 @@ export type ContentBody = z.infer<typeof bodySchema>;
 export type ContentImage = z.infer<typeof imageSchema> & {
   /** Public path for a photograph shipped in the repository. CMS uploads omit this. */
   src?: string;
-  width?: number;
-  height?: number;
 };
 export type EntryKind = "page" | "project" | "artwork";
 export type Entry = {
