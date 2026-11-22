@@ -11,6 +11,7 @@ import art09 from "../../images/studio/art-09.jpg";
 import art10 from "../../images/studio/art-10.jpg";
 import art11 from "../../images/studio/art-11.jpg";
 import art12 from "../../images/studio/art-12.jpg";
+import aberystwythStormyOctober from "../../images/studio/aberystwyth-stormy-october.jpg";
 import seascape from "../../images/studio/seascape.jpg";
 
 /** Repo files shipped with the seed. Admin uploads use /media instead. */
@@ -27,5 +28,6 @@ export const studioImages: Record<string, StaticImageData> = {
   "art-10.jpg": art10,
   "art-11.jpg": art11,
   "art-12.jpg": art12,
+  "aberystwyth-stormy-october.jpg": aberystwythStormyOctober,
   "seascape.jpg": seascape,
 };
