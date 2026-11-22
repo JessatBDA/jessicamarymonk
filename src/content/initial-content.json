@@ -102,6 +102,38 @@
   },
   {
     "kind": "artwork",
+    "slug": "aberystwyth-stormy-october",
+    "title": "Aberystwyth on a stormy October day",
+    "sort_order": 0,
+    "body": {
+      "featured": true,
+      "images": [
+        {
+          "id": "43dcfe26-307f-4916-b257-b66e44f1fd4c",
+          "alt": "A stormy seascape at Aberystwyth: sunlight breaking through grey clouds onto rolling, white-crested waves and a wet, reflective shore.",
+          "caption": "Aberystwyth on a stormy October day",
+          "role": "hero",
+          "file": "aberystwyth-stormy-october.jpg",
+          "width": 2000,
+          "height": 1576
+        }
+      ],
+      "fields": {
+        "category": "Paintings",
+        "series": "",
+        "description": "Painted after moving to Wales: an October storm rolling in over the sea at Aberystwyth, with the sun breaking through onto the waves.",
+        "year": "2026",
+        "medium": "Acrylic on canvas",
+        "dimensions": "16 × 20 in",
+        "availability": "Coming soon to the shop",
+        "commission": "",
+        "seo_title": "Aberystwyth on a stormy October day",
+        "seo_description": "A stormy seascape at Aberystwyth: sunlight breaking through grey clouds onto rolling, white-crested waves and a wet, reflective shore."
+      }
+    }
+  },
+  {
+    "kind": "artwork",
     "slug": "art-01",
     "title": "art-01",
     "sort_order": 0,
