@@ -90,31 +90,37 @@ export function parseResponse(form: FormData) {
   });
 }
 
-const workSchema = z
+const feedbackSchema = z
   .object({
-    title: z.string().trim().min(1).max(160),
-    credit: z.string().max(120),
     writing: z.string().max(8000),
     display_name: z.string().max(80),
-    name_display_consent: z.boolean(),
-    age_range: z.enum(ageRanges),
-    is_school_or_group: z.boolean(),
-    group_name: z.string().max(120),
-    share_consent: z.literal(true),
+    share_consent: z.boolean(),
     has_image: z.boolean(),
   })
   .refine((value) => value.has_image || value.writing.trim().length > 0, {
-    message: "Add a picture, a poem, or some writing.",
+    message: "Please add some feedback, or attach a picture.",
+  })
+  .refine((value) => value.share_consent, {
+    message:
+      "Please tick the box to agree that your feedback or artwork may be shared on this website, and that any artwork is your own.",
   });
 
-export function parseWork(form: FormData, hasImage: boolean) {
-  const shared = sharedFields(form);
-  return workSchema.safeParse({
-    title: clean(form.get("title"), 160),
-    credit: clean(form.get("credit"), 120),
-    writing: multiline(form.get("writing"), 8000),
+/** A short title for hands_works, which requires one. */
+export function feedbackTitle(writing: string, hasImage: boolean) {
+  const text = writing.replace(/\s+/g, " ").trim();
+  if (text) {
+    if (text.length <= 60) return text;
+    return `${text.slice(0, 59).trimEnd()}…`;
+  }
+  return hasImage ? "Shared artwork" : "Visitor feedback";
+}
+
+export function parseFeedback(form: FormData, hasImage: boolean) {
+  return feedbackSchema.safeParse({
+    writing: multiline(form.get("feedback"), 8000),
+    display_name: clean(form.get("display_name"), 80),
+    share_consent: form.get("share_consent") === "yes",
     has_image: hasImage,
-    ...shared,
   });
 }
 

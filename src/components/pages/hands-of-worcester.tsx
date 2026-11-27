@@ -166,15 +166,14 @@ export async function HandsOfWorcester({ entry }: { entry: Entry }) {
         <div>
           <h2>Encounter the work.</h2>
           <p>{f.exhibition}</p>
-          <h3>Share your hands</h3>
+          <h3>Feedback</h3>
           <p>
-            Tell Jessica what hands mean to you, or send a drawing, a poem or
-            a piece of writing. Send your feedback, artwork and questions in
-            to the artist.
+            Have you seen the art? Tell Jessica what you thought, or share a
+            picture, a collage, a poem or some writing.
           </p>
           <p className="hands-actions">
             <Link className="button" href="/engagement/share-your-hands">
-              Share your hands ↗
+              Feedback ↗
             </Link>
             <Link className="text-link" href="/contact">
               Get in touch ↗

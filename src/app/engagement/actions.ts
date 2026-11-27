@@ -5,9 +5,10 @@ import {
   discardImage,
   insertRow,
   nameSavedMessage,
+  feedbackTitle,
+  parseFeedback,
   parseName,
   parseResponse,
-  parseWork,
   prepareImage,
   readHoneypot,
   savedMessage,
@@ -63,7 +64,7 @@ export async function submitWork(
   if (blocked) return blocked;
   const file = form.get("image");
   const hasImage = file instanceof File && file.size > 0;
-  const parsed = parseWork(form, hasImage);
+  const parsed = parseFeedback(form, hasImage);
   if (!parsed.success)
     return {
       ok: false,
@@ -82,17 +83,18 @@ export async function submitWork(
       error: error instanceof Error ? error.message : "Please try that picture again.",
     };
   }
+  const name = parsed.data.display_name;
   const saved = await insertRow("hands_works", {
     id,
-    title: parsed.data.title,
-    credit: parsed.data.credit,
+    title: feedbackTitle(parsed.data.writing, hasImage),
+    credit: name,
     writing: parsed.data.writing,
     image_path: imagePath,
-    display_name: parsed.data.display_name,
-    name_display_consent: parsed.data.name_display_consent,
-    age_range: parsed.data.age_range,
-    is_school_or_group: parsed.data.is_school_or_group,
-    group_name: parsed.data.group_name,
+    display_name: name,
+    name_display_consent: name.length > 0,
+    age_range: "",
+    is_school_or_group: false,
+    group_name: "",
     share_consent: true,
     status: "pending",
     name_display_status: "pending",

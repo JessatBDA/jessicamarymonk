@@ -1,6 +1,6 @@
 # The Hands of Worcester — engagement
 
-This is the manual follow-up for the Share your hands forms, the participant list, and the photographs on the project page. The two migrations in this repository have **not** been applied. Do not run `scripts/seed-cms.mjs` against production. It only inserts missing entries and will not replace the Hands of Worcester text that is already published.
+This is the manual follow-up for the Feedback form, the participant list, and the photographs on the project page. The two migrations in this repository have **not** been applied. Do not run `scripts/seed-cms.mjs` against production. It only inserts missing entries and will not replace the Hands of Worcester text that is already published.
 
 No new environment variables are required. The existing `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are enough. The app does not use a service-role key. The URL must stay `https://wymhdylnnobdzvyrhibq.supabase.co`.
 
@@ -32,7 +32,7 @@ The in-app limit is 5 submissions in 10 minutes for one address, plus a hidden f
 
 Sign in and open **Hands submissions**.
 
-- **Show on the site** puts an approved picture or piece of writing on `/engagement/share-your-hands`.
+- **Show on the site** puts an approved picture or piece of writing on the Feedback page at `/engagement/share-your-hands`.
 - **Hide** takes it off again.
 - **Approve name** adds that name to the thank-you list on the project page. The button stays unavailable when permission was not given. The database also refuses the approval.
 - **Reject name** keeps the name off the public list.
@@ -43,7 +43,7 @@ Approving a name updates the public list within about a minute, without a new de
 
 ## Age ranges
 
-The questionnaire and the picture or writing form ask for an age range. The choices, in order, are Prefer not to say (stored as an empty value), Under 18 (`under-18`), 18 to 24 (`18-24`), 25 to 34 (`25-34`), 35 to 44 (`35-44`), 45 to 54 (`45-54`), 55 to 64 (`55-64`), 65 to 74 (`65-74`), 75 to 84 (`75-84`), 85 to 89 (`85-89`), and 90 or over (`90-plus`). The name form does not ask for an age.
+The Feedback form asks for words, an optional picture, and an optional name. It does not ask for an age range. Older questionnaire answers may still store one. The choices already saved, in order, are Prefer not to say (stored as an empty value), Under 18 (`under-18`), 18 to 24 (`18-24`), 25 to 34 (`25-34`), 35 to 44 (`35-44`), 45 to 54 (`45-54`), 55 to 64 (`55-64`), 65 to 74 (`65-74`), 75 to 84 (`75-84`), 85 to 89 (`85-89`), and 90 or over (`90-plus`). The name form does not ask for an age.
 
 A person under 18 still needs a parent, guardian or teacher to agree before their name is shown. The admin review screen labels the stored age, including older values (`under-16`, `16-17`, `18-over`, `prefer-not`), and warns when the age is under 18. Approving a name is still a decision for Jessica: the database does not block a name because of the age band.
 

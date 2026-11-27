@@ -2,7 +2,7 @@ import Link from "next/link";
 const links = [
   ["/", "Home"],
   ["/public-art", "Public art"],
-  ["/engagement/share-your-hands", "Share your hands"],
+  ["/engagement/share-your-hands", "Feedback"],
   ["/paintings-illustrations", "Paintings & illustrations"],
   ["/about", "About"],
   ["/contact", "Contact"],

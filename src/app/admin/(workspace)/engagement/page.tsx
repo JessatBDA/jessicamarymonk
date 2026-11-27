@@ -131,7 +131,7 @@ export default async function Page({
       <p className="admin-kicker">Project engagement</p>
       <h1>Hands of Worcester submissions</h1>
       <p>
-        Approve a picture or piece of writing to show it on Share your hands.
+        Approve a picture or piece of writing to show it on Feedback.
         A name is shown on the public thank-you list only when the permission
         box was ticked and you approve the name. That list is people who agreed
         to be shown, not everyone who took part. Nothing here is published on

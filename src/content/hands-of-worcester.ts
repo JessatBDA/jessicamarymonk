@@ -1,6 +1,6 @@
 import type { ContentImage, Entry } from "@/lib/content-model";
 import participants from "./hands-participants.json";
-import { handsHero } from "./hands-photos";
+import { handsTwilight } from "./hands-photos";
 
 export const handsSlug = "the-hands-of-worcester";
 
@@ -82,14 +82,15 @@ function isPlaceholder(value: string) {
   );
 }
 
-export const handsHeroImage: ContentImage = {
+/** Homepage feature when the published project has no images of its own. */
+export const handsFeatureImage: ContentImage = {
   id: "a1000000-0000-4000-8000-000000000002",
-  alt: handsHero.alt,
-  caption: handsHero.caption,
+  alt: handsTwilight.alt,
+  caption: handsTwilight.caption,
   role: "hero",
-  src: handsHero.src,
-  width: handsHero.width,
-  height: handsHero.height,
+  src: handsTwilight.src,
+  width: handsTwilight.width,
+  height: handsTwilight.height,
 };
 
 /** Panel order, left column then right column. The public page sorts A–Z. */
@@ -107,7 +108,7 @@ export function withHandsPresentation(entry: Entry): Entry {
   }
   const images = entry.body.images.length
     ? entry.body.images
-    : [handsHeroImage];
+    : [handsFeatureImage];
   return {
     ...entry,
     body: { ...entry.body, fields, images, featured: entry.body.featured },
