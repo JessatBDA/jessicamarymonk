@@ -175,8 +175,8 @@ export async function insertRow(table: string, row: Record<string, unknown>) {
 }
 
 export async function prepareImage(file: File) {
-  if (file.size === 0 || file.size > 3 * 1024 * 1024)
-    throw new Error("Please choose a picture under 3 MB.");
+  if (file.size === 0 || file.size > 4 * 1024 * 1024)
+    throw new Error("Please choose a picture under 4 MB.");
   if (!["image/jpeg", "image/png", "image/webp"].includes(file.type))
     throw new Error("Please choose a JPG, PNG or WebP picture.");
   const input = Buffer.from(await file.arrayBuffer());
