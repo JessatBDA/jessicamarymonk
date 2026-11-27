@@ -1,8 +1,82 @@
 "use client";
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useState, useTransition } from "react";
+import type { FormEvent } from "react";
 import { submitName, submitWork } from "@/app/engagement/actions";
 import type { SubmitResult } from "@/lib/hands-submit";
+
+const smallEnough = 900 * 1024;
+
+function isSmallRaster(file: File) {
+  return (
+    file.size <= smallEnough &&
+    (file.type === "image/jpeg" ||
+      file.type === "image/png" ||
+      file.type === "image/webp")
+  );
+}
+
+function loadImage(file: File) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(image);
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("unreadable"));
+    };
+    image.src = url;
+  });
+}
+
+/** Shrink a phone photo before it is sent, so a large picture does not crash the page. */
+async function compressArtwork(file: File) {
+  if (isSmallRaster(file)) return file;
+  let source: CanvasImageSource;
+  let width = 0;
+  let height = 0;
+  try {
+    if (typeof createImageBitmap === "function") {
+      const bitmap = await createImageBitmap(file, {
+        imageOrientation: "from-image",
+      });
+      source = bitmap;
+      width = bitmap.width;
+      height = bitmap.height;
+    } else {
+      const image = await loadImage(file);
+      source = image;
+      width = image.naturalWidth;
+      height = image.naturalHeight;
+    }
+  } catch {
+    const image = await loadImage(file);
+    source = image;
+    width = image.naturalWidth;
+    height = image.naturalHeight;
+  }
+  if (!width || !height) throw new Error("unreadable");
+  const scale = Math.min(1, 2000 / Math.max(width, height));
+  const targetWidth = Math.max(1, Math.round(width * scale));
+  const targetHeight = Math.max(1, Math.round(height * scale));
+  const canvas = document.createElement("canvas");
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("unreadable");
+  context.fillStyle = "#ffffff";
+  context.fillRect(0, 0, targetWidth, targetHeight);
+  context.drawImage(source, 0, 0, targetWidth, targetHeight);
+  if ("close" in source && typeof source.close === "function") source.close();
+  const blob = await new Promise<Blob | null>((resolve) => {
+    canvas.toBlob(resolve, "image/jpeg", 0.85);
+  });
+  if (!blob) throw new Error("unreadable");
+  return new File([blob], "artwork.jpg", { type: "image/jpeg" });
+}
 
 function Status({ state }: { state: SubmitResult | null }) {
   if (!state) return null;
@@ -34,9 +108,44 @@ const guardian =
   "If the person is under 18, a parent or teacher gives this permission for them.";
 
 export function FeedbackForm() {
-  const [state, action, pending] = useActionState(submitWork, null);
+  const [state, setState] = useState<SubmitResult | null>(null);
+  const [pending, startTransition] = useTransition();
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setState(null);
+    startTransition(async () => {
+      try {
+        const image = data.get("image");
+        if (image instanceof File && image.size > 0) {
+          data.set("image", await compressArtwork(image));
+        }
+      } catch {
+        setState({
+          ok: false,
+          error:
+            "We couldn’t read that picture. Please try a JPG, PNG or WebP photo.",
+        });
+        return;
+      }
+      try {
+        const result = await submitWork(null, data);
+        setState(result);
+        if (result.ok) form.reset();
+      } catch {
+        setState({
+          ok: false,
+          error:
+            "We couldn’t send that just now. Please check your connection and try again.",
+        });
+      }
+    });
+  }
+
   return (
-    <form className="share-form" action={action}>
+    <form className="share-form" aria-busy={pending} onSubmit={onSubmit}>
       <Status state={state} />
       <Honeypot />
       <label>
@@ -47,13 +156,10 @@ export function FeedbackForm() {
         Attachments - share your art here
         <span className="muted">
           {" "}
-          JPG, PNG or WebP, under 3 MB. Words, a picture, or both.
+          JPG, PNG, WebP or phone photo. Large photos are resized automatically.
+          Words, a picture, or both.
         </span>
-        <input
-          name="image"
-          type="file"
-          accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
-        />
+        <input name="image" type="file" accept="image/*" />
       </label>
       <label>
         Your name (optional)
