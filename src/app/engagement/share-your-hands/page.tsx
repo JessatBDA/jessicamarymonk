@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ResponseForm, WorkForm } from "@/components/engagement/forms";
+import { FeedbackForm } from "@/components/engagement/forms";
 import { handsHero } from "@/content/hands-photos";
 import { fetchApprovedHandsWorks } from "@/lib/hands-works";
 import { pageMetadata } from "@/lib/site";
@@ -8,8 +8,8 @@ import { pageMetadata } from "@/lib/site";
 export const revalidate = 60;
 
 export const metadata = pageMetadata(
-  "Share your hands",
-  "Tell Jessica Mary Monk what hands mean to you, or send a drawing, a poem or some writing.",
+  "Feedback",
+  "Have you seen the art? Share what you thought, or send a picture, a collage, a poem or some writing.",
   "/engagement/share-your-hands",
   {
     url: handsHero.src,
@@ -28,11 +28,12 @@ export default async function Page() {
           ← The Hands of Worcester
         </Link>
         <p className="eyebrow">The Hands of Worcester</p>
-        <h1>Share your hands.</h1>
+        <h1>Feedback.</h1>
         <p>
-          What do hands mean to you? You can answer a few questions, or send a
-          picture, a poem or some writing. Send your feedback, artwork and
-          questions in to the artist.
+          Have you seen the art? What did you think? Have you created something
+          inspired by the hands? Give us your feedback and share your related
+          hand artwork, whether it be pictures, collages, poems or just text
+          feedback.
         </p>
         <p>
           <Link className="text-link" href="/engagement/share-your-hands/leaflet">
@@ -40,16 +41,15 @@ export default async function Page() {
           </Link>
         </p>
       </section>
-      <ResponseForm />
-      <WorkForm />
+      <FeedbackForm />
       <section className="story-section" aria-labelledby="shared-works-heading">
         <div>
           <h2 id="shared-works-heading">Shared with the project</h2>
           {works.length === 0 ? (
             <p>
-              Pictures and writing that Jessica approves will be shown here.
-              Names are shown only when someone has given permission and she
-              has approved that too.
+              Feedback and pictures that Jessica approves will be shown here.
+              A name is shown only when someone gave one and she has approved
+              it.
             </p>
           ) : (
             <ul className="shared-works">
@@ -67,7 +67,10 @@ export default async function Page() {
                         sizes="(max-width: 760px) 100vw, 760px"
                       />
                     )}
-                    {work.writing && <p className="shared-writing">{work.writing}</p>}
+                    {work.writing &&
+                    work.writing.replace(/\s+/g, " ").trim() !== work.title.trim() ? (
+                      <p className="shared-writing">{work.writing}</p>
+                    ) : null}
                     {(work.credit || work.groupName) && (
                       <p className="muted">
                         {[work.credit, work.groupName].filter(Boolean).join(" · ")}

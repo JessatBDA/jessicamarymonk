@@ -81,7 +81,7 @@ export function HomeView({
             </Link>
             {project.slug === "the-hands-of-worcester" && (
               <Link className="text-link" href="/engagement/share-your-hands">
-                Share your hands <span>↗</span>
+                Feedback <span>↗</span>
               </Link>
             )}
             <span className="index-label">{f.feature_index}</span>

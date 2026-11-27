@@ -10,6 +10,7 @@ import hands08 from "../../images/hands-08.jpg";
 import hands09 from "../../images/hands-09.jpg";
 import hands10 from "../../images/hands-10.jpg";
 import hands11 from "../../images/hands-11.jpg";
+import handsTwilightFile from "../../images/hands-twilight-hero.jpg";
 
 export type HandsPhoto = {
   src: string;
@@ -32,6 +33,13 @@ function photo(
     caption,
   };
 }
+
+/** Twilight view of the plinth. Used as the homepage feature when no CMS hero is set. */
+export const handsTwilight = photo(
+  handsTwilightFile,
+  "The Hands of Worcester installation on the Worcester Plinth container at twilight, with painted hand casts illuminated above the container and visitors standing beside it.",
+  "The Hands of Worcester at twilight.",
+);
 
 /** The whole sculpture on the Worcester Plinth container. Used as the page hero. */
 export const handsHero = photo(

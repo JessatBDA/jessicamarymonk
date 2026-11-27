@@ -7,7 +7,7 @@ const postalAddress = "";
 
 export const metadata = pageMetadata(
   "Privacy information",
-  "How the Jessica Mary Monk website handles Share your hands, names, and other visitor information.",
+  "How the Jessica Mary Monk website handles Feedback, names, and other visitor information.",
   "/privacy",
   {
     url: portrait.src,
@@ -23,8 +23,8 @@ export default function Page() {
       <p className="eyebrow">Privacy</p>
       <h1>Privacy information.</h1>
       <p>
-        This notice covers the public pages of this website, including Share
-        your hands and Add your name for The Hands of Worcester. Enquiries can
+        This notice covers the public pages of this website, including Feedback
+        and Add your name for The Hands of Worcester. Enquiries can
         be sent through the contact form or to info@jessicamarymonk.com. The
         site does not take orders or payments.
       </p>
@@ -38,35 +38,31 @@ export default function Page() {
         To get in touch, use the <Link href="/contact">contact page</Link> or
         email info@jessicamarymonk.com.
       </p>
-      <h2>Share your hands</h2>
+      <h2>Feedback</h2>
       <p>
-        If you answer the questions, or send a picture, a poem or other
-        writing, the site stores what you typed, and the picture if you added
-        one. You can also give an optional name or first name, an age range,
-        and whether the response is from a school or group, with that group’s
-        name. You are asked not to include phone numbers, email addresses or
-        home addresses in the words or the picture.
+        If you send feedback, or attach a picture, the site stores what you
+        typed, and the picture if you added one. You can also give an optional
+        name if you want to be credited. You are asked not to include phone
+        numbers, email addresses or home addresses in the words or the picture.
       </p>
       <p>
-        A required box asks you to confirm that the response may be shared on
-        this website or in project reporting, that it is your own work, and,
-        if you are under 18, that a parent or teacher has agreed. A separate
-        box, which is not ticked for you, asks for permission to show your
-        name. If you are under 18, a parent or teacher gives that permission
-        for you. The time you gave permission is stored with the response.
+        A required box asks you to agree that the feedback or artwork may be
+        shared on this website, and that any artwork is your own. The time you
+        gave that agreement is stored with the response.
       </p>
       <p>
-        Answers, pictures and writing are not shown on the website until
-        Jessica approves them. Your name is never shown unless you gave
-        permission and she approves the name as well. Age ranges are not
-        published. You can ask for a response to be removed.
+        Feedback and pictures are not shown on the website until Jessica
+        approves them. Your name is shown with an approved piece only if you
+        gave a name and she approves the name as well. You can ask for a
+        response to be removed. Answers sent through the earlier questions are
+        still kept until you ask for them to be removed.
       </p>
       <h2>Add your name</h2>
       <p>
         The thank-you list shows the names of people who agreed to be shown. The
         name form stores the name you enter, an optional town, school or group, and
-        whether you took part in a workshop. The same unticked permission box
-        applies. Sending the form means it may be stored so it can be reviewed.
+        whether you took part in a workshop. An unticked permission box asks
+        whether the name may be shown. Sending the form means it may be stored so it can be reviewed.
         A name is shown only when permission was given and Jessica approves it.
       </p>
       <h2>Why this information is kept</h2>
@@ -90,7 +86,7 @@ export default function Page() {
         The public cannot read the stored responses. A narrow public query
         returns only names that have permission and have been approved, and
         only pictures and writing that Jessica has approved. Approved pictures
-        can then be viewed on the Share your hands page.
+        can then be viewed on the Feedback page.
       </p>
       <h2>The older questionnaire preview</h2>
       <p>

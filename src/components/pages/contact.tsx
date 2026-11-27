@@ -47,7 +47,7 @@ export function ContactView({ entry }: { entry: Entry }) {
           </p>
           <p>
             <Link className="text-link" href="/engagement/share-your-hands">
-              Share your hands <span>↗</span>
+              Feedback <span>↗</span>
             </Link>
           </p>
           <p>

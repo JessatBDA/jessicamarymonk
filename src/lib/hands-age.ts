@@ -1,4 +1,4 @@
-/** Age bands accepted on new Share your hands submissions. */
+/** Age bands still accepted on older questionnaire rows. */
 export const ageRanges = [
   "",
   "under-18",

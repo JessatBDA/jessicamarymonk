@@ -6,7 +6,7 @@ const path = "/engagement/share-your-hands";
 
 export const metadata = {
   ...pageMetadata(
-    "Share your hands — printable sheet",
+    "Feedback — printable sheet",
     "A short printable sheet with a QR code for The Hands of Worcester.",
     "/engagement/share-your-hands/leaflet",
   ),
@@ -24,15 +24,17 @@ export default async function Page() {
     <article className="wrap">
       <p className="leaflet-toolbar">
         <Link className="back-link" href={path}>
-          ← Share your hands
+          ← Feedback
         </Link>
       </p>
       <div className="leaflet">
         <p className="eyebrow">The Hands of Worcester</p>
-        <h1>Share your hands.</h1>
+        <h1>Feedback.</h1>
         <p>
-          Jessica Mary Monk would like to know what hands mean to you. Answer a
-          few questions, or send a drawing, a poem or some writing.
+          Have you seen the art? What did you think? Have you created something
+          inspired by the hands? Give us your feedback and share your related
+          hand artwork, whether it be pictures, collages, poems or just text
+          feedback.
         </p>
         <p>
           Scan the code, or open{" "}
@@ -43,7 +45,7 @@ export default async function Page() {
         <img
           className="leaflet-qr"
           src={qr}
-          alt="QR code for the Share your hands page"
+          alt="QR code for the Feedback page"
         />
         <p>Send your feedback, artwork and questions in to the artist.</p>
         <p>The Hands of Worcester · The Worcester Plinth</p>
